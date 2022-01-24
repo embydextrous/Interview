@@ -4,10 +4,13 @@ def checkSortedAndRotated(a):
     for i in range(1, n):
         if a[i] < a[minIndex]:
             minIndex = i
+    # Definitely not rotated
     if i == 0:
         return False
+    # Definitely not sorted
     if a[0] < a[-1]:
         return False
+    # Check if two parts are sorted
     for i in range(minIndex - 1):
         if a[i] > a[i+1]:
             return False

@@ -8,7 +8,6 @@ def generateAllRotations(n):
         print(n, end = " ")
     print()
 
-
 n = 12345
 generateAllRotations(n)
 

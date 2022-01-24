@@ -1,5 +1,4 @@
-from audioop import reverse
-
+# Same as left rotate except we don't take mod now in case k > length of array
 def reverse(a, l, r):
     while l < r:
         a[l], a[r] = a[r], a[l]

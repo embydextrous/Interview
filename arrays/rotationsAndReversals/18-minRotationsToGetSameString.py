@@ -6,5 +6,5 @@ def minRotations(s):
             return i
     return n
 
-s = "abcdef"
+s = "abcabc"
 print(minRotations(s))
