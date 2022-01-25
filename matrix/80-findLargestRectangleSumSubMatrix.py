@@ -1,23 +1,23 @@
 import sys
+from typing import final
 
 def kadane(a):
     n = len(a)
     maxSoFar = -sys.maxsize-1
     maxEndingHere = 0
-    start = finish = 0
+    finalPair = (0, 0)
+    start = 0
     for i in range(n):
         maxEndingHere += a[i]
         if maxEndingHere > maxSoFar:
             maxSoFar = maxEndingHere
             # Finish is always right
-            finish = i
+            finalPair = (start, i)
         if maxEndingHere < 0:
             maxEndingHere = 0
             start = i + 1
     # In case maxEnding here later becomes 0
-    if start > finish:
-        start = finish
-    return (maxSoFar, start, finish)
+    return (maxSoFar, finalPair[0], finalPair[1])
 
 def largestRectangleSum(M):
     R, C = len(M), len(M[0])

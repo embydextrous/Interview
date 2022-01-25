@@ -1,6 +1,5 @@
 import heapq
 from random import randint
-from statistics import median
 
 class Median:
     def __init__(self):

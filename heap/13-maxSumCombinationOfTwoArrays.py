@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/k-maximum-sum-combinations-two-arrays/
+
 def maxHeapify(a, n, i):
     largest = i
     left, right = 2 * i + 1, 2 * i + 2
@@ -41,20 +43,26 @@ def maxSumCombination(a, b, k):
     heapPush(result, (a[i] + b[j], i, j))
     indexSet = set()
     indexSet.add((i, j))
-    print(result)
     for i in range(k):
+        #print(result, end = " ")
         (s, _i, _j) = heapPop(result)
         print(s, end = " ")
-        if (_i, _j-1) not in indexSet:
+        if _j > 0 and (_i, _j-1) not in indexSet:
             heapPush(result, (a[_i] + b[_j-1], _i, _j-1))
-        if (_i-1, _j) not in indexSet:
+            indexSet.add((_i, _j-1))
+        if _i > 0 and (_i-1, _j) not in indexSet:
             heapPush(result, (a[_i-1] + b[_j], _i-1, _j))
-        print(result)
+            indexSet.add((_i-1, _j))
     print()
 
 a = [4, 2, 5, 1]
 b = [8, 0, 3, 5]
 k = 3
-maxSumCombination(a, b, k)
+maxSumCombination(a, b, 14)
 
+# 0 3 5 8
+# 1 2 4 5
 
+# 13 12 10 10 9 9 8 7 7 6 5 5 4 4 2 1
+
+# 13 12 10

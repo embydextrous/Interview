@@ -9,7 +9,7 @@ def minHeapify(a, n, i):
         a[smallest], a[i] = a[i], a[smallest]
         minHeapify(a, n, smallest)
 
-def maxHeap(a):
+def minHeap(a):
     n = len(a)
     for i in range(n//2 - 1, -1, -1):
         minHeapify(a, n, i)
