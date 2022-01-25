@@ -10,6 +10,6 @@ def findPivot(a, l, r):
         return findPivot(a, l, mid - 1)
     return findPivot(a, mid + 1, r)
 
-a = [2, 2, 2, 2, 2, 2, 2]
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 n = len(a)
 print(findPivot(a, 0, n - 1))
