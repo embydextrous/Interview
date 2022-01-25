@@ -11,9 +11,8 @@ def nextGreaterElement(a):
     s.push(0)
     for i in range(1, n):
         x = a[i]
-        if x > a[s.peek()]:
-            while not s.isEmpty() and x > a[s.peek()]:
-                result[s.pop()] = x
+        while not s.isEmpty() and x > a[s.peek()]:
+            result[s.pop()] = x
         s.push(i)
     return result
 
