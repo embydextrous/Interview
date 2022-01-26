@@ -19,11 +19,12 @@ def maxSum(a, b):
             sum2 += b[j]
             j += 1
     while i < L1:
-        sum += a[i]
+        sum1 += a[i]
         i += 1
     while j < L2:
-        sum += b[j]
+        sum2 += b[j]
         j += 1
+    sum += max(sum1, sum2)
     return sum
 
 a = [2, 3, 7, 10, 12, 15, 30, 34]

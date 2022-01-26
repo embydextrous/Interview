@@ -9,7 +9,7 @@ def modifiedKadane(a):
     maxSoFar = -sys.maxsize-1
     maxEndingHere = 0
     finalPair = (0, 0)
-    start, finish = 0, 0
+    start = 0
     for i in range(len(a)):
         maxEndingHere += a[i]
         if maxEndingHere > maxSoFar:
