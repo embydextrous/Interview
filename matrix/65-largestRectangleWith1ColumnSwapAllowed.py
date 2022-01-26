@@ -9,19 +9,22 @@ def largestRectangle(M):
                 if M[i][j] == 1:
                     M[i][j] = M[i-1][j] + 1
     # Count Sort - O(n)
-    d = { x : M[R-1].count(x) for x in M[R-1] }
-    k = 0
-    for i in range(R, -1, -1):
-        if i in d:
-            for j in range(d[i]):
-                M[R-1][k] = i
-                k += 1
+    for i in range(R):
+        d = { x : M[i].count(x) for x in M[i] }
+        p = 0
+        for j in range(i+1, -1, -1):
+            if j in d:
+                for k in range(d[j]):
+                    M[i][p] = j
+                    p += 1
     maxArea = 0
-    # O(n)
-    for i in range(C):
-        h = M[R-1][i]
-        l = i + 1
-        maxArea = max(maxArea, h * l)
+    for i in range(R):
+        for j in range(C):
+            h = M[i][j]
+            l = j + 1
+            print(h * l, end = " ")
+            maxArea = max(maxArea, h * l)
+        print()
     return maxArea
 
 
