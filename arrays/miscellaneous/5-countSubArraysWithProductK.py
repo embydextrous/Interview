@@ -1,12 +1,25 @@
 # https://www.geeksforgeeks.org/number-subarrays-given-product/
 
-def countSubArraysWithAllOnes():
-    return 0
+def countSubArraysWithAllOnes(a):
+    n = len(a)
+    count = 0
+    l, r = 0, 0
+    while r < n:
+        if a[r] == 1:
+            while r < n and a[r] == 1:
+                r += 1
+            count += ((r - l) * (r - l + 1)) // 2
+            l = r
+        else:
+            l += 1
+            r += 1
+    return count
+
 
 def countSubArrays(a, k):
     n = len(a)
-    if n == 1:
-        return countSubArraysWithAllOnes()
+    if k == 1:
+        return countSubArraysWithAllOnes(a)
     l = r = 0
     count = 0
     p = 1
@@ -34,7 +47,7 @@ def countSubArrays(a, k):
                 l += 1
     return count
 
-a = [1, 2, 3, 4, 1]
-print(countSubArrays(a, 24))            
+a = [1, 1, 1, 1, 1]
+print(countSubArrays(a, 1))            
 
 
