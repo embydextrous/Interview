@@ -1,3 +1,5 @@
+
+# https://www.geeksforgeeks.org/smallest-greater-elements-in-whole-array/
 def smallestGreaterElement(a):
     n = len(a)
     result = ['_'] * n

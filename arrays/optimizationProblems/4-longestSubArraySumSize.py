@@ -13,7 +13,6 @@ def maxSubArraySumSize(a):
         if maxEndingHere < 0:
             maxEndingHere = 0
             start = i + 1
-    print(start)
     return size
 
 a = [-2, -3, 4, -1, -2, 1, 5, -3]

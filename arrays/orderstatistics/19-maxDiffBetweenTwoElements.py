@@ -1,5 +1,5 @@
 # https://www.geeksforgeeks.org/maximum-difference-between-two-elements/
-# The problem is similar to atock buying and selling once
+# The problem is similar to stock buying and selling once
 def findMaxDiff(a):
     mini = a[0]
     maxDiff = 0

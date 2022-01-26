@@ -1,4 +1,5 @@
 # Problem boils down to max sum subArray of size k
+# Also see, https://www.geeksforgeeks.org/find-subarray-least-average/
 def maxAverageSubArrayOfSizeK(a, k):
     sum = 0
     maxSum = 0

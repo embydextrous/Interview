@@ -8,5 +8,5 @@ def lis(a):
     print(l)
     return max(l)
 
-a = [ 2, 5, 3, 7, 11, 8, 10, 13, 6 ]
+a = [2, 5, 3, 7, 11, 8, 10, 13, 6]
 print(lis(a))
