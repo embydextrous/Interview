@@ -1,11 +1,11 @@
 def findPivot(a, l, r):
     if l > r:
-        return -1
+        return a[-1]
     mid = (l + r) // 2
     if mid < r and a[mid+1] < a[mid]:
-        return mid
+        return a[mid]
     if mid > l and a[mid-1] > a[mid]:
-        return mid - 1
+        return a[mid - 1]
     if a[l] > a[mid]:
         return findPivot(a, l, mid - 1)
     return findPivot(a, mid + 1, r)
