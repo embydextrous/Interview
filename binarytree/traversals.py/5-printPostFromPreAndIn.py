@@ -8,7 +8,7 @@ def printPost(pre, ino):
     print(root, end = ' ')
 
 def printPost2(pre, ino, preIndex, inoLeft, inoRight):
-    if len(pre) == 0 or inoLeft > inoRight:
+    if preIndex[0] >= len(pre) or inoLeft > inoRight:
         return
     root = pre[preIndex[0]]
     inoIndex = ino.index(root, inoLeft, inoRight + 1)
