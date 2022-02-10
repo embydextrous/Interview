@@ -1,6 +1,7 @@
 from bst import Node, insert
 
 # https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/ - Simply do reverse inorder traversal
+# Also see, https://www.geeksforgeeks.org/second-largest-element-in-binary-search-tree-bst/
 
 def kthSmallest(root, k):
     if root:
