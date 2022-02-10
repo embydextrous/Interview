@@ -1,5 +1,13 @@
 from bst import Node, insert, inorder
 
+'''
+              50
+           /     \
+          30      70
+         /  \    /  \
+       20   40  60   80 
+'''
+
 def reversePath(root, key):
     if root is None:
         return

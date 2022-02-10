@@ -1,5 +1,8 @@
 from bst import Node, inorder
 
+# Also see, https://www.geeksforgeeks.org/convert-bst-to-a-binary-tree/
+# Also see, https://www.geeksforgeeks.org/bst-tree-sum-smaller-keys/
+
 def transform(root, sum):
     if root:
         transform(root.right, sum)

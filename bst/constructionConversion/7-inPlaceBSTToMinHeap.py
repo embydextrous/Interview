@@ -1,5 +1,7 @@
 from bst import Node, insert, inorder
 
+# Also see, https://www.geeksforgeeks.org/convert-bst-min-heap/
+
 def bstToSortedList(root, tail):
     if root:
         bstToSortedList(root.left, tail)

@@ -19,6 +19,14 @@ def getTreesUtil(start, end):
 def getTrees(N):
     return getTreesUtil(1, N)
 
+'''
+    1          1          2          3           3
+     \          \        / \        /           /
+      2          3      1   3      1           2
+       \        /                   \         /
+        3      2                     2       1
+'''
+
 N = 3
 trees = getTrees(N)
 for tree in trees:
