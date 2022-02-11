@@ -10,14 +10,14 @@ def findMiddle(root):
 def sortedListToBalancedBST(head):
     if head is None:
         return None
+    if head.next is None:
+        return head
     (prevMid, mid) = findMiddle(head)
     nextToMid = mid.next
     mid.next = None
-    if prevMid:
-        prevMid.next = None
-        mid.left = sortedListToBalancedBST(head)
-    if nextToMid:
-        mid.right = sortedListToBalancedBST(nextToMid)
+    prevMid.next = None
+    mid.left = sortedListToBalancedBST(head)
+    mid.right = sortedListToBalancedBST(nextToMid)
     return mid
 
 head = Node(1)
