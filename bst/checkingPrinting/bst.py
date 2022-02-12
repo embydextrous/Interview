@@ -1,6 +1,6 @@
 # https://www.geeksforgeeks.org/advantages-of-bst-over-hash-table/
 
-# 6 Left (1-14) - 2, 3, 7, 8, 13, 14
+# 3 Left (1-14) - 8, 13, 14
 # 3 Left (15-28) - 20, 22, 23
 # 5 Left (29-42) - 35, 37, 39, 40, 41
 
