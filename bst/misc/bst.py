@@ -4,8 +4,6 @@
 # Also see, https://www.geeksforgeeks.org/data-structure-for-future-reservations-for-a-single-resource/
 # Also see, https://www.geeksforgeeks.org/how-to-implement-decrease-key-or-change-key-in-binary-search-tree/
 
-# 6 Left (1-15) - 8, 9, 10, 11, 12, 14
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -13,6 +11,7 @@ class Node:
         self.right = None
         self.next = None
 
+# Also see, https://www.geeksforgeeks.org/binary-search-tree-insert-parent-pointer/
 def insert(root, data):
     if root is None:
         return Node(data)

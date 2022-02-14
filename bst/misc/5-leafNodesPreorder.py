@@ -1,6 +1,4 @@
-# 890, 325, 290, 530, 965
-import sys
-
+# https://www.geeksforgeeks.org/leaf-nodes-preorder-binary-search-tree/
 def printLeaves(pre):
     n = len(pre)
     s = []
