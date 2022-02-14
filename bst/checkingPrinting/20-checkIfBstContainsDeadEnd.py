@@ -6,17 +6,12 @@ import sys
 MAXI = sys.maxsize
 MINI = 1
 
-def checkUtil(root, low, high, result):
-    if root:
-        if low == high:
-            result[0] = True
-        checkUtil(root.left, low, root.data - 1, result)
-        checkUtil(root.right, root.data + 1, high, result)
-
-def check(root):
-    result = [False]
-    checkUtil(root, MINI, MAXI, result)
-    return result[0]
+def checkUtil(root, low, high):
+    if root is None:
+        return False
+    if low == high:
+        return True
+    return checkUtil(root.left, low, root.data - 1) or checkUtil(root.right, root.data + 1, high)
 
 '''
                 8
@@ -38,4 +33,4 @@ insert(root, 7)
 insert(root, 11)
 insert(root, 4)
 
-print(check(root))
+print(checkUtil(root, 1, MAXI))
