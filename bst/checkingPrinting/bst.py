@@ -1,8 +1,6 @@
 # https://www.geeksforgeeks.org/advantages-of-bst-over-hash-table/
 
-# 3 Left (1-14) - 8, 13, 14
-# 3 Left (15-28) - 20, 22, 23
-# 5 Left (29-42) - 35, 37, 39, 40, 41
+# 8 Left (1-42) - 8, 20, 22, 23, 35, 37, 39, 41
 
 class Node:
     def __init__(self, data):

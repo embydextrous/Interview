@@ -1,6 +1,10 @@
 # https://www.geeksforgeeks.org/advantages-of-bst-over-hash-table/
 
-# 13 Left (1-15) - 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+# Also see, https://www.geeksforgeeks.org/given-n-appointments-find-conflicting-appointments/
+# Also see, https://www.geeksforgeeks.org/data-structure-for-future-reservations-for-a-single-resource/
+# Also see, https://www.geeksforgeeks.org/how-to-implement-decrease-key-or-change-key-in-binary-search-tree/
+
+# 6 Left (1-15) - 8, 9, 10, 11, 12, 14
 
 class Node:
     def __init__(self, data):
