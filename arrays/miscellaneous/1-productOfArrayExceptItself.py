@@ -13,6 +13,6 @@ def productArray(a):
         print(preProd[i] * postProd[i], end = " ")
     print()
     
-
 a = [10, 3, 5, 6, 1]
 productArray(a)
+
