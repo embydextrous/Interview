@@ -7,7 +7,6 @@ def printLeaves(pre):
         found = False
         if pre[i] > pre[j]:
             s.append(pre[i])
-            print(s)
         else:
             while len(s) != 0:
                 if pre[j] > s[-1]:
@@ -15,7 +14,6 @@ def printLeaves(pre):
                     found = True
                 else:
                     break
-            print(s)
         if found:
             print(pre[i], end = " ")
         i += 1
