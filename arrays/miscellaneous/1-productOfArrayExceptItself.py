@@ -14,5 +14,5 @@ def productArray(a):
     print()
     
 
-a = [10, 3, 5, 6, 1]
+a = [10, 3, 5, 6, 2]
 productArray(a)
