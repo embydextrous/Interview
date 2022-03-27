@@ -1,8 +1,5 @@
 package multithreading.diningphilospher;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 import multithreading.diningphilospher.Chopstick.State;
 
 public class Philosopher implements Runnable {
@@ -10,7 +7,6 @@ public class Philosopher implements Runnable {
     private volatile boolean full;
     private Chopstick lefChopstick;
     private Chopstick righChopstick;
-    private ThreadLocalRandom random;
     private int eatingCounter;
 
     public Philosopher(int id, Chopstick lefChopstick, Chopstick righChopstick) {
