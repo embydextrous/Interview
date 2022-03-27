@@ -3,12 +3,12 @@ package iterators.peeking;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class PeekingIterator<T> implements Iterator<T> {
+public class ComparablePeekingIterator<T extends Comparable<T>> implements Iterator<T>, Comparable<ComparablePeekingIterator<T>> {
     private Iterator<T> iterator;
     private T next;
     private boolean hasNext;
 
-    public PeekingIterator(Iterator<T> iterator) {
+    public ComparablePeekingIterator(Iterator<T> iterator) {
         this.iterator = iterator;
         advanceIterator();
     }
@@ -36,5 +36,23 @@ public class PeekingIterator<T> implements Iterator<T> {
     private void advanceIterator() {
         hasNext = iterator.hasNext();
         next = hasNext ? iterator.next() : null;
-    } 
+    }
+
+    @Override
+    public int compareTo(ComparablePeekingIterator<T> o) {
+        if (o == null) {
+            return -1;
+        }
+        T peek1 = peek();
+        T peek2 = o.peek();
+        if (peek1 != null && peek2 != null) {
+            return peek1.compareTo(peek2);
+        }
+        if (peek1 == null && peek2 == null) {
+            return 0;
+        }
+        return peek1 == null ? 1 : -1;
+    }
+
+    
 }
