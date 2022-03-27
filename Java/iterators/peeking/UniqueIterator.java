@@ -8,17 +8,17 @@ import java.util.Queue;
 import java.util.Set;
 
 public class UniqueIterator<T extends Comparable<T>> implements Iterator<T> {
-    private final Queue<ComparablePeekingIterator<T>> iters;
+    private final Queue<PeekingIterator<T>> iters;
     private T next;
     private final Set<T> doneElements;
     
     public UniqueIterator(Iterator<Iterator<T>> iterators) {
-        this.iters = new PriorityQueue<>();
+        this.iters = new PriorityQueue<>((i1, i2) -> i1.peek().compareTo(i2.peek()));
         this.doneElements = new HashSet<>();
         while (iterators.hasNext()) {
             Iterator<T> iterator = iterators.next();
             if (iterator.hasNext()) {
-                iters.add(new ComparablePeekingIterator<>(iterator));
+                iters.add(new PeekingIterator<>(iterator));
             }
         }
         advanceIterator();
@@ -47,7 +47,7 @@ public class UniqueIterator<T extends Comparable<T>> implements Iterator<T> {
             return;
         }
         while(!iters.isEmpty()) {
-            ComparablePeekingIterator<T> iterator = iters.poll();
+            PeekingIterator<T> iterator = iters.poll();
             T peek = iterator.peek();
             if (doneElements.contains(peek)) {
                 iterator.next();

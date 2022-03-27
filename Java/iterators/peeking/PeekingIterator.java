@@ -36,5 +36,5 @@ public class PeekingIterator<T> implements Iterator<T> {
     private void advanceIterator() {
         hasNext = iterator.hasNext();
         next = hasNext ? iterator.next() : null;
-    } 
+    }
 }
