@@ -1,7 +1,9 @@
-package iterators.peeking;
+package iterators.demo;
 
 import java.util.Arrays;
 import java.util.List;
+
+import iterators.SkipIterator;
 
 public class SkipIteratorDemo {
     public static void main(String[] args) {

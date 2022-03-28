@@ -1,11 +1,13 @@
-package iterators.peeking;
+package iterators.demo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
-public class MergingIteratorDemo {
+import iterators.UniqueIterator;
+
+public class UniqueIteratorDemo {
     public static void main(String[] args) {
         TreeSet<Integer> ts1 = new TreeSet<>();
         TreeSet<Integer> ts2 = new TreeSet<>();
@@ -41,9 +43,9 @@ public class MergingIteratorDemo {
         iterators.add(ts2.iterator());
         iterators.add(ts3.iterator());
         iterators.add(ts4.iterator());
-        MergingIterator<Integer> mergingIterator = new MergingIterator<>(iterators.iterator());
-        while (mergingIterator.hasNext()) {
-            System.out.println(mergingIterator.next());
+        UniqueIterator<Integer> uniqueIterator = new UniqueIterator<>(iterators.iterator());
+        while (uniqueIterator.hasNext()) {
+            System.out.println(uniqueIterator.next());
         }
     }
 }

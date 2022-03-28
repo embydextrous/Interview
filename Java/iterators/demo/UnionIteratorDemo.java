@@ -1,6 +1,8 @@
-package iterators.peeking;
+package iterators.demo;
 
 import java.util.TreeSet;
+
+import iterators.UnionIterator;
 
 public class UnionIteratorDemo {
     public static void main(String[] args) {

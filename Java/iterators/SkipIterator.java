@@ -1,4 +1,4 @@
-package iterators.peeking;
+package iterators;
 
 import java.util.HashMap;
 import java.util.Iterator;

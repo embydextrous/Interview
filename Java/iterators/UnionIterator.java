@@ -1,4 +1,4 @@
-package iterators.peeking;
+package iterators;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

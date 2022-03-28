@@ -1,7 +1,9 @@
-package iterators.peeking;
+package iterators.demo;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import iterators.PeekingIterator;
 
 public class PeekingIteratorDemo {
     public static void main(String[] args) {

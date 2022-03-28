@@ -1,4 +1,4 @@
-package iterators.interleaving;
+package iterators;
 
 import java.util.Iterator;
 import java.util.LinkedList;

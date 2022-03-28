@@ -1,7 +1,9 @@
-package iterators.peeking;
+package iterators.demo;
 
 import java.util.Iterator;
 import java.util.TreeSet;
+
+import iterators.IntersectionIterator;
 
 public class IntersectionIteratorDemo {
     public static void main(String[] args) {
