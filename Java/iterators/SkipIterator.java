@@ -15,7 +15,7 @@ public class SkipIterator<T> implements Iterator<T> {
     }
 
     public void skip(T skip) {
-        skipMap.put(skip, skipMap.getOrDefault(skip, 0) + 1);
+        skipMap.compute(skip, (k,  v) -> v == null ? 1 : v + 1);
         if (peekingIterator.hasNext() && peekingIterator.peek().equals(skip)) {
             advanceIterator();
         }

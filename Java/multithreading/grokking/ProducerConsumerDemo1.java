@@ -42,20 +42,17 @@ class Processor1 implements Processor {
     public void produce() throws InterruptedException {
         Random random = new Random();
         while (true) {
+            Thread.sleep(100);
             queue.put(random.nextInt(10));
         }
     }
 
     public void consume() throws InterruptedException {
-        Random random = new Random();
-
         while (true) {
-            Thread.sleep(100);
+            Thread.sleep(120);
             System.out.println(queue);
-            if (random.nextInt(10) == 0) {
-                int value = queue.remove();
-                System.out.println(value);
-            }
+            int value = queue.take();
+            System.out.println(value);
         }
     }
 }
