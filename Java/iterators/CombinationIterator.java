@@ -21,10 +21,6 @@ public class CombinationIterator implements Iterator<String> {
             value -= 1;
             key *= 2;
         }
-        System.out.println(mask);
-        System.out.println(indexMap);
-        System.out.println(L);
-        System.out.println(s);
     }
 
     @Override

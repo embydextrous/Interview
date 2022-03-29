@@ -2,11 +2,10 @@ package cache;
 
 import java.util.Random;
 
-public class LruCacheDemo {
+public class LfuCacheDemo {
     public static void main(String[] args) {
+        Cache<Integer, Integer> cache = new LfuCache<>(5);
         Random random = new Random();
-        LruCache<Integer, Integer> cache = new LruCache<>(4);
-        random.nextInt(10);
         for (int i = 0; i < 30; i++) {
             int operationChooser = random.nextInt(10) % 4;
             if (operationChooser == 0) {
