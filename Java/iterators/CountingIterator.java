@@ -4,10 +4,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import iterators.CountingIterator.Pair;
 
-public class CountingIterator implements Iterator<Pair> {
-    private final PeekingIterator<String> peekingIterator;
+public class CountingIterator<T> implements Iterator<Pair<T>> {
+    private final PeekingIterator<T> peekingIterator;
 
-    public CountingIterator(Iterator<String> iterator) {
+    public CountingIterator(Iterator<T> iterator) {
         this.peekingIterator = new PeekingIterator<>(iterator);
     }
 
@@ -17,7 +17,7 @@ public class CountingIterator implements Iterator<Pair> {
     }
     
     @Override
-    public Pair next() throws NoSuchElementException {
+    public Pair<T> next() throws NoSuchElementException {
         if (hasNext()) {
             return advanceIterator();
         } else {
@@ -25,21 +25,21 @@ public class CountingIterator implements Iterator<Pair> {
         }
     }
     
-    private Pair advanceIterator() {
-        String next = peekingIterator.next();
+    private Pair<T> advanceIterator() {
+        T next = peekingIterator.next();
         int count = 1;
         while (peekingIterator.peek() == next) {
             count++;
             peekingIterator.next();
         }
-        return new Pair(next, count);
+        return new Pair<T>(next, count);
     }
 
-    static public class Pair {
-        private String value;
+    static public class Pair<T> {
+        private T value;
         private int count;
     
-        public Pair(String value, int count) {
+        public Pair(T value, int count) {
             this.value = value;
             this.count = count;
         }

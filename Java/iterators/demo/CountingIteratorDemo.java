@@ -12,7 +12,7 @@ public class CountingIteratorDemo {
         for(String name : names) {
             nameList.add(name);
         }
-        CountingIterator countingIterator = new CountingIterator(nameList.iterator());
+        CountingIterator<String> countingIterator = new CountingIterator<>(nameList.iterator());
         while(countingIterator.hasNext()) {
             System.out.println(countingIterator.next());
         }
