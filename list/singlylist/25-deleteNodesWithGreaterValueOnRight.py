@@ -1,34 +1,33 @@
 from ll import LinkedList, Node
 from random import randint
+import sys
 
-def reverse(l):
-    prev, current = None, l.head
+def reverse(node):
+    prev, current = None, node
     while current:
         next = current.next
         current.next = prev
         prev, current = current, next
-    l.head = prev
+    return prev
 
-def deleteFromRight(l):
-    if l.head is None:
-        return
-    reverse(l)
-    maxSoFar = l.head.data
-    node = l.head
-    while node and node.next:
-        next = node.next
-        if next.data < maxSoFar:
-            node.next = next.next
-            next.next = None
+def deleteFromRight(node):
+    if node is None:
+        return node
+    a = reverse(node)
+    copyA = a
+    maxi = a.data
+    while a and a.next:
+        if a.next.data > maxi:
+            maxi = a.next.data
+            a = a.next
         else:
-            maxSoFar = next.data
-            node = node.next
-
-    reverse(l)
+            a.next = a.next.next
+    return reverse(copyA)
+    
 
 a = LinkedList()
-for i in range(100):
-    a.append(randint(0,20))
+for i in range(10):
+    a.append(randint(1,20))
 a.print()
-deleteFromRight(a)
+a.head = deleteFromRight(a.head)
 a.print()

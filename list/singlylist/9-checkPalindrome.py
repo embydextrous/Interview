@@ -18,12 +18,12 @@ def checkPalindrome(node):
     first, second = node, reverse(slow)
     secondCopy = second
     isPalindrome = True
-    while first and secondCopy:
-        if first.data != secondCopy.data:
+    while first and second:
+        if first.data != second.data:
             isPalindrome = False
             break
-        first, secondCopy = first.next, secondCopy.next
-    prevSlow.next = reverse(second)
+        first, second = first.next, second.next
+    prevSlow.next = reverse(secondCopy)
     return isPalindrome
 
 a = LinkedList()

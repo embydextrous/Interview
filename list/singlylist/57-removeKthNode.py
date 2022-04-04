@@ -21,5 +21,5 @@ a = LinkedList()
 for i in range(10):
     a.append(i)
 a.print()
-removeKthNode(a, 8)
+removeKthNode(a, 3)
 a.print()

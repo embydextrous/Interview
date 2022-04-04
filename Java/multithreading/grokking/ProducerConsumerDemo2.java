@@ -57,7 +57,7 @@ class Processor2 implements Processor {
                 int val = random.nextInt(100);
                 list.add(val);
                 System.out.println("Adding " + val + ". " + "List is: " + list);
-                notify();
+                notifyAll();
             }
             Thread.sleep(random.nextInt(100));
         }
@@ -75,7 +75,7 @@ class Processor2 implements Processor {
                 }
                 int val = list.remove();
                 System.out.println("Removing " + val + ". " + "List is: " + list);
-                notify();
+                notifyAll();
             }
             Thread.sleep(random.nextInt(200));
         }

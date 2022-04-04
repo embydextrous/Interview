@@ -3,20 +3,21 @@ from ll import LinkedList, Node
 def swapNodes(l, a, b):
     if a == b:
         return
+        
     prevX, x = None, l.head
     while x:
         if x.data == a:
             break
         prevX, x = x, x.next
+    if not x:
+        return
     
     prevY, y = None, l.head
-    
     while y:
         if y.data == b:
             break
         prevY, y = y, y.next
-
-    if not x or not y:
+    if not y:
         return
 
     if prevX != None:

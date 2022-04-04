@@ -1,3 +1,25 @@
+'''
+Given a linked list where every node represents a linked list and contains two pointers of its type: 
+(i) Pointer to next node in the main list (we call it 'right' pointer in the code below) 
+(ii) Pointer to a linked list where this node is headed (we call it the 'down' pointer in the code below). 
+All linked lists are sorted. See the following example  
+
+       5 -> 10 -> 19 -> 28
+       |    |     |     |
+       V    V     V     V
+       7    20    22    35
+       |          |     |
+       V          V     V
+       8          50    40
+       |                |
+       V                V
+       30               45
+
+Write a function flatten() to flatten the lists into a single linked list. 
+The flattened linked list should also be sorted. For example, for the above input list, 
+output list should be 5 -> 7 -> 8-> 10 -> 19 -> 20 -> 22 -> 28 -> 30 -> 35 -> 40 -> 45 -> 50. 
+'''
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -25,44 +47,30 @@ class LinkedList:
             print(str(current.data) + " -> ", end = "")
             current = current.next
         print("null")
-
+'''
+       5 -> 10 -> 19 -> 28
+       |    |     |     |
+       V    V     V     V
+       7    20    22    35
+       |          |     |
+       V          V     V
+       8          50    40
+       |                |
+       V                V
+       30               45
+'''
 def flattenList(node):
-    current = node
-    s = 0
-    while current:
-        v = current.v
-        current.v = None
-        a = current
-        while v:
-            if a.next:
-                if a.next.data >= v.data:
-                    next = v.v
-                    v.next = a.next
-                    a.next = v
-                    v.v = None
-                    v = next
-                    a = a.next
-                else:
-                    a = a.next
-            else:
-                a.next = v
-                a = a.next
-                v = v.v
-        s += 1
-
-        current = current.next
-
-def flattenList2(a):
-    node = a
-    while a:
-        if a.v:
-            v = a.v
-            a.v = None
-            a = merge(a, v)
-        a = a.next
-
+    i = 0
+    while(node):
+        if node.v:
+            v = node.v
+            node.v = None
+            merge(node, v)
+        node = node.next
+        
 def merge(a, b):
-    head = tail = Node('*')
+    tail = a
+    a = a.next
     while a and b:
         if a.data <= b.data:
             tail.next = a
@@ -70,23 +78,16 @@ def merge(a, b):
             tail = tail.next
         else:
             tail.next = b
+            b = b.v
             tail = tail.next
-            v = b.v
-            b.v = None
-            b = v
+            tail.v = None
     if a:
         tail.next = a
     while b:
         tail.next = b
+        b = b.v
         tail = tail.next
-        v = b.v
-        b.v = None
-        b = v
-    return head.next
-    
-
-
-
+        tail.v = None
 
 
 a = LinkedList()
@@ -107,5 +108,5 @@ a.head.next.next.next.v = Node(35)
 a.head.next.next.next.v.v = Node(40)
 a.head.next.next.next.v.v.v = Node(45)
 
-flattenList2(a.head)
+flattenList(a.head)
 a.print()

@@ -1,29 +1,40 @@
 from ll import LinkedList, Node
 
 def mergeSort(a, b):
-    result = LinkedList()
+    if a is None and b is None:
+        return None
+    head = Node('*')
+    firstNode = None
     while a and b:
         if a.data <= b.data:
-            nextA = a.next
-            a.next = result.head
-            result.head = a
-            a = nextA
+            next = a.next
+            a.next = head
+            head = a
+            a = next
         else:
-            nextB = b.next
-            b.next = result.head
-            result.head = b
-            b = nextB
+            next = b.next
+            b.next = head
+            head = b
+            b = next
+        if not firstNode:
+            firstNode = head
     while a:
-        nextA = a.next
-        a.next = result.head
-        result.head = a
-        a = nextA
+        next = a.next
+        a.next = head
+        head = a
+        a = next
+        if not firstNode:
+            firstNode = head
     while b:
-        nextB = b.next
-        b.next = result.head
-        result.head = b
-        b = nextB
-    return result
+        next = b.next
+        b.next = head
+        head = b
+        b = next
+        if not firstNode:
+            firstNode = head
+    firstNode.next = None
+    return head
+
 
 a = LinkedList()
 a.append(1)
@@ -40,4 +51,6 @@ b.append(8)
 b.append(10)
 b.print()
 
-mergeSort(a.head, b.head).print()
+c = LinkedList()
+c.head = mergeSort(a.head, b.head)
+c.print()

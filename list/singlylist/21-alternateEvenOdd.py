@@ -1,46 +1,38 @@
 from ll import LinkedList, Node
+from random import randint
 
-def alternateEvenOdd(l):
-    odd, even = LinkedList(), LinkedList()
-    odd.head, even.head = Node("*"), Node("*")
-    oddTail, evenTail = odd.head, even.head
-    current = l.head
-    while current:
-        if current.data % 2 == 0:
-            evenTail.next = current
-            current = current.next
-            l.head = current
+def alternateEvenOdd(node):
+    oddHead = oddTail = Node('*')
+    evenHead = evenTail = Node('*')
+    while node:
+        if node.data % 2 == 0:
+            evenTail.next = node
             evenTail = evenTail.next
-            evenTail.next = None
         else:
-            oddTail.next = current
-            current = current.next
-            l.head = current
+            oddTail.next = node
             oddTail = oddTail.next
-            oddTail.next = None
-    odd.head = odd.head.next
-    even.head = even.head.next
-    l.head = Node("*")
-    tail = l.head
-    oddc, evenc = odd.head, even.head
-    while oddc and evenc:
-        nextOdd = oddc.next
-        nextEven = evenc.next
-        tail.next = oddc
+        node = node.next
+    oddTail.next = None
+    evenTail.next = None
+    oddHead = oddHead.next
+    evenHead = evenHead.next
+    head = tail = Node('*')
+    while oddHead and evenHead:
+        tail.next = oddHead
+        oddHead = oddHead.next
         tail = tail.next
-        tail.next = evenc
+        tail.next = evenHead
+        evenHead = evenHead.next
         tail = tail.next
-        oddc, evenc = nextOdd, nextEven
-    if oddc:
-        tail.next = oddc
-    if evenc:
-        tail.next = evenc
-    l.head = l.head.next
-
+    if oddHead is None:
+        tail.next = evenHead
+    if evenHead is None:
+        tail.next = oddHead
+    return head.next
 
 a = LinkedList()
 for i in range(8):
-    a.append(i)
+    a.append(randint(1, 20))
 a.print()
-alternateEvenOdd(a)
+a.head = alternateEvenOdd(a.head)
 a.print()

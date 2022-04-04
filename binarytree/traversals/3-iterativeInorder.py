@@ -3,13 +3,11 @@ from tree import Node
 def inorder(root):
     s = []
     current = root
-    while True:
+    while current or len(s) > 0:
         if current:
             s.append(current)
             current = current.left
         else:
-            if len(s) == 0:
-                break
             node = s.pop()
             print(node.data, end = " ")
             current = node.right

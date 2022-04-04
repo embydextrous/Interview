@@ -4,13 +4,15 @@ def intersection(a, b):
     head = tail = Node('*')
     while a and b:
         if a.data == b.data:
-            tail.next = Node(a.data)
+            tail.next = a
             tail = tail.next
-            a, b = a.next, b.next
-        elif a.data > b.data:
-            b = b.next
-        else:
             a = a.next
+            b = b.next
+        elif a.data < b.data:
+            a = a.next
+        else:
+            b = b.next
+    tail.next = None
     result = LinkedList()
     result.head = head.next
     return result

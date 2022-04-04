@@ -1,30 +1,21 @@
 from ll import LinkedList, Node
 
-def deleteNAfterM(l, n, m):
-    if m == 0:
-        node = l.head
-        while l.head:
-            l.head = l.head.next
-            n -= 1
-            if n == 0:
-                break
-    else:
-        node = l.head
-        while node:
-            m -= 1
-            if m == 0:
-                break
+# n >= 1, m >= 1
+def deleteNAfterM(node, m, n):
+    while node:
+        i, j = m, n
+        while node and i > 1:
             node = node.next
-        while node and node.next:
+            i -= 1
+        while node and node.next and j > 0:
             node.next = node.next.next
-            n -= 1
-            if n == 0:
-                break
-
+            j -= 1
+        if node:
+            node = node.next
 
 a = LinkedList()
 for i in range(10):
     a.append(i)
 a.print()
-deleteNAfterM(a, 3, 7)
+deleteNAfterM(a.head, 1, 2)
 a.print()

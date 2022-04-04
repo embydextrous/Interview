@@ -62,7 +62,7 @@ class Processor3 implements Processor {
                 int val = random.nextInt(100);
                 list.add(val);
                 System.out.println("Adding " + val + ". " + "List is: " + list);
-                condition.signal();
+                condition.signalAll();
             } finally {
                 lock.unlock();
             }
@@ -82,7 +82,7 @@ class Processor3 implements Processor {
             try {
                 int val = list.remove();
                 System.out.println("Removing " + val + ". " + "List is: " + list);
-                condition.signal();
+                condition.signalAll();
             } finally {
                 lock.unlock();
             }

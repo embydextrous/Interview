@@ -29,7 +29,7 @@ def add(a, b):
         c = (nodeB.data + c) // 10
         sumList.push(s)
         nodeB = nodeB.next
-    if c is not 0:
+    if c != 0:
         sumList.push(c)
     reverse(a)
     reverse(b)
@@ -37,8 +37,8 @@ def add(a, b):
 
 a = LinkedList()
 b = LinkedList()
-a.append(7)
-a.append(5)
+a.append(9)
+a.append(9)
 a.append(9)
 a.append(4)
 a.append(6)
