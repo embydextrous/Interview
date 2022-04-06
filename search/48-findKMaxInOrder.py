@@ -17,6 +17,8 @@ Input : arr[] = {50 8 45 12 25 40 84}
             k = 3
 Output : 50 45 84
 '''
+
+# Also see, https://www.geeksforgeeks.org/find-n-smallest-element-given-array-order-array/
 def printKMaxInOrder(a, k):
     c = a[:]
     c.sort()
