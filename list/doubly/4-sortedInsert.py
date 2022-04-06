@@ -5,20 +5,22 @@ def sortedInsert(l, data):
     if l.head is None:
         l.head = newNode
         return
-    if data <= l.head.data:
-        newNode.next = l.head
-        l.head.prev = newNode
-        l.head = newNode
-        return
     current = l.head
-    while current.next:
-        if current.next.data >= data:
+    while current and current.data < data:
+        if current.next is None:
             break
         current = current.next
-    newNode.next, newNode.prev = current.next, current
-    current.next = newNode
-    if newNode.next:
-        newNode.next.prev = newNode
+    if current.data < data:
+        current.next = newNode
+        newNode.prev = current
+        return
+    newNode.next = current
+    newNode.prev = current.prev
+    current.prev = newNode
+    if newNode.prev:
+        newNode.prev.next = newNode
+    else:
+        l.head = newNode
 
 a = DoublyLinkedList()
 a.append(3)

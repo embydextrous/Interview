@@ -13,10 +13,11 @@ def countCommon(a, b):
     return c
 
 def longestPalindromicList(node):
-    prev, current = node, node
+    prev, current = None, node
     result = 0
     while current:
-        next, current.next = current.next, prev
+        next = current.next
+        current.next = prev
         result = max(result, 2 * countCommon(prev, next) + 1)
         result = max(result, 2 * countCommon(current, next))
         prev, current = current, next

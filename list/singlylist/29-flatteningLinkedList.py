@@ -60,7 +60,6 @@ class LinkedList:
        30               45
 '''
 def flattenList(node):
-    i = 0
     while(node):
         if node.v:
             v = node.v

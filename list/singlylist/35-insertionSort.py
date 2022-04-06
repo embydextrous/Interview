@@ -1,35 +1,34 @@
 from ll import LinkedList, Node
 from random import randint
 
-def insertSorted(l, node):
-    node.next = None
-    if l.head is None:
-        l.head = node
-        return
-    prev, current = None, l.head
+def insertSorted(head, node):
+    prev, current = None, head
     while current:
-        if current.data >= node.data:
+        if current.data > node.data:
             break
         prev, current = current, current.next
-    if prev is None:
-        node.next = l.head
-        l.head = node
-    else:
-        node.next = current
+    if prev:
+        node.next = prev.next
         prev.next = node
-    l.print()
+        return head
+    else:
+        node.next = head
+        return node
 
-def insertionSort(l):
-    sortedList = LinkedList()
-    while l.head:
-        next = l.head.next
-        insertSorted(sortedList, l.head)
-        l.head = next
-    l.head = sortedList.head
+def insertionSort(head):
+    if head is None:
+        return
+    node = head.next
+    head.next = None
+    while node:
+        next = node.next
+        head = insertSorted(head, node)
+        node = next
+    return head
 
 a = LinkedList()
 for i in range(10):
     a.append(randint(1, 100))
 a.print()
-insertionSort(a)
+a.head = insertionSort(a.head)
 a.print()

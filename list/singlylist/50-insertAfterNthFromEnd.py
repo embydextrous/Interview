@@ -1,23 +1,26 @@
 from ll import LinkedList, Node
 
 def insert(l, newNode, k):
-    a, b = l.head, l.head
-    while a and k > 0:
+    current = l.head
+    while current and k > 1:
+        current = current.next
         k -= 1
-        a = a.next
-    if a is None:
+    if current is None:
         newNode.next = l.head
         l.head = newNode
-    else:
-        while a:
-            a, b = a.next, b.next
-        newNode.next = b.next
-        b.next = newNode
+        return
+    a = l.head
+    while current.next:
+        a = a.next
+        current = current.next
+    newNode.next = a.next
+    a.next = newNode
+
 
 a = LinkedList()
 for i in range(10):
     a.append(i)
 a.print()
 
-insert(a, Node(12), 4)
+insert(a, Node(12), 11)
 a.print()

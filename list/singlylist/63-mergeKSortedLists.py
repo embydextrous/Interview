@@ -1,36 +1,39 @@
-from heap import buildMinHeap, minHeapify, popMinHeap, replaceMinHeap
+import heapq
 from ll import LinkedList, Node
 
-'''
-Merge K Sorted Lists Algorithm
-
-1. Build a minHeap of size K from first nodes
-2. Pop an element and add it to result List
-'''
-
-def mergeKSortedLists(listArr):
-    minHeap = []
-    for node in listArr:
-        if node:
-            minHeap.append(node.data)
-    buildMinHeap(minHeap)
+def mergeKSortedLists(lists):
+    h = []
+    for list in lists:
+        if list is not None:
+            h.append(HeapNode(list))
+    if len(h) == 0:
+        return None
+    if len(h) == 1:
+        return h[0].node
+    heapq.heapify(h)
     head = tail = Node('*')
-    while len(minHeap) > 0:
-        x = minHeap[0]
-        for i in range(len(listArr)):
-            if listArr[i] and listArr[i].data == x:
-                tail.next = listArr[i]
-                tail = tail.next
-                listArr[i] = listArr[i].next
-                if listArr[i]:
-                    replaceMinHeap(minHeap, listArr[i].data)
-                else:
-                    popMinHeap(minHeap)
-                tail.next = None
-                break
-    resultList = LinkedList()
-    resultList.head = head.next
-    return resultList
+    while len(h) > 1:
+        heapNode = h[0]
+        tail.next = heapNode.node
+        tail = tail.next
+        if heapNode.node.next:
+            heapq.heapreplace(h, HeapNode(heapNode.node.next))
+        else:
+            heapq.heappop(h)
+        heapNode.node.next = None
+    if len(h) == 1:
+        tail.next = h[0].node
+    return head.next
+
+class HeapNode:
+    def __init__(self, node):
+        self.node = node
+
+    def __le__(self, other):
+        return self.node.data <= other.node.data
+
+    def __lt__(self, other):
+        return self.node.data < other.node.data
 
 a = LinkedList()
 b = LinkedList()
@@ -47,4 +50,6 @@ c.append(1)
 a.print()
 b.print()
 c.print()
-mergeKSortedLists([a.head, b.head, c.head]).print()
+result = LinkedList()
+result.head = mergeKSortedLists([a.head, b.head, c.head])
+result.print()

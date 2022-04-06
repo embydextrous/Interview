@@ -21,25 +21,25 @@ def sortedMerge(a, b):
             b = b.next
     if a:
         tail.next = a
-    if b:
+    if b: 
         tail.next = b
     return head.next
-
+    
 def mergeSortInternal(node):
     if node is None or node.next is None:
         return node
-    middle = findMiddle(node)
-    nextToMiddle = middle.next
-    middle.next = None
+    midNode = findMiddle(node)
+    nextMid = midNode.next
+    midNode.next = None
     left = mergeSortInternal(node)
-    right = mergeSortInternal(nextToMiddle)
-    return sortedMerge(left, right)
+    right = mergeSortInternal(nextMid)
+    return sortedMerge(left, right)    
 
 def mergeSort(l):
     l.head = mergeSortInternal(l.head)
 
 l = LinkedList()
-for i in range(6):
+for i in range(10):
     l.append(randint(1, 20))
 l.print()
 mergeSort(l)

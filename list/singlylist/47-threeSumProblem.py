@@ -92,4 +92,4 @@ c.push(4)
 c.push(8)
 c.print()
 
-print(findTriplet(a.head, b.head, c.head, 35))
+print(findTriplet(a.head, b.head, c.head, 34))

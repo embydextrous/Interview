@@ -1,10 +1,7 @@
 from ll import LinkedList, Node
 
 def mergeSort(a, b):
-    if a is None and b is None:
-        return None
-    head = Node('*')
-    firstNode = None
+    head = None
     while a and b:
         if a.data <= b.data:
             next = a.next
@@ -16,23 +13,16 @@ def mergeSort(a, b):
             b.next = head
             head = b
             b = next
-        if not firstNode:
-            firstNode = head
     while a:
         next = a.next
         a.next = head
         head = a
         a = next
-        if not firstNode:
-            firstNode = head
     while b:
         next = b.next
         b.next = head
         head = b
         b = next
-        if not firstNode:
-            firstNode = head
-    firstNode.next = None
     return head
 
 

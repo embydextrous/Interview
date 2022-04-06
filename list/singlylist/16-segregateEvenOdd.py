@@ -15,11 +15,13 @@ def segregateEvenOdd(l):
         current = current.next
     evenTail.next = None
     oddTail.next = None
-    if evenHead.next:
-        evenTail.next = oddHead.next
-        l.head = evenHead.next
+    evenHead = evenHead.next
+    oddHead = oddHead.next
+    if evenHead:
+        evenTail.next = oddHead
+        l.head = evenHead
     else:
-        l.head = oddHead.next
+        l.head = oddHead
 
 a = LinkedList()
 for i in range(8):

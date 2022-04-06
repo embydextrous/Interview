@@ -13,15 +13,16 @@ def reverse(node):
 def pointRandom(node):
     if node is None:
         return
-    a = reverse(node)
-    maxSoFar = a
-    current = a.next
-    while current:
-        current.random = maxSoFar
-        if maxSoFar.data < current.data:
-            maxSoFar = current
-        current = current.next
-    reverse(a)
+    tailCopy = tail = reverse(node)
+    maxi = tail
+    tail = tail.next
+    while tail:
+        tail.random = maxi
+        if tail.data > maxi.data:
+            maxi = tail
+        tail = tail.next
+    reverse(tailCopy)
+
 
 a = LinkedList()
 for i in range(10):
@@ -31,5 +32,5 @@ pointRandom(a.head)
 a.print()
 current = a.head
 while current and current.next:
-    print(str(current.data) + " -> " +str(current.random.data))
+    print(str(current.data) + " -> " + str(current.random.data))
     current = current.next

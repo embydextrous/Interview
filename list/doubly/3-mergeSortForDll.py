@@ -26,6 +26,8 @@ def merge(a, b):
     if b:
         tail.next = b
         b.prev = tail
+    if head.next:
+        head.next.prev = None
     return head.next
 
 def mergeSortInternal(node):
@@ -34,8 +36,7 @@ def mergeSortInternal(node):
     middle = findMiddle(node)
     nextToMiddle = middle.next
     middle.next = None
-    if nextToMiddle:
-        nextToMiddle.prev = None
+    nextToMiddle.prev = None
     left, right = mergeSortInternal(node), mergeSortInternal(nextToMiddle)
     return merge(left, right)
 

@@ -2,7 +2,7 @@ from ll import LinkedList, Node
 
 def getNth(node, n):
     while node:
-        if n == 0:
+        if n == 1:
             break
         n -= 1
         node = node.next
@@ -11,7 +11,7 @@ def getNth(node, n):
 def getNthFromEnd(node, n):
     a, b = node, node
     while a:
-        if n == 0:
+        if n == 1:
             break
         n -= 1
         a = a.next

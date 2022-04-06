@@ -25,6 +25,7 @@ def intersectionPoint(a, b):
         if a == b:
             return a
         a, b = a.next, b.next
+    return None
 
 
 
