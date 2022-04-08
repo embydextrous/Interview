@@ -1,4 +1,4 @@
-package multithreading.diningphilospher;
+package multithreading.problems.diningphilospher;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

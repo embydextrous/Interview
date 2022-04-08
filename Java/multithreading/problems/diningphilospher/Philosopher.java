@@ -1,6 +1,6 @@
-package multithreading.diningphilospher;
+package multithreading.problems.diningphilospher;
 
-import multithreading.diningphilospher.Chopstick.State;
+import multithreading.problems.diningphilospher.Chopstick.State;
 
 public class Philosopher implements Runnable {
     private int id;
@@ -18,11 +18,7 @@ public class Philosopher implements Runnable {
     @Override
     public void run() {
         while (!full) {
-            try {
-                think();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            think();
             boolean leftChopstickPicked = false;
             boolean rightChopStickPicked = false;
 
@@ -45,9 +41,13 @@ public class Philosopher implements Runnable {
         }
     }
 
-    private void think() throws InterruptedException {
+    private void think() {
         System.out.println(this + " is thinking...");
-        Thread.sleep(250);
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void eat() throws InterruptedException {

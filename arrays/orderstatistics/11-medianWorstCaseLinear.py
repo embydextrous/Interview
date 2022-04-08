@@ -18,7 +18,7 @@ def findMedian(a, l, n):
 
 def medianUtil(a, l, r, k):
     n = r - l + 1
-    if k >= 0 and k < n:
+    if n > 0 and k >= l and k <= r:
         medians = []
         i = 0
         while i < n // 5:
@@ -32,11 +32,11 @@ def medianUtil(a, l, r, k):
         else:
             medianOfMedians = medianUtil(medians, 0, i - 1, i // 2)
         pos = partition(a, l, r, medianOfMedians)
-        if pos - l == k:
+        if pos == k:
             return a[pos]
-        if pos - l > k:
+        if pos > k:
             return medianUtil(a, l, pos - 1, k)
-        return medianUtil(a, pos + 1, r, k - pos + l - 1)
+        return medianUtil(a, pos + 1, r, k)
 
 def getMedian(a):
     n = len(a)
@@ -45,6 +45,6 @@ def getMedian(a):
     else:
         return (medianUtil(a, 0, n-1, n//2 - 1) + medianUtil(a, 0, n - 1, n//2)) / 2
 
-arr = [2, 1, 9, 6, 8, 4, 5, 3]
-# 1 2 4 5 6 8 9
+arr = [3, 2, 7, 8, 3, 1, 9, 6, 2, 1]
+# 1 1 2 2 3 3 6 7 8 9
 print(getMedian(arr))

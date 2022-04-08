@@ -18,13 +18,13 @@ def partition(a, l, r):
 
 def findMedianUtil(a, l, r, k):
     n = r - l + 1
-    if k >= 0 and k < n:
+    if n > 0:
         pos = partition(a, l, r)
-        if pos - l == k:
+        if pos == k:
             return a[pos]
-        if pos - l > k:
+        if pos > k:
             return findMedianUtil(a, l, pos - 1, k)
-        return findMedianUtil(a, pos + 1, r, k - pos + l - 1)
+        return findMedianUtil(a, pos + 1, r, k)
 
 def findMedian(a):
     n = len(a)
@@ -33,5 +33,6 @@ def findMedian(a):
     else:
         return (findMedianUtil(a, 0, n - 1, n // 2 - 1) + findMedianUtil(a, 0, n - 1, n // 2)) / 2
 
-arr = [2, 1, 9, 6, 8, 4, 5, 7]
+arr = [6, 1, 8, 2, 4]
+
 print(findMedian(arr))    

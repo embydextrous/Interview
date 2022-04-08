@@ -1,4 +1,4 @@
-package multithreading.diningphilospher;
+package multithreading.problems.diningphilospher;
 
 public class Constants {
     private Constants() {}

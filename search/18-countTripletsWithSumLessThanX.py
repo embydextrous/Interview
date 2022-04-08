@@ -8,7 +8,6 @@ def countTriplets(a, x):
         while l < r:
             if a[l] + a[r] + a[i] < x:
                 c += (r - l)
-                print(i, l, r, (r - l))
                 l += 1
             else:
                 r -= 1

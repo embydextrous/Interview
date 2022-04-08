@@ -1,4 +1,4 @@
-package multithreading.diningphilospher;
+package multithreading.problems.diningphilospher;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,7 +33,7 @@ public class DiningPhilosopher {
                 Thread.sleep(1000);
             }
             for (Philosopher philosopher : philosophers) {
-                System.out.println(philosopher + " eat " + philosopher.eatingCounter() + " times.");
+                System.out.println(philosopher + " ate " + philosopher.eatingCounter() + " times.");
             }
         }
     }

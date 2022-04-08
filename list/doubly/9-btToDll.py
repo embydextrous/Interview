@@ -5,7 +5,7 @@ class Node:
         self.right = None
 
 def btToDll(root):
-     # Base case
+    # Base case
     head = tail = Node('*')
     btToDllInternal(root, [tail])
     return head.right

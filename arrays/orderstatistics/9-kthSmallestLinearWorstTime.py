@@ -13,7 +13,7 @@ def partition(a, l, r, x):
 
 def kthSmallest(a, l, r, k):
     n = r - l + 1
-    if k > 0 and k <= n:
+    if k - 1 >= l and k - 1 <= r:
         median = []
         i = 0
         while i < n // 5:
@@ -27,11 +27,11 @@ def kthSmallest(a, l, r, k):
         else:
             medianOfMedian = kthSmallest(median, 0, i - 1, i // 2)
         pos = partition(a, l, r, medianOfMedian)
-        if pos - l == k - 1:
+        if pos == k - 1:
             return a[pos]
-        if pos - l > k - 1:
+        if pos > k - 1:
             return kthSmallest(a, l, pos - 1, k)
-        return kthSmallest(a, pos + 1, r, k - pos + l - 1)
+        return kthSmallest(a, pos + 1, r, k)
 
 def findMedian(a, l, n):
     lis = [a[i] for i in range(l, l + n)]
