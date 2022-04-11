@@ -12,7 +12,6 @@ the array will be sorted.
 
 Input : arr [] = { 1, 2, 4, 5, 3 }
 Output : No
-
 '''
 def check(a):
     n = len(a)
@@ -36,17 +35,22 @@ def check(a):
     if y == -1:
         print("Impossible")
         return False
+    while x > 0 and a[x] == a[x - 1]:
+        x -= 1
+    while y < n - 1 and a[y] == a[y + 1]:
+        y += 1
+    if x != 0 and a[y] < maxi:
+        return False
+    if y != n - 1 and a[x] > mini:
+        return False
     print(x, y, maxi, mini)
-    for i in range(x, y + 1):
-        print(a[i], maxi, mini)
-        if a[i] < maxi or a[i] > mini:
+    for i in range(y - 1, x - 1, -1):
+        if a[i] < a[i+1]:
             return False
-        if i != x:
-            if a[i] > a[i-1]:
-                return False
     return True
 
-a = [1, 4, 7, 9, 8, 6]
+# if there are repeating elements and maxi == mini = p, y = last occurence of p and repeat
+a = [1, 2, 2, 2, 3, 4, 2, 2]
 print(check(a))
     
     
