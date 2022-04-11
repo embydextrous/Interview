@@ -1,3 +1,4 @@
+# Time Complexity - O(nk) for all cases where k is the size of alphabet.
 def countSort(a, exp):
     n = len(a)
     output = [0] * n

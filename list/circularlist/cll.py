@@ -34,21 +34,22 @@ class CircularLinkedList:
     def delete(self, nodeToDelete):
         if self.head is None:
             return
-        prev, current = None, self.head
-        while current.next != self.head:
-            if current == nodeToDelete:
-                break
-            prev, current = current, current.next
-        if prev:
+        if nodeToDelete == self.head:
+            if self.head == self.tail:
+                self.head = self.tail = None
+            else:
+                nextHead = self.head.next
+                self.head.next = None
+                self.head = nextHead
+                self.tail.next = nextHead
+        else:
+            prev, current = None, self.head
+            while current != nodeToDelete:
+                prev, current = current, current.next
             prev.next = current.next
             current.next = None
-        else:
-            lastNode = self.head
-            while lastNode.next != self.head:
-                lastNode = lastNode.next
-            lastNode.next = self.head.next
-            self.head = lastNode.next
-
+            if nodeToDelete == self.tail:
+                self.tail = prev
 
     def print(self):
         print("head -> ", end="")
@@ -61,3 +62,9 @@ class CircularLinkedList:
         print("head")
 
 a = CircularLinkedList()
+a.push(1)
+a.push(2)
+a.append(3)
+a.delete(a.head.next.next.next)
+#print(a.head.data, a.tail.data)
+#a.print()

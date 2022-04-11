@@ -3,7 +3,7 @@ from cll import CircularLinkedList
 def splitIntoTwoHalves(cll):
     if cll.head is None:
         return (cll, cll)
-    if cll.head.next is cll.head:
+    if cll.head == cll.tail:
         return (cll, CircularLinkedList())
     fast, prevSlow, slow = cll.head, None, cll.head
     while fast.next != cll.head and fast.next.next != cll.head:

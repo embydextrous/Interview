@@ -15,4 +15,11 @@ Other sorting algorithms:
 
 3 - SleepSort - sleep for time proportional to value. Indeterministic due to CPU Scheduling of threads.
     # https://www.geeksforgeeks.org/sleep-sort-king-laziness-sorting-sleeping/
+
+4 - Timsort - Modified merge sort which uses insertion sort if array length falls below blockSize 
+    (may be 32 or 64). Used in python sort() and sorted() as well as in Java's Arrays.sort()
+    Stable and O(nlogn) algorithms.
+    # https://www.geeksforgeeks.org/timsort/
+
+5 - Shell Sort - https://www.geeksforgeeks.org/shellsort/
 '''
