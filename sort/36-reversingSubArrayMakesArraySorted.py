@@ -16,41 +16,33 @@ Output : No
 def check(a):
     n = len(a)
     x = -1
-    maxi = -10 ** 9
     for i in range(n - 1):
         if a[i] > a[i + 1]:
             x = i
             break
-        maxi = max(maxi, a[i])
     if x == -1:
-        print("Already Sorted")
-        return True
+        return (True, "Already Sorted")
     y = -1
-    mini = 10 ** 9
     for i in range(n - 1, x, -1):
         if a[i] < a[i - 1]:
             y = i
             break
-        mini = min(mini, a[i])
-    if y == -1:
-        print("Impossible")
-        return False
-    while x > 0 and a[x] == a[x - 1]:
-        x -= 1
-    while y < n - 1 and a[y] == a[y + 1]:
-        y += 1
-    if x != 0 and a[y] < maxi:
-        return False
-    if y != n - 1 and a[x] > mini:
-        return False
-    print(x, y, maxi, mini)
-    for i in range(y - 1, x - 1, -1):
+    mini = min(a[x:y+1])
+    maxi = max(a[x:y+1])
+    for i in range(x):
+        if a[i] > mini:
+            x = i
+            break
+    for i in range(n-1, y, -1):
+        if a[i] < maxi:
+            y = i
+            break
+    for i in range(x, y):
         if a[i] < a[i+1]:
-            return False
-    return True
+            return (False, None)
+    return (True, a[x:y+1])
 
-# if there are repeating elements and maxi == mini = p, y = last occurence of p and repeat
-a = [1, 2, 2, 2, 3, 4, 2, 2]
+a = [5, 4, 3, 2, 1]
 print(check(a))
     
     
