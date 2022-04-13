@@ -2,8 +2,6 @@ from cll import CircularLinkedList
 #from ll import LinkedList
 
 def size(node):
-    if node is None:
-        return 0
     c = 0
     current = node
     while current:

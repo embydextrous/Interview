@@ -6,20 +6,14 @@ def getJospeheusPosition(n, k):
         cll.append(i)
     return getJosepheusPositionInternal(cll.head, k)
     
-
 def getJosepheusPositionInternal(node, k):
-    if node == node.next:
-        return node.data
-    else:
-        n = k - 1
-        prev, current = node, node.next
+    prev, current = None, node
+    while current != current.next:
+        n = k
         while n > 0:
             n -= 1
-            if n == 0:
-                break
             prev, current = current, current.next
         prev.next = current.next
-        return getJosepheusPositionInternal(prev.next, k)
+    return current.data
 
-
-print(getJospeheusPosition(100, 1))
+print(getJospeheusPosition(1000000, 1))
