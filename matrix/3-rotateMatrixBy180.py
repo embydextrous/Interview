@@ -1,6 +1,26 @@
-# Next unimplemented questions
-# Check if all rows of matrix are circular rotation - simple create an _ separated string for first row
-# Concat other rows with itself and check if string formed by row 1 is present.
+# https://www.geeksforgeeks.org/rotate-matrix-180-degree/
+'''
+Given a square matrix, the task is that we turn it by 180 degrees in an anti-clockwise direction without 
+using any extra space. 
+
+Examples : 
+
+Input :  1  2  3
+         4  5  6
+         7  8  9
+Output : 9 8 7 
+         6 5 4 
+         3 2 1
+
+Input :  1 2 3 4 
+         5 6 7 8 
+         9 0 1 2 
+         3 4 5 6 
+Output : 6 5 4 3 
+         2 1 0 9 
+         8 7 6 5 
+         4 3 2 1
+'''
 from matrix import printS
 
 def rotateBy180(m):

@@ -16,12 +16,7 @@ def multiply(a, b):
     if c1 != r2:
         print("Not Possible..")
     # Initialize Result Matrix
-    result = []
-    for i in range(r1):
-        m = []
-        for j in range(c2):
-            m.append(0)
-        result.append(m)
+    result = [[0 for i in range(c2)] for j in range(r1)]
     for i in range(r1):
         for j in range(c2):
             for k in range(c1):
