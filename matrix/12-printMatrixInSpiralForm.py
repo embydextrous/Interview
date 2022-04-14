@@ -1,71 +1,49 @@
-def printClockWiseRing(M, k, R, C, n):
+def printClockWiseRing(M, k, R, C):
     # print top row
-    if n[0] == R*C:
-        return
     for i in range(k, C - k):
         print(M[k][i], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
     # print right edge
     for i in range(k + 1, R - k):
         print(M[i][C-k-1], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
     # print bottom row
     for i in range(C-k-2, k - 1, -1):
         print(M[R-k-1][i], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
     # print left edge
     for i in range(R-k-2, k, -1):
         print(M[i][k], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
 
 def printMatrixInClockwiseSpiralForm(M):
-    R, C, n = len(M), len(M[0]), [0]
-    for i in range(min(R, C) // 2 + 1):
-        printClockWiseRing(M, i, R, C, n)
+    R, C = len(M), len(M[0])
+    for i in range(min(R, C) // 2):
+        printClockWiseRing(M, i, R, C)
+    if R % 2 == 1 and R <= C:
+        for j in range(R//2, C - R//2):
+            print(M[R//2][j], end = " ")
+    elif C % 2 == 1 and C <= R:
+        for i in range(C//2, R - C//2):
+            print(M[i][C//2], end = " ")
     print()
 
-def printAntiClockWiseRing(M, k, R, C, n):
-    if n[0] == R*C:
-        return
-    # print left edge
+def printAntiClockWiseRing(M, k, R, C):
     for i in range(k, R-k):
         print(M[i][k], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
-    # print bottom row
     for i in range(k+1, C-k):
         print(M[R-k-1][i], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
-    # print right edge
     for i in range(R-k-2, k - 1, -1):
         print(M[i][C-k-1], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
-    # print top row
     for i in range(C-k-2, k, -1):
         print(M[k][i], end = " ")
-        n[0] += 1
-        if n[0] == R*C:
-            return
     
-    
-
 def printMatrixInAntiClockwiseSpiralForm(M):
-    R, C, n = len(M), len(M[0]), [0]
-    for i in range(min(R, C) // 2 + 1):
-        printAntiClockWiseRing(M, i, R, C, n)
+    R, C = len(M), len(M[0])
+    for i in range(min(R, C) // 2):
+        printAntiClockWiseRing(M, i, R, C)
+    if R % 2 == 1 and R <= C:
+        for j in range(R//2, C - R//2):
+            print(M[R//2][j], end = " ")
+    elif C % 2 == 1 and C <= R:
+        for i in range(C//2, R - C//2):
+            print(M[i][C//2], end = " ")
     print()
     
 

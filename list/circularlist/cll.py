@@ -8,6 +8,7 @@ class Node:
 class CircularLinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def push(self, data):
         newNode = Node(data)

@@ -19,6 +19,7 @@ def multiply(a, b):
     result = [[0 for i in range(c2)] for j in range(r1)]
     for i in range(r1):
         for j in range(c2):
+            # Can also take r2 as c1 == r2 and k moves in a row in a while moves in a column in b
             for k in range(c1):
                 result[i][j] += a[i][k] * b[k][j]
     return result

@@ -1,32 +1,35 @@
 # anti-clockwise rotation
+'''
+Given a square matrix, turn it by 90 degrees in anti-clockwise direction without using any extra space.
+Examples : 
+ 
+Input:
+Matrix:
+ 1  2  3
+ 4  5  6
+ 7  8  9
+Output:
+ 3  6  9 
+ 2  5  8 
+ 1  4  7 
+The given matrix is rotated by 90 degree 
+in anti-clockwise direction.
+
+Input:
+ 1  2  3  4 
+ 5  6  7  8 
+ 9 10 11 12 
+13 14 15 16 
+Output:
+ 4  8 12 16 
+ 3  7 11 15 
+ 2  6 10 14 
+ 1  5  9 13
+The given matrix is rotated by 90 degree 
+in anti-clockwise direction.
+'''
+
 from matrix import printS
-
-def rotateRingAntiClockwise(m, n, k):
-    backValue = m[k][k+1]
-    # rotate left
-    for i in range(k, n - k):
-        m[i][k], backValue = backValue, m[i][k]
-    # rotate bottom
-    for i in range(k+1, n - k):
-        m[n-k-1][i], backValue = backValue, m[n-k-1][i]
-    # rotate right
-    for i in range(n-k-2, k - 1, -1):
-        m[i][n-k-1], backValue = backValue, m[i][n-k-1]
-    # rotate top
-    for i in range(n - k - 2, k, -1):
-        m[k][i], backValue = backValue, m[k][i]
-
-def rotateMatrix(m):
-    n = len(m)
-    for i in range(n//2):
-        rotateRingAntiClockwise(m, n, i)
-
-# Complexity O()
-def rotateMatrixBy90Degree(m):
-    n = len(m)
-    for i in range(n//2):
-        for j in range(n - 2 * i - 1):
-            rotateRingAntiClockwise(m, n, i)
 
 # Complexity O(n^2)
 def rotateMatrixBy90Degree2(m):
