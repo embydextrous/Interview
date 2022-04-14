@@ -23,12 +23,9 @@ class DoublyLinkedList:
         if self.head is None:
             self.push(data)
         else:
-            lastNode = self.head
-            while lastNode.next:
-                lastNode = lastNode.next
             newNode = Node(data)
-            lastNode.next = newNode
-            newNode.prev = lastNode
+            self.tail.next = newNode
+            newNode.prev = self.tail
             self.tail = newNode
 
     def insertAfter(self, prevNode, data):
