@@ -11,11 +11,11 @@ Examples:
 Input: 
 [0, 0, 0, 0, 1]
 [0, 0, 0, 1, 1]
-[0, 1, 1, 1, 1]
+[0, 0, 1, 1, 1]
 [1, 1, 1, 1, 1]
 [1, 1, 1, 1, 1]
 
-Output: 8
+Output: 9
 '''
 def countZeroes(M):
     R, C = len(M), len(M[0])

@@ -26,7 +26,7 @@ Output :  Right
 
 # Observation
 # R == C, R is even -> Direction at last block is "left"
-# R == C, R is odd, -> Direction at last block is "right" (Solved for square matrices)
+# R == C, R is odd, -> Direction at last block is "right"
 # R != C, R < C, R is even, Direction at last block is "left"
 # R != C, R < C, R is odd, Direction at last block is "right"
 # R != C, R > C, C is even, Direction at last block is "up"
