@@ -2,9 +2,27 @@
 # https://www.geeksforgeeks.org/unique-cells-binary-matrix/
 
 '''
-Given a matrix of size n x m consisting of 0's and 1's. 
-We need to find the number of unique cells with value 1 such that the corresponding entire row 
-and the entire column do not have another 1. Return the number of unique cells.
+Given a matrix of size n x m consisting of 0;s and 1's. We need to find the number of unique cells with 
+value 1 such that the corresponding entire row and the entire column do not have another 1. Return the 
+number of unique cells.
+
+Examples: 
+
+Input : mat[][] = {0, 1, 0, 0
+                   0, 0, 1, 0
+                   1, 0, 0, 1}
+Answer : 2
+The two 1s that are unique
+in their rows and columns
+are highlighted.
+
+Input : mat[][] = { 
+{0, 0, 0, 0, 0, 0, 1}
+{0, 1, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 1, 0}
+{1, 0, 0, 0, 0, 0, 0}
+{0, 0, 1, 0, 0, 0, 1}
+Output : 3
 '''
 def countUniqueCells(M):
     R, C = len(M), len(M[0])

@@ -24,40 +24,37 @@ Input :  {'0', '*', '0', 's'},
 Output :  -1
 '''
 
-def isValid(M, R, C, i, j):
-    return i < R and j < C and i >= 0 and j >= 0 and M[i][j] != '0'
+def isValid(R, C, i, j):
+    return i >= 0 and i < R and j >= 0 and j < C
 
 def minDistance(M):
-    source = None
+    ROW = [0, -1, 0, 1]
+    COL = [-1, 0, 1, 0]
     R, C = len(M), len(M[0])
+    sx, sy = -1, -1
     for i in range(R):
         for j in range(C):
             if M[i][j] == 's':
-                source = (i, j, 0)
+                sx, sy = i, j
                 break
-        if source:
+        if sx != -1:
             break
-    visited = [[False for _ in range(len(M[0]))]
-               for _ in range(len(M))]
-    q = [source]
+    q = [[sx, sy, 0]]
     while len(q) > 0:
-        (i, j, d) = q.pop(0)
-        visited[i][j] = True
-        if M[i][j] == 'd':
-            return d
-        if isValid(M, R, C, i - 1, j) and not visited[i-1][j]:
-            q.append((i - 1, j, d + 1))
-        if isValid(M, R, C, i, j - 1) and not visited[i][j-1]:
-            q.append((i, j - 1, d + 1))
-        if isValid(M, R, C, i + 1, j) and not visited[i+1][j]:
-            q.append((i + 1, j, d + 1))
-        if isValid(M, R, C, i, j + 1) and not visited[i][j + 1]:
-            q.append((i, j + 1, d + 1))
+        i, j, d = q.pop(0)
+        for k in range(4):
+            x, y = i + ROW[k], j + COL[k]
+            if isValid(R, C, x, y):
+                if M[x][y] == 'd':
+                    return d + 1
+                elif M[x][y] == '*':
+                    q.append([x, y, d + 1])
+                    M[x][y] = '0'
     return -1
 
 M = [['*', '*', '*', 's'],
      ['*', '*', '0', '*'],
-     ['0', '0', '0', '*'],
-     ['d', '*', '0', '*']]
+     ['0', '*', '0', '*'],
+     ['d', '*', '*', '*']]
 
 print(minDistance(M))

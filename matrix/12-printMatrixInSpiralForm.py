@@ -66,10 +66,11 @@ def printMatrixInAntiClockwiseSpiralForm(M):
     print()
     
 
-M = [[1, 2, 3],
-      ['&', '/', '*'],
-     [5, 6, 7],
-     [-1, -2, -3]]
+M = [[1, 2, 3, 4, 5, 6, 7],
+    ['&', '/', '*', 6, 8, 9, 3],
+     [5, 6, 7, 1, 1, 1, 1],
+     [-1, -2, -3, 0, 0, 0, 0],
+     [1, 2, 3, 4, 5, 6, 7]]
 
 printMatrixInClockwiseSpiralForm(M)
 printMatrixInAntiClockwiseSpiralForm(M)

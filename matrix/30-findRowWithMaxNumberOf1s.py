@@ -1,9 +1,22 @@
 # https://www.geeksforgeeks.org/find-row-number-binary-matrix-maximum-number-1s/
 
 '''
-Given a binary matrix (containing only 0 and 1) of order nxn. All rows are sorted already, 
-We need to find the row number with the maximum number of 1s. Also, find the number of 1 in that row. 
+Given a binary matrix (containing only 0 and 1) of order nxn. All rows are sorted already, We need to 
+find the row number with the maximum number of 1s. Also, find the number of 1 in that row. 
 Note: in case of a tie, print the smaller row number.
+ 
+
+Examples : 
+
+Input : mat[3][3] = {0, 0, 1,
+                     0, 1, 1,
+                     0, 0, 0}
+Output : Row number = 2, MaxCount = 2
+
+Input : mat[3][3] = {1, 1, 1,
+                     1, 1, 1,
+                     0, 0, 0}
+Output : Row number = 1, MaxCount = 3
 '''
 def findNumOf1(a):
     n = len(a)
