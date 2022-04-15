@@ -25,14 +25,14 @@ def addBoundaryUnit(M, R, C, i, j):
 
 def findPerimeter(M):
     R, C = len(M), len(M[0])
+    ROW = [0, -1, 0, 1]
+    COL = [-1, 0, 1, 0]
     perimeter = 0
     for i in range(R):
         for j in range(C):
             if M[i][j] == 1:
-                perimeter += addBoundaryUnit(M, R, C, i - 1, j)
-                perimeter += addBoundaryUnit(M, R, C, i, j - 1)
-                perimeter += addBoundaryUnit(M, R, C, i + 1, j)
-                perimeter += addBoundaryUnit(M, R, C, i, j + 1)
+                for k in range(4):
+                    perimeter += addBoundaryUnit(M, R, C, i + ROW[k], j + COL[k])
     return perimeter
 
 
