@@ -1,4 +1,5 @@
 # https://www.geeksforgeeks.org/sum-matrix-element-absolute-difference-row-column-numbers/
+# Duplicate of 40
 def sum(n):
     i = 1
     s = 0
