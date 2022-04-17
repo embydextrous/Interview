@@ -1,40 +1,30 @@
 # https://www.geeksforgeeks.org/form-coils-matrix/
 from matrix import printS
 
-def formCoils(M):
-    n = len(M)
-    k = n // 4
+def printCoils(N):
     coil1 = []
     coil2 = []
-    for i in range(k):
-        # add left
-        for j in range(2 * i, n - 2 * i):
-            x = M[j][2*i]
-            coil1.append(x)
-            coil2.append(n * n + 1 - x)
-        # add bottom
-        for j in range(2 * i + 1, n - 2 * i - 1):
-            x = M[n-2*i-1][j]
-            coil1.append(x)
-            coil2.append(n * n + 1 - x)
-        # add right
-        for j in range(n - 2 * i - 2, 2 * i, -1):
-            x = M[j][n - 2 * i - 2]
-            coil1.append(x)
-            coil2.append(n * n + 1 - x)
-        # add top
-        for j in range(n - 2 * i - 3, 2 * i + 1, -1):
-            x = M[2*i+1][j]
-            coil1.append(x)
-            coil2.append(n * n + 1 - x)
-    print(coil1)
-    print(coil2)
+    step = 4 * N
+    for i in range(step):
+        coil1.append(step * i + 1)
+        coil2.append(16 * N * N + 1 - coil1[-1])
+    step -= 2
+    toAdd = [1, -1 * 4 * N]
+    flag = True
+    while step != 0:
+        for k in range(2):
+            valueToAdd = toAdd[k]
+            if not flag:
+                valueToAdd *= -1
+            for i in range(step):
+                coil1.append(coil1[-1] + valueToAdd)
+                coil2.append(16 * N * N + 1 - coil1[-1])
+        step -= 2
+        flag = not flag
+    print(coil1[::-1])
+    print(coil2[::-1])
 
-n = 8
-M = [[0 for i in range(n)] for j in range(n)]
-for i in range(n*n):
-    M[i//n][i%n] = i + 1
-printS(M)
-formCoils(M)
+N = 2
+printCoils(N)
 
 

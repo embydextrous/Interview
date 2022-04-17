@@ -3,14 +3,14 @@
 def maxMirrors(M):
     R, C = len(M), len(M[0])
     c = 0
-    discardedRows = set()
     discardedColumns = set()
     for i in range(R - 1, -1, -1):
+        isRowDiscarded = False
         for j in range(C - 1, -1, -1):
             if M[i][j] == 1:
-                discardedRows.add(i)
+                isRowDiscarded = True
                 discardedColumns.add(j)
-            elif i not in discardedRows and j not in discardedColumns:
+            elif not isRowDiscarded and j not in discardedColumns:
                 print(i, j)
                 c += 1
     return c

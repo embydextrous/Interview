@@ -29,82 +29,71 @@ First traversal collects total points of value 3 + 2 + 20 + 1 + 1 = 27
 Second traversal collects total points of value 2 + 4 + 10 + 20 + 10 = 46.
 Total Points collected = 27 + 46 = 73.
 '''
-# Recursion Based Algo
-# Check If cell is valid or not - in case of invalid return -inf
-# Check is last row but invalid columns - return -inf
-# Check if traversal complete - return sum of cells if columns different else just return column
-# Otherwise init result as 0 and save columns sum if different, else just column value
-# check max of 9 conditions, row + 1 -> (col1-1, col1, col1+1) * (col2-1, col2, col2+1)
-# add it to result and return it
+MINUS_INF = -10**9
 
-import sys
-
-def maxPoints(M, R, C, x, y1, y2):
-    # Cell is invalid
-    if x < 0 or x >= R or y1 < 0 or y1 >= C or y2 < 0 or y2 >= C:
-        return -sys.maxsize-1
-    # Traversal not to proper destination
-    if x == R - 1 and (y1 != 0 or y2 != C-1):
-        return -sys.maxsize-1
-    # Traversal Complete
-    if x == R - 1 and y1 == 0 and y2 == C-1:
-        return M[x][y1] if y1 == y2 else M[x][y1] + M[x][y2]
-    result = M[x][y1] if y1 == y2 else M[x][y1] + M[x][y2]
-    # maxPoints results can be remembered using a 3d matrix of size [R][C][C]
-    result += max(
-                    maxPoints(M, R, C, x + 1, y1 - 1, y2 - 1),
-                    maxPoints(M, R, C, x + 1, y1, y2 - 1),
-                    maxPoints(M, R, C, x + 1, y1 + 1, y2 - 1),
-                    maxPoints(M, R, C, x + 1, y1 - 1, y2),
-                    maxPoints(M, R, C, x + 1, y1, y2),
-                    maxPoints(M, R, C, x + 1, y1 + 1, y2),
-                    maxPoints(M, R, C, x + 1, y1 - 1, y2 + 1),
-                    maxPoints(M, R, C, x + 1, y1, y2 + 1),
-                    maxPoints(M, R, C, x + 1, y1 + 1, y2 + 1)
-                )
+def maxPointsRecursiveUtil(M, R, C, x, y1, y2):
+    # Out of Bounds Case
+    if y1 < 0 or y1 >= C or y2 < 0 or y2 >= C:
+        return MINUS_INF
+    # Wrong Walk
+    if x == R - 1 and (y1 != 0 or y2 != C - 1):
+        return MINUS_INF
+    # Right Walk
+    if x == R - 1 and y1 == 0 and y2 == C - 1:
+        return M[x][y1] + M[x][y2] if y1 != y2 else M[x][y1]
+    temp = M[x][y1] + M[x][y2] if y1 != y2 else M[x][y1]
+    result = MINUS_INF
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 - 1, y2 - 1))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1, y2 - 1))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 + 1, y2 - 1))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 - 1, y2))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1, y2))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 + 1, y2))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 - 1, y2 + 1))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1, y2 + 1))
+    result = max(result, temp + maxPointsRecursiveUtil(M, R, C, x + 1, y1 + 1, y2 + 1))
     return result
+
+def maxPointsRecursive(M):
+    R, C = len(M), len(M[0])
+    x, y1, y2 = 0, 0, C - 1
+    return maxPointsRecursiveUtil(M, R, C, x, y1, y2)
 
 def maxPointsUtil(M, R, C, x, y1, y2, dp):
-    # Cell is invalid
-    if x < 0 or x >= R or y1 < 0 or y1 >= C or y2 < 0 or y2 >= C:
-        return -sys.maxsize-1
-    # Traversal not to proper destination
-    if x == R - 1 and (y1 != 0 or y2 != C-1):
-        return -sys.maxsize-1
-    # Traversal Complete
-    if x == R - 1 and y1 == 0 and y2 == C-1:
+    if y1 < 0 or y1 >= C or y2 < 0 or y2 >= C:
+        return MINUS_INF
+    if x == R - 1 and (y1 != 0 or y2 != C - 1):
+        return MINUS_INF
+    if x == R - 1 and y1 == 0 and y2 == C - 1:
+        dp[x][y1][y2] = M[x][y1] if y1 == y2 else M[x][y1] + M[x][y2]
         return M[x][y1] if y1 == y2 else M[x][y1] + M[x][y2]
-    # Check is subproblem is already solved
     if dp[x][y1][y2] != -1:
         return dp[x][y1][y2]
-    result = -sys.maxsize-1
     temp = M[x][y1] if y1 == y2 else M[x][y1] + M[x][y2]
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2 - 1, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2 + 1, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1, y2 - 1, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1, y2, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1, y2 + 1, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2 - 1, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2, dp))
-    result = max(result, temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2 + 1, dp))
-    dp[x][y1][y2] = result
-    return result
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2 - 1, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1, y2 - 1, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2 - 1, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1, y2, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 - 1, y2 + 1, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1, y2 + 1, dp))
+    dp[x][y1][y2] = max(dp[x][y1][y2], temp + maxPointsUtil(M, R, C, x + 1, y1 + 1, y2 + 1, dp))
+    return dp[x][y1][y2]
+    
 
-def maxPoints2(M):
+def maxPoints(M):
     R, C = len(M), len(M[0])
-    x = 0
-    y1, y2 = 0, C - 1
-    dp = [[[-1 for i in range(C)] for i in range(C)] for i in range(R)]
-    return maxPointsUtil(M, R, C, x, y1, y2, dp)
+    x, y1, y2 = 0, 0, C - 1
+    dp = [[[-1 for k in range(C)] for j in range(C)] for i in range(R)]
+    maxPointsUtil(M, R, C, x, y1, y2, dp)
+    return dp[0][0][C-1]
+
 
 M=  [[3, 6, 8, 2],
      [5, 2, 4, 3],
      [1, 1, 20, 10],
      [1, 1, 20, 10], 
      [1, 1, 20, 10]]
-R, C = len(M), len(M[0])
-x = 0
-y1, y2 = 0, C-1
 
-print(maxPoints2(M))
+print(maxPoints(M))

@@ -1,23 +1,23 @@
 import sys
-from typing import final
 
 def kadane(a):
     n = len(a)
     maxSoFar = -sys.maxsize-1
     maxEndingHere = 0
-    finalPair = (0, 0)
-    start = 0
+    start = finish =  0
+    s = 0
     for i in range(n):
         maxEndingHere += a[i]
         if maxEndingHere > maxSoFar:
             maxSoFar = maxEndingHere
             # Finish is always right
-            finalPair = (start, i)
+            start = s
+            finish = i
         if maxEndingHere < 0:
             maxEndingHere = 0
-            start = i + 1
+            s = i + 1
     # In case maxEnding here later becomes 0
-    return (maxSoFar, finalPair[0], finalPair[1])
+    return (maxSoFar, start, finish)
 
 def largestRectangleSum(M):
     R, C = len(M), len(M[0])
@@ -29,13 +29,18 @@ def largestRectangleSum(M):
             for i in range(R):
                 temp[i] += M[i][right]
             (sum, start, finish) = kadane(temp)
+            print(sum, left, right, start, finish)
             if sum > maxSum:
                 maxSum = sum
                 finalLeft = left
                 finalRight = right
                 finalTop = start
                 finalBottom = finish
+    if maxSum < 0:
+        return (0, None, None)
     return(maxSum, [finalLeft, finalTop], [finalBottom, finalRight])
+
+# -2 -5 22 3
 
 
 M = [[1,  2, -1, -4, -20],
@@ -44,3 +49,4 @@ M = [[1,  2, -1, -4, -20],
      [-4, -1, 1, 7, -6]]
 
 print(largestRectangleSum(M))
+print(kadane([-2, -1, -3]))

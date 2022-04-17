@@ -27,6 +27,9 @@ We start from (0, 0) with 7, we reach(0, 1)
 with 5, (0, 2) with 2, (1, 2) with 5, (2, 2)
 with and finally we have 1 point (we needed 
 greater than 0 points at the end). 
+7   5   2
+6   11   5
+1   1   6
 '''
 from matrix import printS
 

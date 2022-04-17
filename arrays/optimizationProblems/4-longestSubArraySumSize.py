@@ -4,16 +4,18 @@ def maxSubArraySumSize(a):
     maxSoFar = -sys.maxsize-1
     maxEndingHere = 0
     start = 0
-    size = 0
+    finish = 0
+    s = 0
     for i in range(len(a)):
         maxEndingHere += a[i]
         if maxEndingHere > maxSoFar:
             maxSoFar = maxEndingHere
-            size = i - start + 1
+            finish = i
+            start  = s
         if maxEndingHere < 0:
             maxEndingHere = 0
-            start = i + 1
-    return size
+            s = i + 1
+    return (finish - start + 1)
 
 a = [-2, -3, 4, -1, -2, 1, 5, -3]
 print(maxSubArraySumSize(a))

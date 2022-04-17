@@ -15,50 +15,70 @@ Initial position is cell (0, 0) and initial direction is right.
 Following are rules for movements across cells.
 
 If face is Right, then we can move to below cells:
-
 Move one step ahead, i.e., cell (i, j+1) and direction remains right.
 Move one step down and face left, i.e., cell (i+1, j) and direction becomes left.
+
 If face is Left, then we can move to below cells
 
 Move one step ahead, i.e., cell (i, j-1) and direction remains left.
 Move one step down and face right, i.e., cell (i+1, j) and direction becomes right.
+
+Input 
+
+[ 
+    ['E', 'C', 'C', 'C', 'C'],
+    ['C', '#', 'C', '#', 'E'],
+    ['#', 'C', 'C', '#', 'C'],
+    ['C', 'E', 'E', 'C', 'E'],
+    ['C', 'E', '#', 'C', 'E'] 
+] 
+
+
+Output
+
+8
+
 '''
-def maxCoins(M, R, C, x, y, d):
-    # If Invalid Return 0
-    if x < 0 or x >= R or y < 0 or y >= C or M[x][y] == '#':
-        return 0
-    result = 1 if M[x][y] == 'C' else 0
-    # d == means current direction is right
-    if d == 0:
-        return result + max(maxCoins(M, R, C, x, y + 1, d), maxCoins(M, R, C, x + 1, y, 1))
-    else:
-        return result + max(maxCoins(M, R, C, x, y - 1, d), maxCoins(M, R, C, x + 1, y, 0))
+def isSafe(R, C, i, j):
+    return i >= 0 and i < R and j >= 0 and j < C
 
-def maxCoinsUtil(M, R, C, x, y, d, dp):
-    if x < 0 or x >= R or y < 0 or y >= C or M[x][y] == '#':
-        return 0
-    if dp[x][y][d] != -1:
-        return dp[x][y][d]
-    dp[x][y][d] = 1 if M[x][y] == 'C' else 0
-    # d == means current direction is right
-    if d == 0:
-        return dp[x][y][d] + max(maxCoinsUtil(M, R, C, x, y + 1, d, dp), maxCoinsUtil(M, R, C, x + 1, y, 1, dp))
-    else:
-        return dp[x][y][d] + max(maxCoinsUtil(M, R, C, x, y - 1, d, dp), maxCoinsUtil(M, R, C, x + 1, y, 0, dp))
-
-def maxCoins2(M):
+def maxCoins(M):
     R, C = len(M), len(M[0])
-    x, y = 0, 0
-    d = 0
-    dp = [[[-1 for i in range(2)] for i in range(C)] for i in range(R)]
-    return maxCoinsUtil(M, R, C, x, y, d, dp)
+    # direction 1 is right -1 is left
+    q = [[0, 0, 1, 1 if M[0][0] == 'C' else 0]]
+    maxCoins = 0
+    while len(q) > 0:
+        i, j, d, c = q.pop(0)
+        maxCoins = max(maxCoins, c)
+        # can go right and down
+        if d == 1:
+            # Go Right
+            if isSafe(R, C, i, j + 1) and M[i][j+1] != '#':
+                # direction will remain right
+                x = c + 1 if M[i][j+1] == 'C' else c
+                q.append([i, j + 1, 1, x])
+            # Go Down
+            if isSafe(R, C, i + 1, j) and M[i+1][j] != '#':
+                # direction will change to left
+                x = c + 1 if M[i+1][j] == 'C' else c
+                q.append([i+1, j, -1, x])
+        else:
+            # Go Left
+            if isSafe(R, C, i, j - 1) and M[i][j-1] != '#':
+                # direction will remain left
+                x = c + 1 if M[i][j-1] == 'C' else c
+                q.append([i, j - 1, -1, x])
+            # Go Down
+            if isSafe(R, C, i + 1, j) and M[i+1][j] != '#':
+                # direction will change to right
+                x = c + 1 if M[i+1][j] == 'C' else c
+                q.append([i+1, j, 1, x])
+    return maxCoins
     
 M =     [ ['E', 'C', 'C', 'C', 'C'],
           ['C', '#', 'C', '#', 'E'],
           ['#', 'C', 'C', '#', 'C'],
           ['C', 'E', 'E', 'C', 'E'],
           ['C', 'E', '#', 'C', 'E'] ] 
-R, C = len(M), len(M[0])
-x, y = 0, 0
-d = 0
-print(maxCoins2(M))
+
+print(maxCoins(M))
