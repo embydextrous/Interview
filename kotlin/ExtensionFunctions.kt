@@ -1,4 +1,8 @@
-open class Base
+open class Base {
+    fun move() {
+        println("Class Move")
+    }
+}
 
 class Derived : Base()
 
@@ -8,6 +12,14 @@ fun Any.print() {
 
 fun Base.print() {
     println("Base")
+}
+
+// extension property
+val Base.value: Int
+    get() = 12
+
+fun Base.move() {
+    println("Extension Move")
 }
 
 fun Derived.print() {
@@ -26,4 +38,9 @@ fun main() {
     // Here it will print Derived as type inferred will be Derived
     // However is no extension is defined for derived it can look for extension function in of super classes
     derived2.print()
+
+    // if same extension and member available - member wins
+    derived2.move()
+
+    println(derived.value)
 }
