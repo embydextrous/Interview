@@ -8,8 +8,9 @@ def leftRotation(s, k):
 def rightRotation(s, k):
     n = len(s)
     k %= n
+    k = n - k
     s += s
-    return s[n - k : 2 * n - k]
+    return s[k:k+n]
 
 s = "1234567"
-print(rightRotation(s, 0))
+print(rightRotation(s, 3))

@@ -1,11 +1,12 @@
 from tree import Node
+from collections import deque
 
 def levelOrder(root):
     if root is None:
         return
-    q = [root]
+    q = deque([root])
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         print(node.data, end = " ")
         if node.left:
             q.append(node.left)

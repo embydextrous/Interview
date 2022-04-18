@@ -1,36 +1,46 @@
 from tree import Node
 from collections import deque
 
-def populateInorderSuccessor(root, prev):
+def nthNodePostOrder(root, n):
     if root:
-        populateInorderSuccessor(root.left, prev)
-        if prev[0]:
-            prev[0].next = root
-        prev[0] = root
-        populateInorderSuccessor(root.right, prev)
+        nthNodePostOrder(root.left, n)
+        nthNodePostOrder(root.right, n)
+        n[0] -= 1
+        if n[0] == 0:
+            print(root.data)
 
-def printInorderSuccessors(root):
-    if root:
-        printInorderSuccessors(root.left)
-        print(root.data, None if root.next is None else root.next.data)
-        printInorderSuccessors(root.right)
-    
-    
+# 8 3 1 16 4 3 7 10 14 19 2
+# 1 3 3 4 16 7 8 10 19 14 2
+
+# preIndex = 0, inoLeft = 0, inoRight = 10
+#     preIndex = 1, inoLeft = 0, inoRight = 5
+#           preIndex = 2, inoLeft = 0, inoRight = 0#
+#           preIndex = 2, inoLeft = 2, inoRight = 5#
+#     preIndex = 7, inoLeft = 7, inoRight = 10
+
 '''
-        3
+        8
       /   \
-     2     4
-   /   \    \
-  1     3    5    
+     3     10
+   /   \     \
+  1    16     14
+      /  \   /  \
+     4    7 19   2
+    /
+   3 
 '''
 
-root = Node(3)
-root.left = Node(2)
-root.right = Node(4)
+root = Node(8)
+root.left = Node(3)
 root.left.left = Node(1)
-root.left.right = Node(3)
-root.right.right = Node(5)
+root.left.right = Node(16)
+root.left.right.left = Node(4)
+root.left.right.left.left = Node(3)
+root.left.right.right = Node(7)
+root.right = Node(10)
+root.right.right = Node(14)
+root.right.right.left = Node(19)
+root.right.right.right = Node(2)
 
-populateInorderSuccessor(root, [None])
-printInorderSuccessors(root)
-print()
+
+nthNodePostOrder(root, [7])

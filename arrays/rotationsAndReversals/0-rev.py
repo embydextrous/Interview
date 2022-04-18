@@ -1,17 +1,10 @@
-def maxHammingDistance(a):
-    n = len(a)
-    s = a + a
-    mhd = 0
-    mhdIndex = 0
-    for i in range(1, n-1):
-        chd = 0
-        for j in range(n):
-            if s[j] != s[i+j]:
-                chd += 1
-        if chd > mhd:
-            mhd = chd
-            mhdIndex = i
-    return (mhd, s[mhdIndex:mhdIndex + n])
+def checkIfBinaryRotation(x, y):
+    x = x | x << 32
+    while x > y:
+        if x & y == y:
+            return True
+        x = x >> 1
+    return False
 
-a = [1, 1, 2, 1, 2]
-print(maxHammingDistance(a))
+a = "43290016"
+print(checkIfKRotation("amazon", "zonama", 9))
