@@ -40,20 +40,24 @@ def findElements(M):
     N = len(M)
     i, j = 0, N - 1
     while i != j:
-        # Discard Column
+        # Discard Column - Why? Because all elements in column should be 1 (except for i, i)
         if M[i][j] == 0:
             j -= 1
-        # Discard Row
+        # Discard Row - Why? Because all elements in row should be 0 (except for i, i)
         else:
             i += 1
     for k in range(i):
+        # Check left
         if M[i][k] == 1:
             return -1
+        # Check above
         if M[k][i] == 0:
             return -1
     for k in range(i+1, N):
+        # Check right
         if M[i][k] == 1:
             return -1
+        # check below
         if M[k][i] == 0:
             return -1
     return i

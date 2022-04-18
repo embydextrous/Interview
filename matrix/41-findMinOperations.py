@@ -36,6 +36,7 @@ def minOperations(A, B):
             C[i][j] = A[i][j] - B[i][j]
     for i in range(r):
         for j in range(c):
+            # How this is derived?
             if C[0][0] - C[i][0] - C[0][j] + C[i][j] != 0:
                 return -1
     result = 0
