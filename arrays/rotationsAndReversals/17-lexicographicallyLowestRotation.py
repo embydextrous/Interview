@@ -1,5 +1,19 @@
-# Assume string has lower case characters only
 # O(n^2) solution. Can be optimized to O(n) using Booth's Algorithm
+'''
+Write code to find lexicographic minimum in a circular array, e.g. for the array BCABDADAB, 
+the lexicographic minimum is ABBCABDAD.
+Source: Google Written Test
+More Examples: 
+
+Input:  GEEKSQUIZ
+Output: EEKSQUIZG
+
+Input:  GFG
+Output: FGG
+
+Input:  GEEKSFORGEEKS
+Output: EEKSFORGEEKSG
+'''
 def lexicoGraphicallyLowestRotation(s):
     n = len(s)
     lowest = s

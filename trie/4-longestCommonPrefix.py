@@ -1,3 +1,4 @@
+# https://www.geeksforgeeks.org/longest-common-prefix-using-trie/
 '''
 Given a set of strings, find the longest common prefix.
 
@@ -7,31 +8,25 @@ Output : "gee"
 Input  : {"apple", "ape", "april"}
 Output : "ap"
 '''
-from trie import Trie
-
-def charToIndex(c):
-    return ord(c) - ord('a')
+# Needs trie modification to store visit count at each node.
+from trie import Trie, charToIndex
 
 def longestCommonPrefix(words):
-    n = len(words)
+    N = len(words)
     trie = Trie(26)
-    for i in range(n - 1):
+    for i in range(N-1):
         trie.insert(words[i])
-    lastWord = words[n-1]
-    lastIndex = 0
+    lastWord = words[N-1]
     p = trie.root
-    for c in lastWord:
-        index = charToIndex(c)
-        if p.children[index] is not None and p.children[index].count == n - 1:
-            lastIndex += 1
-            p = p.children[index]
-        else:
-            break
-    return lastWord[:lastIndex]
+    for i in range(len(lastWord)):
+        index = charToIndex(lastWord[i])
+        if p.children[index] is None:
+            return lastWord[:i]
+        if p.children[index].visitCount < N - 1:
+            return lastWord[:i]
+        p = p.children[index]
+    return lastWord
 
-a = ["apple", "ape", "april"]
-print(longestCommonPrefix(a))
-
-
-
-
+words = ["apple", "ape", "april", "a"]
+print(longestCommonPrefix(words))
+        

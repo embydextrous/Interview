@@ -3,6 +3,7 @@ Given an array of words, find all shortest unique prefixes to represent each wor
 Assume that no word is prefix of another. 
 Examples: 
  
+
 Input: arr[] = {"zebra", "dog", "duck", "dove"}
 Output: dog, dov, du, z
 Explanation: dog => dog
@@ -13,26 +14,28 @@ Explanation: dog => dog
 Input: arr[] =  {"geeksgeeks", "geeksquiz", "geeksforgeeks"};
 Output: geeksf, geeksg, geeksq}
 '''
-from trie import Trie
+from trie import Trie, charToIndex
 
-def charToIndex(c):
-    return ord(c) - ord('a')
-
+# Needs modification in TrieNode to store child count
 def shortestUniquePrefix(words):
     trie = Trie(26)
     for word in words:
         trie.insert(word)
     for word in words:
-        prefix = []
         p = trie.root
-        for c in word:
-            index = charToIndex(c)
-            prefix.append(c)
-            p = p.children[index]
-            if p.setChildCount == 1 and not p.isEndOfWord:
+        printed = False
+        for i in range(len(word)):
+            index = charToIndex(word[i])
+            if p.children[index].childCount == 1 and not p.children[index].isEndOfWord:
+                print(f"{word} -> {word[:i+1]}")
+                printed = True
                 break
-        print ("{} -> {}".format(word, "".join(prefix)))
+            p = p.children[index]
+        if not printed and p.isEndOfWord:
+            print(f"{word} -> {word}")
 
-
-a = ["zebra", "dog", "duck", "dove", "dogs"]
-shortestUniquePrefix(a)
+words = ["zebra", "dog", "duck", "dove", "dogs", "doc", "doctor"]
+shortestUniquePrefix(words)
+        
+        
+            

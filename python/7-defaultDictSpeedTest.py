@@ -26,8 +26,8 @@ def fun2():
     for i in randoms:
         d[i] += 1
         
-dict_time = average_time(lambda : fun1)
-default_dict_time = average_time(lambda : fun2)
+dict_time = average_time(fun1)
+default_dict_time = average_time(fun2)
 gain = dict_time / default_dict_time
 print(f"normal: {dict_time:.6} ns")
 print(f"defaultdict: {default_dict_time:.6} ns  ({gain:.6}x faster)")

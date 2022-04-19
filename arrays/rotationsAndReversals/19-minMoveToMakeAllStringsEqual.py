@@ -1,4 +1,25 @@
 # Array consists of rotation of strings
+'''
+Given n strings that are permutations of each other. We need to make all strings same with an operation 
+that takes front character of any string and moves it to the end.
+Examples: 
+ 
+Input : n = 2
+        arr[] = {"molzv", "lzvmo"}
+Output : 2
+Explanation: In first string, we remove
+first element("m") from first string and 
+append it end. Then we move second character
+of first string and move it to end. So after
+2 operations, both strings become same.
+
+Input : n = 3
+        arr[] = {"kc", "kc", "kc"}
+Output : 0
+Explanation: already all strings are equal.
+
+ 
+'''
 import sys
 
 def minMoves(a):
@@ -10,7 +31,8 @@ def minMoves(a):
         for s in a:
             for i in range(n):
                 if b[i:i+n] == s:
-                    count += i
+                    if i != 0:
+                        count += (n - i)
                     break
         miniMoves = min(count, miniMoves)
     return miniMoves

@@ -1,6 +1,6 @@
 from tree import Node, preorder
 
-def getTrees(arr , start , end):
+def getTrees(arr, start, end):
     trees = []
     if start > end:
         trees.append(None)

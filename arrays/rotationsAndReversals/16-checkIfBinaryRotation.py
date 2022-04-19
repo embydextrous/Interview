@@ -31,14 +31,16 @@ If we rotate a by 2 units right we get b, hence answer is yes
 '''
 def checkIfBinaryRotation(x, y):
     x = x | x << 32
-    while x >= y:
+    i = 0
+    while i < 32:
         if x & 0xFFFFFFFF == y:
             return True
         x = x >> 1
+        i += 1
     return False
     
-b = 8
-a = 1
+b = 1
+a = 8
 
 print(checkIfBinaryRotation(a, b))
 
