@@ -45,3 +45,5 @@ def minLengthSubArray(a, k):
 a = [1, 11, 100, 1, 0, 200, 3, 2, 1, 250]
 k = 200
 print(minLengthSubArray(a, k))
+# How to handle negatives? Find smallest negative number and increment every number by its abs value (x)
+# and look for sum k + n * x where n is length of array.
