@@ -9,6 +9,8 @@ Examples:
 
 Input: arr1[] = {0, 1, 0, 0, 0, 0};
        arr2[] = {1, 0, 1, 0, 0, 1};
+
+# -1 1 -1 0 0 -1
 Output: 4
 The longest span with same sum is from index 1 to 4.
 
