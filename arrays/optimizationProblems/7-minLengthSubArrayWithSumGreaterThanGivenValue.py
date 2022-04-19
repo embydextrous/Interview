@@ -26,20 +26,22 @@ Whole array sum is smaller than 8.
 def minLengthSubArray(a, k):
     n = len(a)
     l = r = 0
-    minArraySize = n
+    minArraySize = n + 1
     sum = 0
-    while r < n:
-        if sum <= k:
+    while l < n or r < n:
+        if r < n and sum <= k:
             sum += a[r]
             r += 1
         if sum > k:
             minArraySize = min(minArraySize, r - l)
             sum -= a[l]
             l += 1
-    if l == 0 and r == n and sum < k:
+        if l == n and r ==  n:
+            break
+    if minArraySize == n + 1:
         return 0
     return minArraySize
 
 a = [1, 11, 100, 1, 0, 200, 3, 2, 1, 250]
-k = 280
+k = 200
 print(minLengthSubArray(a, k))
