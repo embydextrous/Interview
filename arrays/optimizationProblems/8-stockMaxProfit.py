@@ -1,86 +1,116 @@
-import sys
-
-def maxProfitInfiniteTrades(prices):
-    n = len(prices)
-    maxProfit = 0
+def maxProfitInfiniteTrades(a):
+    n = len(a)
+    profit = 0
     for i in range(1, n):
-        if prices[i] > prices[i-1]:
-            maxProfit += prices[i] - prices[i-1]
-    return maxProfit 
+        if a[i] > a[i-1]:
+            profit += a[i] - a[i-1]
+    return profit
 
-# Selling fees applies on sell transaction
-def maxProfitInfiniteTradesWithFee(prices, fee):
-    cashout, cashin = prices[0], 0
-    for i in range(1, len(prices)):
-        temp = cashout
-        cashout = min(cashout, prices[i] - cashin)
-        cashin = max(cashin, prices[i] - temp - fee)
+# Effectively calculates max profit for each day
+def maxProfitSingleTrade(a):
+    minPrice = a[0]
+    profit = 0
+    for i in range(1, len(a)):
+        if a[i] < minPrice:
+            minPrice = a[i]
+        else:
+            profit = max(profit, a[i] - minPrice)
+    return profit
+
+# Cashout is minimized, cashin is maximized, fees applies on sell
+def maxProfitInfiniteTradesWithFee(a, fee):
+    cashout, cashin = a[0], 0
+    for i in range(1, len(a)):
+        tempCashout = cashout
+        cashout = min(cashout, a[i] - cashin)
+        cashin = max(cashin, a[i] - tempCashout - fee)
     return cashin
 
-# Cannot buy for 1 day cool off period after selling
-def maxProfitInfiniteTradesWithCoolOff(prices):
-    cashout, cashin, cashincooloff = prices[0], 0, 0
-    # lbs will update using lbs and lcds
-    # lss will update using lbs and lss
-    # lcds will update using lcds and lss
-    for i in range(1, len(prices)):
-        lastcashout, lastcashin = cashout, cashin
-        cashout = min(cashout, prices[i] - cashincooloff)
-        cashin = max(cashin, prices[i] - lastcashout)
-        cashincooloff = max(cashincooloff, lastcashin)
+# Cool means cannot buy for 1 day after sell
+def maxProfitInfiniteTradesCoolOff(a):
+    cashout, cashin, cashinCoolOff = a[0], 0, 0
+    for i in range(1, len(a)):
+        lastCashin, lastCashout = cashin, cashout
+        # Calculated from last cashout and cool off as you can't buy after sell
+        cashout = min(lastCashout, a[i] - cashinCoolOff)
+        # Calculated from last cashout and last cash in
+        cashin = max(lastCashin, a[i] - lastCashout)
+        # Calculated from last cashin and previous cashinCoolOff
+        cashinCoolOff = max(lastCashin, cashinCoolOff)
     return cashin
 
-
-def maxProfitSingleTrade(prices):
-    minPrice = prices[0]
-    maxProfit = 0
-    for i in range(1, len(prices)):
-        if prices[i] < minPrice:
-            minPrice = prices[i]
-        elif prices[i] - minPrice > maxProfit:
-            maxProfit = prices[i] - minPrice
-    return maxProfit
-
-def maxProfitAtMostTwoTrades(prices):
-    n = len(prices)
+def maxProfitTwoTrades(a):
+    n = len(a)
+    # profit[i] stores max profit for two trades till i
     profit = [0] * n
-    maxPrice = prices[n-1]
-    for i in range(n - 2, -1, -1):
-        if prices[i] > maxPrice:
-            maxPrice = prices[i]
-        profit[i] = max(profit[i+1], maxPrice - prices[i])
-    minPrice = prices[0]
+    # traverse left to right to find max profit in single trade till that point
+    minPrice = a[0]
     for i in range(1, n):
-        if prices[i] < minPrice:
-            minPrice = prices[i]
-        profit[i] = max(profit[i-1], profit[i] + prices[i] - minPrice)
-    return profit[n-1]
+        if a[i] < minPrice:
+            minPrice = a[i]
+            profit[i] = profit[i-1]
+        else:
+            profit[i] = max(profit[i-1], a[i] - minPrice)
+    # traverse right to left to find max profit in single trade from that point to end
+    # store it in same dp
+    maxPrice = a[n-1]
+    for i in range(n-2, -1, -1):
+        if a[i] > maxPrice:
+            maxPrice = a[i]
+            profit[i] = max(profit[i+1], profit[i])
+        else:
+            profit[i] = max(profit[i+1], profit[i] + maxPrice - a[i])
+    return profit[0]
 
-# Time Complexity - O(k*n^2)
-def maxProfitMaxKTrades(prices, k):
-    n = len(prices)
-    dp = [[0 for j in range(n)] for i in range(k+1)]
+# Space Complexity = O(k * n)
+# Time Complexity = O(k * n ^ 2)
+def maxProfitKTrades(a, k):
+    n = len(a)
+    profit = [[0 for i in range(n)] for j in range(k+1)]
     for i in range(1, k+1):
         for j in range(1, n):
-            dp[i][j] = dp[i][j-1]
-            for m in range(j-1, -1, -1):
-                if prices[j] - prices[m] + dp[i-1][m] > dp[i][j]:
-                    dp[i][j] = prices[j] - prices[m] + dp[i-1][m]
-    print(dp)
-    return dp[k][n-1]
+            profit[i][j] = profit[i][j-1]
+            for m in range(j):
+                if profit[i-1][m] + a[j] - a[m] > profit[i][j]:
+                    profit[i][j] = profit[i-1][m] + a[j] - a[m]
+    return profit[k][n-1]
 
-prices = [100, 180, 260, 310, 40, 535, 695]
-print(maxProfitInfiniteTrades(prices))
-print(maxProfitSingleTrade(prices))
-#prices = [2, 30, 15, 10, 8, 25, 80]
-print(maxProfitAtMostTwoTrades(prices))
+# Space Optimized Version - O(n)
+def maxProfitKTrades2(a, k):
+    n = len(a)
+    profit = [[0 for i in range(n)] for j in range(2)]
+    for i in range(1, k+1):
+        for j in range(1, n):
+            profit[1][j] = profit[1][j-1]
+            for m in range(j):
+                if profit[0][m] + a[j] - a[m] > profit[1][j]:
+                    profit[1][j] = profit[0][m] + a[j] - a[m]
+        profit[0], profit[1] = profit[1], profit[0]
+    return profit[0][n-1]
 
-a = [10, 15, 17, 20, 16, 18, 22, 20, 22, 20, 23, 25]
-print(maxProfitInfiniteTradesWithFee(a, 3))
-print(maxProfitInfiniteTradesWithCoolOff(a))
-print(maxProfitMaxKTrades(a, 4))
+# Time Optimized Version - O(nk)
+def maxProfitKTrades3(a, k):
+    n = len(a)
+    profit = [[0 for i in range(n)] for j in range(2)]
+    for i in range(1, k+1):
+        prevDiff = -10 ** 9
+        for j in range(1, n):
+            prevDiff = max(prevDiff, profit[0][j - 1] - a[j - 1])
+            profit[1][j] = max(profit[1][j-1], a[j] + prevDiff)
+        profit[0], profit[1] = profit[1], profit[0]
+    return profit[0][n-1]
+
+
+a = [30, 40, 43, 50, 45, 20, 26, 40, 80, 50, 30, 15, 10, 20, 40, 45, 71, 50, 55]
+print(maxProfitInfiniteTrades(a))
+print(maxProfitSingleTrade(a))
+print(maxProfitInfiniteTradesWithFee(a, fee = 3))
+print(maxProfitInfiniteTradesCoolOff(a))
+print(maxProfitTwoTrades(a))
+print(maxProfitKTrades(a, 3))
+print(maxProfitKTrades2(a, 3))
+print(maxProfitKTrades3(a, 3))
 
 
 
-# 655 655 655 655 655 160 0
-# 655 735 815 865 865 865 865
+
