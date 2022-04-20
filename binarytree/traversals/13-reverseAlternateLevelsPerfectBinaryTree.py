@@ -1,53 +1,25 @@
+from tree import levelOrder
 from tree import Node
-
-def levelOrder2(root):
-    h = height(root)
-    for i in range(h):
-        printCurrentLevel(root, i)
-        print()
-
-def printCurrentLevel(root, level):
-    if root is None:
-        return
-    if level == 0:
-        print(root.data, end=" ")
-    else:
-        printCurrentLevel(root.left, level - 1)
-        printCurrentLevel(root.right, level - 1)
-
-def height(root):
-    if root is None:
-        return 0
-    else:
-        lHeight, rHeight = height(root.left), height(root.right)
-        return max(lHeight, rHeight) + 1
+from collections import deque
 
 def reverseAlternateLevels(root):
-    if root is None or root.left is None:
+    if root is None:
         return
-    q = [root.left, root.right]
-    s = []
+    if root.left is None:
+        return
+    q = deque()
+    q.append(root.left)
+    q.append(root.right)
     while len(q) > 0:
-        l, r = 0, len(q) - 1
-        while l < r:
-            q[l].data, q[r].data = q[r].data, q[l].data
-            l += 1
-            r -= 1
-        while len(q) > 0:
-            for i in range(2):
-                node = q.pop(0)
-                if node.left:
-                    s.append(node.left)
-                if node.right:
-                    s.append(node.right)
-        while len(s) > 0:
-            for i in range(2):
-                node = s.pop(0)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-    print()
+        node1 = q.popleft()
+        node2 = q.popleft()
+        node1.data, node2.data = node2.data, node1.data
+        hasNextLevel = node1.left is not None
+        if hasNextLevel:
+            q.append(node1.left)
+            q.append(node2.right)
+            q.append(node1.right)
+            q.append(node2.left)      
 
 
 
@@ -69,4 +41,4 @@ root.right.left.right = Node(13)
 root.right.right.left = Node(14)
 root.right.right.right = Node(15)
 reverseAlternateLevels(root)
-levelOrder2(root)
+levelOrder(root)

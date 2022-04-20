@@ -1,22 +1,22 @@
-from tree import Node
+from tree import inorder, levelOrder
+from tree import Node, preorder
 from collections import deque
 
-def nthNodePostOrder(root, n):
-    if root:
-        nthNodePostOrder(root.left, n)
-        nthNodePostOrder(root.right, n)
-        n[0] -= 1
-        if n[0] == 0:
-            print(root.data)
-
-# 8 3 1 16 4 3 7 10 14 19 2
-# 1 3 3 4 16 7 8 10 19 14 2
-
-# preIndex = 0, inoLeft = 0, inoRight = 10
-#     preIndex = 1, inoLeft = 0, inoRight = 5
-#           preIndex = 2, inoLeft = 0, inoRight = 0#
-#           preIndex = 2, inoLeft = 2, inoRight = 5#
-#     preIndex = 7, inoLeft = 7, inoRight = 10
+def iterativePreorderUsingStack(root):
+    if root is None:
+        return
+    s = deque()
+    s.append(root)
+    while len(s) > 0:
+        node = s.pop()
+        print(node.data, end = " ")
+        if node.right:
+            s.append(node.right)
+        if node.left:
+            s.append(node.left)
+    print()
+    
+    
 
 '''
         8
@@ -43,4 +43,4 @@ root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
 
-nthNodePostOrder(root, [7])
+iterativePreorderUsingStack(root)
