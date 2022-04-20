@@ -2,19 +2,24 @@ from tree import inorder, levelOrder
 from tree import Node, preorder
 from collections import deque
 
-def iterativePreorderUsingStack(root):
+def diagonalTraversal(root):
     if root is None:
         return
-    s = deque()
-    s.append(root)
-    while len(s) > 0:
-        node = s.pop()
-        print(node.data, end = " ")
-        if node.right:
-            s.append(node.right)
-        if node.left:
-            s.append(node.left)
-    print()
+    q1 = deque()
+    q2 = deque()
+    q1.append(root)
+    while len(q1) > 0:
+        while len(q1) > 0:
+            node = q1.popleft()
+            print(node.data, end = " ")
+            if node.left:
+                q2.append(node.left)
+            if node.right:
+                q1.append(node.right)
+        print()
+        q1, q2 = q2, q1        
+        
+
     
     
 
@@ -43,4 +48,4 @@ root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
 
-iterativePreorderUsingStack(root)
+diagonalTraversal(root)

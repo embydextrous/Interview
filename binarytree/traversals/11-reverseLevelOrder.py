@@ -1,13 +1,14 @@
 from tree import Node
+from collections import deque
 
 # Also contains possible solution for level order traversal line by line
 
 def reverseLevelOrder(root):
     if root is None:
         return
-    q, s = [root], []
+    q, s = deque([root]), []
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         s.append(node.data)
         if node.left:
             q.append(node.left)

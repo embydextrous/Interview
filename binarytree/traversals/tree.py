@@ -7,6 +7,7 @@
 # Complete Binary Tree -> All levels full except last and all nodes to extreme left (heap is a complete binary tree)
 # Perfect Binary Tree -> All levels are completely filled
 # Degenerate Tree -> Same performance as Linked List
+from collections import deque
 
 class Node:
     def __init__(self, data):
@@ -19,9 +20,10 @@ class Node:
 def insert(root, data):
     if root is None:
         return Node(data)
-    q = [root]
+    q = deque()
+    q.append(root)
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         if node.left:
             q.append(node.left)
         else:
@@ -43,12 +45,13 @@ def delete(root, key):
         else:
             return root
     keyNode = None
-    q = [root]
+    q = deque()
+    q.append(root)
     temp = None
     # finds lastmost right node
     # also finds note to delete
     while len(q) > 0:
-        temp = q.pop(0)
+        temp = q.popleft()
         if temp.data == key:
             keyNode = temp
         if temp.left:
@@ -64,9 +67,10 @@ def delete(root, key):
 def deleteDeepest(root, dNode):
     if root is None:
         return
-    q = [root]
+    q = deque()
+    q.append(root)
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         if node is dNode:
             dNode = None
             return
@@ -104,9 +108,10 @@ def postorder(root):
 def levelOrder(root):
     if root is None:
         return
-    q = [root]
+    q = deque()
+    q.append(root)
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         print(node.data, end = " ")
         if node.left:
             q.append(node.left)

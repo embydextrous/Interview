@@ -1,26 +1,6 @@
 # https://www.geeksforgeeks.org/perfect-binary-tree-specific-level-order-traversal/
 from tree import Node
-
-def perfectBinaryTreeSpecificLevelOrderTraversal(root):
-    if root is None:
-        return
-    print(root.data, end=" ")
-    if root.left is None:
-        return
-    q = [root.left, root.right]
-    while len(q) > 0:
-        a, b = q.pop(0), q.pop(0)
-        print(a.data, end= " ")
-        print(b.data, end= " ")
-        if a.left:
-            q.append(a.left)
-        if b.right:
-            q.append(b.right)
-        if a.right:
-            q.append(a.right)
-        if b.left:
-            q.append(b.left)
-    print()
+from collections import deque
 
 def perfectSpecificTraversal(root):
     if root is None:
@@ -29,9 +9,9 @@ def perfectSpecificTraversal(root):
     if root.left is None:
         print()
         return
-    q = [root.left, root.right]
+    q = deque([root.left, root.right])
     while len(q) > 0:
-        node1, node2 = q.pop(0), q.pop(0)
+        node1, node2 = q.popleft(), q.popleft()
         print(node1.data, end = " ")
         print(node2.data, end = " ")
         if node1.left:
