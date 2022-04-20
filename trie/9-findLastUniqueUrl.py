@@ -1,29 +1,19 @@
 # Assuming all urls start with https://
-# Assuming url may contain lower case chars, ., / and -
 
 from dll import DoublyLinkedList, Node
 
 class TrieNode:
     def __init__(self):
-        self.children = [None] * 29
+        self.children = [None] * 256
         self.data = None
         self.state = 0
 
     def __str__(self) -> str:
         return f"{self.children}"
 
-def charToIndex(c):
-    if c == '.':
-        return 26
-    if c == '/':
-        return 27
-    if c == '-':
-        return 28
-    return ord(c) - ord('a')
-
 def insert(url, p, dll):
     for c in url:
-        index = charToIndex(c)
+        index = ord(c)
         if p.children[index] is None:
             p.children[index] = TrieNode()
         p = p.children[index]

@@ -24,32 +24,56 @@ Building a Trie of Suffixes
 1) Generate all suffixes of given text. 
 2) Consider all suffixes as individual words and build a trie.
 '''
-from trie import Trie
+from trie import charToIndex
 
 class SuffixTrieNode:
     def __init__(self, alphabetSize):
         self.children = [None] * alphabetSize
-        self.
+        self.indexes = []
 
     def __str__(self) -> str:
         return f"{self.children}"
 
 class SuffixTrie:
+    def __init__(self, alphabetSize, text):
+        self.alphabetSize = alphabetSize
+        self.root = SuffixTrieNode(alphabetSize)
+        for i in range(len(text)):
+            self.insertSuffix(text, i)
 
+    def insertSuffix(self, text, startIndex):
+        n = len(text)
+        p = self.root
+        for i in range(startIndex, n):
+            index = charToIndex(text[i])
+            if p.children[index] is None:
+                p.children[index] = SuffixTrieNode(self.alphabetSize)
+            p.children[index].indexes.append(i)
+            p = p.children[index]
+
+    def search(self, pattern):
+        p = self.root
+        for c in pattern:
+            index = charToIndex(c)
+            if p.children[index] is None:
+                return []
+            p = p.children[index]
+        return [i - len(pattern) + 1 for i in p.indexes]
 
 def patternSearch(text, pattern):
-    trie = Trie(256)
-    N = len(text)
-    # All suffixes trie
-    for i in range(N):
-        trie.insert(text[i:])
-    p = trie.root
-    for c in pattern:
-        index = ord(c)
-        if p.children[index] is None:
-            return False
-        p = p.children[index]
-    return True
+    suffixTrie = SuffixTrie(26, text)
+    indexes = suffixTrie.search(pattern)
+    if len(indexes) == 0:
+        print(f"{pattern} not found")
+    for i in indexes:
+        print(f"{pattern} found at {i}")
+    
 
-a = 
+a = "geeksforgeeksdotorg"
+patternSearch(a, "geek")
+patternSearch(a, "e")
+patternSearch(a, "quiz")
+patternSearch(a, "for")
+
+
 
