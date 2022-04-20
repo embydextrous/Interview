@@ -1,5 +1,27 @@
 from tree import Node
 
+'''
+Given a binary tree. Modify it in such a way that after modification you can have a preorder traversal of it using only the right pointers. During modification, you can use right as well as left pointers. 
+Examples: 
+ 
+
+Input :    10
+          /   \
+        8      2
+      /  \    
+    3     5  
+Output :    10
+              \
+               8
+                \ 
+                 3
+                  \
+                   5
+                    \
+                     2
+Explanation : The preorder traversal
+of given binary tree is 10 8 3 5 2.'''
+
 def modify(root):
     if root is None:
         return

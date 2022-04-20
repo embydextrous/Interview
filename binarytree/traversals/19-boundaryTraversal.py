@@ -1,13 +1,23 @@
 from tree import Node
 
+'''
+Given a binary tree, print boundary nodes of the binary tree Anti-Clockwise starting from the root. 
+The boundary includes left boundary, leaves, and right boundary in order without duplicate nodes. 
+(The values of the nodes may still be duplicates.)
+The left boundary is defined as the path from the root to the left-most node. The right boundary is defined 
+as the path from the root to the right-most node. If the root doesn't have left subtree or right subtree, 
+then the root itself is left boundary or right boundary. Note this definition only applies to the input binary 
+tree, and not apply to any subtrees.
+The left-most node is defined as a leaf node you could reach when you always firstly travel to the left subtree
+if it exists. If not, travel to the right subtree. Repeat until you reach a leaf node.
+The right-most node is also defined in the same way with left and right exchanged. 
+'''
+
 def printLeftBoundary(root):
     if root:
-        if root.left:
+        if root.left or root.right:
             print(root.data, end = " ")
             printLeftBoundary(root.left)
-        elif root.right:
-            print(root.data, end = " ")
-            printLeftBoundary(root.right)
 
 def printLeaves(root):
     if(root):
@@ -21,11 +31,8 @@ def printLeaves(root):
 
 def printRightBoundary(root):
     if root:
-        if root.right:
+        if root.right or root.left:
             printRightBoundary(root.right)
-            print(root.data, end = " ")
-        elif root.left:
-            printRightBoundary(root.left)
             print(root.data, end = " ")
 
 
