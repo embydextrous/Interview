@@ -1,42 +1,43 @@
 from tree import Node
+from collections import deque
 
 def printTopView(root):
     if root is None:
         return
     d = {}
-    q = [(root, 0)]
+    q = deque([(root, 0)])
     mini, maxi = 0, 0
     while len(q) > 0:
-        (node, i) = q.pop(0)
-        mini = min(mini, i)
-        maxi = max(maxi, i)
-        if i not in d:
-            d[i] = node.data
+        (node, vd) = q.popleft()
+        mini = min(mini, vd)
+        maxi = max(maxi, vd)
+        if vd not in d:
+            d[vd] = node.data
         if node.left:
-            q.append((node.left, i - 1))
+            q.append((node.left, vd - 1))
         if node.right:
-            q.append((node.right, i + 1))
-    for i in range(mini, maxi + 1):
-        print(d[i], end = " ")
+            q.append((node.right, vd + 1))
+    for vd in range(mini, maxi + 1):
+        print(d[vd], end = " ")
     print()
 
 def printBottomView(root):
     if root is None:
         return
     d = {}
-    q = [(root, 0)]
+    q = deque([(root, 0)])
     mini, maxi = 0, 0
     while len(q) > 0:
-        (node, i) = q.pop(0)
-        mini = min(mini, i)
-        maxi = max(maxi, i)
-        d[i] = node.data
+        (node, vd) = q.popleft()
+        mini = min(mini, vd)
+        maxi = max(maxi, vd)
+        d[vd] = node.data
         if node.left:
-            q.append((node.left, i - 1))
+            q.append((node.left, vd - 1))
         if node.right:
-            q.append((node.right, i + 1))
-    for i in range(mini, maxi + 1):
-        print(d[i], end = " ")
+            q.append((node.right, vd + 1))
+    for vd in range(mini, maxi + 1):
+        print(d[vd], end = " ")
     print()
 
 """

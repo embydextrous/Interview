@@ -1,23 +1,21 @@
 from tree import Node
+from collections import deque, defaultdict
 
 def verticalOrder(root):
     if root is None:
         return
-    q = [(root, 0)]
-    d = {}
+    q = deque([(root, 0)])
+    d = defaultdict(list)
     mini, maxi = 0, 0
     while len(q) > 0:
-        (node, i) = q.pop(0)
-        mini = min(mini, i)
-        maxi = max(maxi, i)
-        if i in d:
-            d[i].append(node.data)
-        else:
-            d[i] = [node.data]
+        (node, vd) = q.popleft()
+        mini = min(mini, vd)
+        maxi = max(maxi, vd)
+        d[vd].append(node.data)
         if node.left:
-            q.append((node.left, i - 1))
+            q.append((node.left, vd - 1))
         if node.right:
-            q.append((node.right, i + 1))
+            q.append((node.right, vd + 1))
     for i in range(mini, maxi + 1):
         for x in d[i]:
             print(x, end = " ")
