@@ -12,6 +12,7 @@ The left-most node is defined as a leaf node you could reach when you always fir
 if it exists. If not, travel to the right subtree. Repeat until you reach a leaf node.
 The right-most node is also defined in the same way with left and right exchanged. 
 '''
+# Clear what is boundary
 
 def printLeftBoundary(root):
     if root:

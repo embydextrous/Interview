@@ -1,14 +1,15 @@
 from tree import Node
+from collections import deque
 
 def checkCoveredSumEqualsUncoveredSum(root):
     if root is None:
         return True
-    q1, q2 = [root], []
+    q1, q2 = deque([root]), deque()
     cs, ucs = 0, 0
     while len(q1) > 0:
         isFirstHandled = False
         while len(q1) > 0:
-            node = q1.pop(0)
+            node = q1.popleft()
             if not isFirstHandled:
                 isFirstHandled = True
                 ucs += node.data

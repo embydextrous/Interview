@@ -1,13 +1,14 @@
 from tree import Node
+from collections import deque
 
 def printLeftView(root):
     if root is None:
         return
-    q1, q2 = [root], []
+    q1, q2 = deque([root]), deque()
     while len(q1) > 0:
         isFirstNode = True
         while len(q1) > 0:
-            node = q1.pop(0)
+            node = q1.popleft()
             if isFirstNode:
                 print(node.data, end = " ")
                 isFirstNode = False

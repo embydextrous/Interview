@@ -1,12 +1,13 @@
 from tree import Node
+from collections import deque
 
 def isCompleteTree(root):
     if root is None:
         return True
-    q = [root]
+    q = deque([root])
     firstIncompleteNodeGone = False
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         if firstIncompleteNodeGone:
             if node.left or node.right:
                 return False

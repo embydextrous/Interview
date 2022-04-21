@@ -1,15 +1,15 @@
 from tree import Node
 
 def checkPerfectUtil(root, leafLevel, lvl):
-    if root is None:
-        return True
-    if not root.left and not root.right:
+    if root.left is None and root.right is None:
         return lvl == leafLevel
-    if root.left and root.right:
-        return checkPerfectUtil(root.left, leafLevel, lvl + 1) and checkPerfectUtil(root.right, leafLevel, lvl + 1)
-    return False
+    if root.left is None or root.right is None:
+        return False
+    return checkPerfectUtil(root.left, leafLevel, lvl + 1) and checkPerfectUtil(root.right, leafLevel, lvl + 1)
 
 def checkPerfectBinaryTree(root):
+    if root is None:
+        return True
     level = 0
     current = root
     while current.left:
@@ -47,3 +47,4 @@ root.right.right.right = Node(2)
 
 
 print(checkPerfectBinaryTree(root))
+

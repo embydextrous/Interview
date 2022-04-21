@@ -1,4 +1,5 @@
 from tree import Node
+from collections import deque
 
 def areSiblings(root, a, b):
     if root is None:
@@ -22,6 +23,36 @@ def areCousins(root, a, b):
     if levelA == -1 or levelB == -1:
         return False
     return levelA == levelB and not areSiblings(root, a, b)
+
+def checkIfCousins(root, a, b):
+    if root is None:
+        return False
+    q1, q2 = deque([root]), deque()
+    while len(q1) > 0:
+        foundA, foundB = False, False
+        while len(q1) > 0:
+            node = q1.popleft()
+            # are siblings
+            if node.left == a and node.right == b:
+                return False
+            if node.right == a and node.left == b:
+                return False
+            if node.left:
+                if node.left == a:
+                    foundA = True
+                elif node.left == b:
+                    foundB = True
+                q2.append(node.left)
+            if node.right:
+                if node.right == a:
+                    foundA = True
+                elif node.right == b:
+                    foundB = True
+        if foundB and foundA:
+            return True
+        if foundA or foundB:
+            return False
+        q1, q2 = q2, q1
 
 root = Node(8)
 root.left = Node(3)

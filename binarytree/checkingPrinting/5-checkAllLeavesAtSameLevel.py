@@ -1,4 +1,5 @@
 from tree import Node
+from collections import deque
 
 def checkLeavesAtSameLevel(root, firstLeafLevel, level):
     if root is None:
@@ -9,6 +10,24 @@ def checkLeavesAtSameLevel(root, firstLeafLevel, level):
         elif firstLeafLevel[0] != level:
             return False
     return checkLeavesAtSameLevel(root.left, firstLeafLevel, level+1) and checkLeavesAtSameLevel(root.right, firstLeafLevel, level+1)
+
+def checkLeavesAtSameLevel2(root):
+    if root is None:
+        return True
+    q1, q2 = deque([root]), deque()
+    firstLeafFound = False
+    while len(q1) > 0:
+        while len(q1) > 0:
+            node = q1.popleft()
+            if node.left is None and node.right is None:
+                firstLeafFound = True
+            if node.left:
+                q2.append(node.left)
+            if node.right:
+                q2.append(node.right)
+        if firstLeafFound:
+            return len(q2) == 0
+        q1, q2 = q2, q1
 
 
 '''
@@ -31,4 +50,4 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-print(checkLeavesAtSameLevel(root, [-1], 0))
+print(checkLeavesAtSameLevel2(root))

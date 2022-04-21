@@ -1,11 +1,12 @@
 from tree import Node
+from collections import deque
 
 def areIdentical(a, b):
     if a is None and b is None:
         return True
     if a is None or b is None:
         return False
-    q1, q2 = [a], [b]
+    q1, q2 = deque([a]), deque([b])
     while len(q1) > 0 and len(q2) > 0:
         n1, n2 = q1.pop(0), q2.pop(0)
         print(n1, n2)
