@@ -1,6 +1,3 @@
-from operator import xor
-
-
 def checkIfConsecutive(a):
     xorValue = 0
     for i in range(min(a), max(a) + 1):
