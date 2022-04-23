@@ -1,4 +1,5 @@
 from tree import Node
+from collections import deque
 
 # Also see, https://www.geeksforgeeks.org/deepest-left-leaf-node-in-a-binary-tree/
 # Also see, https://www.geeksforgeeks.org/find-deepest-node-binary-tree/
@@ -6,10 +7,10 @@ from tree import Node
 def deepestRightNode(root):
     if root is None:
         return True
-    q = [(root, True)]
+    q = deque([(root, True)])
     result = None
     while len(q) > 0:
-        node, isRightNode = q.pop(0)
+        node, isRightNode = q.popleft()
         if isRightNode and node.left is None and node.right is None:
             result = node
         if node.left:

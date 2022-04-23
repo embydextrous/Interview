@@ -28,9 +28,9 @@ def countHalfNodes(root):
         return 0
     if root.left is None and root.right is None:
         return 0
-    if root.left is None and root.right:
+    if root.left is None:
         return 1 + countHalfNodes(root.right)
-    if root.right is None and root.left:
+    if root.right is None:
         return 1 + countHalfNodes(root.left)
     return countHalfNodes(root.left) + countHalfNodes(root.right)
 '''

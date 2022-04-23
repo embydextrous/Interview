@@ -1,15 +1,16 @@
 from tree import Node
+from collections import deque
 
 # Also see this, https://www.geeksforgeeks.org/find-next-right-node-given-key-set-2/
 
 def connectNodesAtSameLevel(root):
     if root is None:
         return
-    q1, q2 = [root], []
+    q1, q2 = deque([root]), deque()
     while len(q1) > 0:
         lastNode = None
         while len(q1) > 0:
-            node = q1.pop(0)
+            node = q1.popleft()
             if lastNode:
                 lastNode.next = node
             lastNode = node

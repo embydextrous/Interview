@@ -1,34 +1,25 @@
-from tree import Node
+from tree import Node, inorder
 from collections import deque
 
-# Also see: https://www.geeksforgeeks.org/level-maximum-number-nodes/
-
-def maxWidth(root):
+def checkSortedLevels(root):
     if root is None:
-        return 0
+        return True
     q1, q2 = deque([root]), deque()
-    maxWidth = 0
+    maxLastLevel = root.data
     while len(q1) > 0:
-        maxWidth = max(maxWidth, len(q1))
+        maxCurrentLevel = q1[0].data
         while len(q1) > 0:
             node = q1.popleft()
+            if node.data < maxLastLevel:
+                return False
+            maxCurrentLevel = max(maxCurrentLevel, node.data)
             if node.left:
                 q2.append(node.left)
             if node.right:
                 q2.append(node.right)
         q1, q2 = q2, q1
-    return maxWidth
-        
+        maxLastLevel = maxCurrentLevel
 
-'''
-        8
-      /   \
-     3     10
-   /   \     \
-  1    16     14
-      /  \   /  \
-     4    7 19   2
-'''
 
 root = Node(8)
 root.left = Node(3)
@@ -40,4 +31,14 @@ root.right = Node(10)
 root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
-print(maxWidth(root))
+
+'''
+        8
+      /   \
+     3     10
+   /   \     \
+  1    16     14
+      /  \   /  \
+     4    7 19   2
+'''
+print(checkSortedLevels(root))

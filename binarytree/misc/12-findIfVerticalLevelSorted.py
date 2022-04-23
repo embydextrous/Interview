@@ -1,24 +1,22 @@
 from tree import Node
+from collections import deque
 
 def findIfVerticalLevelSorted(root, k):
     if root is None:
         return True
-    q1, q2 = [(root, 0)], []
+    q = deque([(root, 0)])
     current = None
-    while len(q1) > 0:
-        while len(q1) > 0:
-            (node, dist) = q1.pop(0)
-            if dist == k:
-                print(node.data)
-                if current is None:
-                    current = node.data
-                elif node.data < current:
-                    return False
-            if node.left:
-                q2.append((node.left, dist - 1))
-            if node.right:
-                q2.append((node.right, dist + 1))
-        q1, q2 = q2, q1
+    while len(q) > 0:
+        node, vd = q.popleft()
+        if vd == k:
+            if current is None:
+                current = node.data
+            elif node.data < current:
+                return False
+        if node.left:
+            q.append((node.left, vd - 1))
+        if node.right:
+            q.append((node.right, vd + 1))
     return True
 
 '''
@@ -41,5 +39,5 @@ root.right = Node(10)
 root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
-print(findIfVerticalLevelSorted(root, 0))
+print(findIfVerticalLevelSorted(root, 4))
 

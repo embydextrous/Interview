@@ -16,26 +16,26 @@ Input :        1
          4    5 6    7
 Output : Sorted
 '''
-import sys
 from tree import Node
+from collections import deque
 
 def checkSorted(root):
     if root is None:
         return True
-    q1, q2 = [root], []
-    maxi = root.data
+    q1, q2 = deque([root]), deque()
+    maxLastLevel = root.data
     while len(q1) > 0:
-        maxLastLevel = -sys.maxsize-1
+        maxCurrentLevel = q1[0].data
         while len(q1) > 0:
-            node = q1.pop(0)
-            if node.data < maxi:
+            node = q1.popleft()
+            if node.data < maxLastLevel:
                 return False
-            maxLastLevel = max(maxLastLevel, node.data)
+            maxCurrentLevel = max(maxCurrentLevel, node.data)
             if node.left:
                 q2.append(node.left)
             if node.right:
                 q2.append(node.right)
-        maxi = maxLastLevel
+        maxLastLevel = maxCurrentLevel
         q1, q2 = q2, q1
     return True
 

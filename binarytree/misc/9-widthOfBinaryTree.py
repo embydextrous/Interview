@@ -1,12 +1,13 @@
 from tree import Node
+from collections import deque
 
 def width(root):
     if root is None:
         return 0
-    q = [(root, 0)]
+    q = deque([(root, 0)])
     maxi = mini = 0
     while len(q) > 0:
-        (node, d) = q.pop(0)
+        (node, d) = q.popleft()
         maxi = max(d, maxi)
         mini = min(d, mini)
         if node.left:

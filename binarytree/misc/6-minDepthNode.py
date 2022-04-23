@@ -1,22 +1,22 @@
-from tree import Node, preorder
-import sys
+from tree import Node
+from collections import deque
 
 # Level order traversal is better here as it does not traverse entire tree
 def minDepth(root):
     if root is None:
         return 0
-    q1, q2 = [root], []
-    depth = -1
+    q1, q2 = deque([root]), deque()
+    depth = 0
     while len(q1) > 0:
-        depth += 1
         while len(q1) > 0:
-            node = q1.pop(0)
+            node = q1.popleft()
             if node.left is None and node.right is None:
                 return depth
             if node.left:
                 q2.append(node.left)
             if node.right:
                 q2.append(node.right)
+        depth += 1
         q1, q2 = q2, q1
 
 

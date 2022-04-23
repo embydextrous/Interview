@@ -2,8 +2,10 @@
 # Also see, https://www.geeksforgeeks.org/height-generic-tree-parent-array/
 
 '''
-A given array represents a tree in such a way that the array value gives the parent node of that particular index. The value of the root node index would always be -1. Find the height of the tree. 
-The height of a Binary Tree is the number of nodes on the path from the root to the deepest leaf node, and the number includes both root and leaf. 
+A given array represents a tree in such a way that the array value gives the parent node of that particular
+index. The value of the root node index would always be -1. Find the height of the tree. 
+The height of a Binary Tree is the number of nodes on the path from the root to the deepest leaf node,
+and the number includes both root and leaf. 
  
 
 Input: parent[] = {1 5 5 2 2 -1 3}

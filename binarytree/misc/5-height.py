@@ -30,5 +30,3 @@ root.right.right.right = Node(2)
 
 print(height(root))
 d = [0]
-diameter(root, d)
-print(d[0])
