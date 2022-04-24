@@ -4,20 +4,17 @@ from tree import Node
 def printLevelsSorted(root):
     if root is None:
         return
-    q1, q2 = [root], []
-    heap = []
-    while len(q1) > 0:
-        while len(q1):
-            node = q1.pop(0)
-            heapq.heappush(heap, node.data)
+    h1, h2 = [[root.data, root]], []
+    while len(h1) > 0:
+        while len(h1):
+            data, node = heapq.heappop(h1)
+            print(data, end = " ")
             if node.left:
-                q2.append(node.left)
+                heapq.heappush(h2, [node.left.data, node.left])
             if node.right:
-                q2.append(node.right)
-        q1, q2 = q2, q1
-        while len(heap) > 0:
-            print(heapq.heappop(heap), end = " ")
+                heapq.heappush(h2, [node.right.data, node.right])
         print()
+        h1, h2 = h2, h1
 
 
 '''

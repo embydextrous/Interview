@@ -1,13 +1,14 @@
 from tree import Node
+from collections import deque
 
 def printDiagonalSum(root):
     if root is None:
         print(0, end = " ")
-    q1, q2 = [root], []
+    q1, q2 = deque([root]), deque()
     while len(q1) > 0:
         sum = 0
         while len(q1) > 0:
-            node = q1.pop(0)
+            node = q1.popleft()
             sum += node.data
             if node.left:
                 q2.append(node.left)

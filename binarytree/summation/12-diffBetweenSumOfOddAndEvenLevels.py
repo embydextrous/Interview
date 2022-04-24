@@ -1,14 +1,15 @@
 from tree import Node
+from collections import deque
 
 def findDiff(root):
     if root is None:
         return 0
-    q1, q2 = [root], []
+    q1, q2 = deque([root]), deque()
     i = 1
     diff = 0
     while len(q1) > 0:
         while len(q1):
-            node = q1.pop(0)
+            node = q1.popleft()
             diff += i * node.data
             if node.left:
                 q2.append(node.left)

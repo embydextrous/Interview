@@ -1,25 +1,23 @@
 from tree import Node
+from collections import deque, defaultdict
 
 def verticalSum(root):
     if root is None:
         return 0
-    d = {}
-    q = [(root, 0)]
+    d = defaultdict(int)
+    q = deque([(root, 0)])
     mini, maxi = 0, 0
     while len(q) > 0:
-        (node, i) = q.pop(0)
-        mini = min(i, mini)
-        maxi = max(i, maxi)
-        if i in d:
-            d[i] += node.data
-        else:
-            d[i] = node.data
+        (node, vd) = q.popleft()
+        mini = min(vd, mini)
+        maxi = max(vd, maxi)
+        d[vd] += node.data
         if node.left:
-            q.append((node.left, i - 1))
+            q.append((node.left, vd - 1))
         if node.right:
-            q.append((node.right, i + 1))
-    for i in range(mini, maxi + 1):
-        print(str(i) + " -> " + str(d[i]))
+            q.append((node.right, vd + 1))
+    for vd in range(mini, maxi + 1):
+        print(f"{vd} -> {d[vd]}")
 
 '''
         8

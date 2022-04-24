@@ -1,15 +1,15 @@
 from tree import Node
-import sys
+from collections import deque
 
 def maxLevelSum(root):
     if root is None:
         return 0
-    q1, q2 = [root], []
-    maxSum = -sys.maxsize-1
+    q1, q2 = deque([root]), deque()
+    maxSum = root.data
     while len(q1) > 0:
         sum = 0
         while len(q1):
-            node = q1.pop(0)
+            node = q1.popleft()
             sum += node.data
             if node.left:
                 q2.append(node.left)

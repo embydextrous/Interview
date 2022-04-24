@@ -1,24 +1,37 @@
+import heapq
 from tree import Node
 from collections import deque, defaultdict
 
-def printBottomView(root):
+def printNodesAtKDistanceDown(root, k):
     if root is None:
         return
-    q = deque([(root, 0)])
-    d = {}
-    maxi, mini = 0, 0
-    while len(q) > 0:
-        (node, vd) = q.popleft()
-        d[vd] = node.data
-        maxi = max(maxi, vd)
-        mini = min(mini, vd)
-        if node.left:
-            q.append((node.left, vd - 1))
-        if node.right:
-            q.append((node.right, vd + 1))
-    for vd in range(mini, maxi + 1):
-        print(d[vd], end = " ")
-    print()
+    if k == 0:
+        print(root.data, end = " ")
+    printNodesAtKDistanceDown(root.left, k - 1)
+    printNodesAtKDistanceDown(root.right, k - 1)
+
+# 20, 22, 24, 25, 26, 27, 28, 29 
+def printNodesAtDistanceK(root, source, k):
+    if root is None:
+        return -1
+    if root == source:
+        printNodesAtKDistanceDown(root, k)
+        return 0
+    dl = printNodesAtDistanceK(root.left, source, k)
+    if dl != -1:
+        if dl + 1 == k:
+            print(root.data, end = " ")
+        else:
+            printNodesAtKDistanceDown(root.right, k - dl - 2)
+        return dl + 1
+    dr = printNodesAtDistanceK(root.right, source, k)
+    if dr != -1:
+        if dr + 1 == k:
+            print(root.data, end = " ")
+        else:
+            printNodesAtKDistanceDown(root.left, k - dr - 2)
+        return dr + 1
+    return -1
 
 
 
@@ -45,5 +58,7 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-printBottomView(root)
+printNodesAtDistanceK(root, root.left, 4)
+print()
+
 

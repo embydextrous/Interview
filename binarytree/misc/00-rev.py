@@ -1,24 +1,18 @@
 from tree import Node, inorder
 from collections import deque
 
-def checkSortedLevels(root):
+# 10, 15, 20, 23, 25, 28, 29, 30
+# 31, 32, 33, 34, 36, 37, 38, 39
+
+def connectNodes(root):
     if root is None:
-        return True
-    q1, q2 = deque([root]), deque()
-    maxLastLevel = root.data
-    while len(q1) > 0:
-        maxCurrentLevel = q1[0].data
-        while len(q1) > 0:
-            node = q1.popleft()
-            if node.data < maxLastLevel:
-                return False
-            maxCurrentLevel = max(maxCurrentLevel, node.data)
-            if node.left:
-                q2.append(node.left)
-            if node.right:
-                q2.append(node.right)
-        q1, q2 = q2, q1
-        maxLastLevel = maxCurrentLevel
+        return
+    while root:
+        if root.left:
+            if root.right:
+                root.left.next = root.right
+            else:
+                
 
 
 root = Node(8)
@@ -32,6 +26,8 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
+
+
 '''
         8
       /   \
@@ -41,4 +37,6 @@ root.right.right.right = Node(2)
       /  \   /  \
      4    7 19   2
 '''
-print(checkSortedLevels(root))
+root = removesLeavesLessThanK(root, 3)
+inorder(root)
+print()
