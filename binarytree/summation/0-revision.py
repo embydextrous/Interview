@@ -1,41 +1,58 @@
-from tree import Node
+from tree import Node, inorder
 from collections import deque, defaultdict
 
-# 19 20 21 22 23 24 25 26 27
+'''
+Input: 
+     Tree 1            Tree 2                  
+       2                 3                             
+      / \               / \                            
+     1   4             6   1                        
+    /                   \   \                      
+   5                     2   7                  
 
-def sumOfHeights(root, sumHeights):
+Output: Merged tree:
+         5
+        / \
+       7   5
+      / \   \ 
+     5   2   7
+'''
+def printKSumPaths(root, k, path, pathSum, prefixSums):
     if root is None:
-        return 0
-    lHeight = sumOfHeights(root.left, sumHeights)
-    rHeight = sumOfHeights(root.right, sumHeights)
-    height = 1 + max(lHeight, rHeight)
-    print(root.data, height)
-    sumHeights[0] += height
-    return height
-
-
+        return
+    pathSum += root.data
+    path.append(root.data)
+    if pathSum == k:
+        print(path)
+    if pathSum - k in prefixSums:
+        print(path[prefixSums[pathSum - k] + 1:])
+    prefixSums[pathSum] = len(path) - 1
+    printKSumPaths(root.left, k, path, pathSum, prefixSums)
+    printKSumPaths(root.right, k, path, pathSum, prefixSums)
+    prefixSums.pop(pathSum)
+    path.pop()
+    
 '''
-        8
-      /   \
-     3     0
-   /   \     \
-  1    6      4
-      /  \   /  \
-     4    7 9    2
+         1
+       /    \
+      3     -1
+     / \    / \ 
+    2   1  4   5
+        /  / \  \
+       1  1   2  6
 '''
-
-
-root = Node(8)
+root = Node(1)
 root.left = Node(3)
-root.left.left = Node(1)
-root.left.right = Node(6)
-root.left.right.left = Node(4)
-root.left.right.right = Node(7)
-root.right = Node(0)
-root.right.right = Node(4)
-root.right.right.left = Node(9)
-root.right.right.right = Node(2)
+root.left.left = Node(2)
+root.left.right = Node(1)
+root.left.right.left = Node(1)
+root.right = Node(-1)
+root.right.left = Node(4)
+root.right.left.left = Node(1)
+root.right.left.right = Node(2)
+root.right.right = Node(5)
+root.right.right.right = Node(6)
+ 
+k = 6
+printKSumPaths(root, k, [], 0, {})
 
-sumHeights = [0]
-sumOfHeights(root, sumHeights)
-print(sumHeights[0])

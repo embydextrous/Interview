@@ -26,8 +26,6 @@ Output: Merged tree:
 '''
 
 def merge(a, b):
-    if a is None and b is None:
-        return None
     if a is None:
         return b
     if b is None:
@@ -49,3 +47,4 @@ b.left.right = Node(2)
 b.right.right = Node(7)
 
 inorder(merge(a, b))
+print()

@@ -1,22 +1,25 @@
 # https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
 from tree import Node
 
-def printKPathUtil(root, path, k):
+def printKSumPaths(root, k, path, pathSum, prefixSums):
     if root is None:
         return
+    pathSum += root.data
     path.append(root.data)
-    printKPathUtil(root.left, path, k)
-    printKPathUtil(root.right, path, k)
-    f = 0
-    for j in range(len(path) - 1, -1, -1):
-        f += path[j]
-        if (f == k):
-            print(path[j:])
+    if pathSum == k:
+        print(path)
+    if pathSum - k in prefixSums:
+        print(path[prefixSums[pathSum - k] + 1:])
+    prefixSums[pathSum] = len(path) - 1
+    printKSumPaths(root.left, k, path, pathSum, prefixSums)
+    printKSumPaths(root.right, k, path, pathSum, prefixSums)
+    prefixSums.pop(pathSum)
     path.pop()
 
 def printKPath(root, k):
     path = []
-    printKPathUtil(root, path, k)
+    prefixSums = {}
+    printKSumPaths(root, k, path, 0, prefixSums)
 
 '''
            1
@@ -40,5 +43,5 @@ root.right.left.right = Node(2)
 root.right.right = Node(5)
 root.right.right.right = Node(6)
  
-k = 7
+k = 6
 printKPath(root, k)

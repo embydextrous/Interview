@@ -4,10 +4,13 @@ def sumLongestPathUtil(root, pathSum, pathLen, maxPathLen, maxLenPathSum):
     if root is None:
         return 0
     pathSum += root.data
+    if root.left is None and root.right is None and pathLen >= maxPathLen[0]:
+        if pathLen == maxPathLen[0]:
+            maxLenPathSum[0] = max(maxLenPathSum[0], pathSum)
+        else:
+            maxPathLen[0] = pathLen
+            maxLenPathSum[0] = pathSum
     pathLen += 1
-    if root.left is None and root.right is None and pathLen > maxPathLen[0]:
-        maxPathLen[0] = pathLen
-        maxLenPathSum[0] = pathSum
     sumLongestPathUtil(root.left, pathSum, pathLen, maxPathLen, maxLenPathSum)
     sumLongestPathUtil(root.right, pathSum, pathLen, maxPathLen, maxLenPathSum)
 
@@ -27,10 +30,9 @@ root.left.right.left = Node(4)
 root.left.right.right = Node(7)
 root.right = Node(10)
 root.right.right = Node(14)
-root.right.right.left = Node(-1)
+root.right.right.left = Node(19)
 root.right.right.right = Node(2)
-root.right.right.left.left = Node(-8)
-root.right.right.left.left.left = Node(-4)
+root.right.right.left.left = Node(8)
 root.right.right.left.right = Node(31)
 
 '''
@@ -41,9 +43,9 @@ root.right.right.left.right = Node(31)
   1    16     14
       /  \   /  \
      4    7 19   2
-           /  \
-          30   31
+            /  \
+          8   31 
          /
-        32 
+        4  
 '''
 print(sumLongestPath(root))
