@@ -1,17 +1,11 @@
 from tree import Node
 
 def printMiddleLevelUtil(fast, slow):
-    if fast is None or slow is None:
-        return
-    if fast.left is None and fast.right is None:
+    if fast is None or fast.left is None:
         print(slow.data, end = " ")
         return
-    if fast.left.left:
-        printMiddleLevelUtil(fast.left.left, slow.left)
-        printMiddleLevelUtil(fast.left.left, slow.right)
-    else:
-        printMiddleLevelUtil(fast.left, slow.left)
-        printMiddleLevelUtil(fast.left, slow.right)
+    printMiddleLevelUtil(fast.left.left, slow.left)
+    printMiddleLevelUtil(fast.left.left, slow.right)
     
 
 def printMiddleLevel(root):

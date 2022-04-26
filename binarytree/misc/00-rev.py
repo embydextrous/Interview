@@ -1,7 +1,7 @@
 from tree import Node, inorder
 from collections import deque
 
-# 10, 15, 20, 23, 25, 28, 29, 30
+# 15, 20, 23, 25, 28, 29, 30
 # 31, 32, 33, 34, 36, 37, 38, 39
 
 def connectNodes(root):
@@ -12,7 +12,7 @@ def connectNodes(root):
             if root.right:
                 root.left.next = root.right
             else:
-                
+
 
 
 root = Node(8)

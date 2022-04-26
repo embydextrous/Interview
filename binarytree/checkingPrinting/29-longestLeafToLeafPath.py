@@ -1,32 +1,27 @@
 from tree import Node
 
-def longestLeafToLeafPathUtil(root, maxD, rootMap, maxRoot):
+def longestLeafToLeafPathUtil(root, maxLen, maxPath):
     if root is None:
-        return 0
-    lHeight = longestLeafToLeafPathUtil(root.left, maxD, rootMap, maxRoot)
-    rHeight = longestLeafToLeafPathUtil(root.right, maxD, rootMap, maxRoot)
-    if 1 + lHeight + rHeight > maxD[0]:
-        maxD[0] = 1 + lHeight + rHeight
-        maxRoot[0] = root
-    rootMap[root] = [[], []]
-    if root.left:
-        left = rootMap[root.left][0]
-        right = rootMap[root.left][1]
-        rootMap[root][0] = left if len(left) > len(right) else right
-        rootMap[root][0].append(root.left.data)
-    if root.right:
-        left = rootMap[root.right][0]
-        right = rootMap[root.right][1]
-        rootMap[root][1] = left if len(left) > len(right) else right
-        rootMap[root][1].append(root.right.data)
-    return 1 + max(lHeight, rHeight)
-
+        return (0, [])
+    lHeight, lPath = longestLeafToLeafPathUtil(root.left, maxLen, maxPath)
+    rHeight, rPath = longestLeafToLeafPathUtil(root.right, maxLen, maxPath)
+    if len(lPath) <= len(rPath):
+        mPath = rPath
+    else:
+        mPath = lPath
+    if 1 + lHeight + rHeight > maxLen[0]:
+        maxLen[0] = 1 + lHeight + rHeight
+        maxPath[0] = lPath[:]
+        maxPath[0].append(root.data)
+        maxPath[0].extend(reversed(rPath))
+    mPath.append(root.data)
+    return (1 + max(lHeight, rHeight), mPath)
+    
 def longestLeafToLeafPath(root):
-    maxD = [0]
-    rootMap = {}
-    maxRoot = [None]
-    longestLeafToLeafPathUtil(root, maxD, rootMap, maxRoot)
-    return rootMap[maxRoot[0]][0] + [maxRoot[0].data] + rootMap[maxRoot[0]][1]
+    maxLen = [0]
+    maxPath = [[]]
+    longestLeafToLeafPathUtil(root, maxLen, maxPath)
+    return (maxLen[0], maxPath[0])
 
 root = Node(8)
 root.left = Node(3)

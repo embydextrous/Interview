@@ -1,22 +1,18 @@
 from tree import Node
 
-def printPath(path):
-    maxHd, minHd = path[-1][2], path[-1][3]
-    for pathObj in path:
-        result = "-" * (pathObj[1] - minHd)
-        result += str(pathObj[0].data)
-        result += "-" * (maxHd - pathObj[1])
-        print(result)
+def printPath(path, minHd, maxHd):
+    for (data, hd) in path:
+        print(f"{'-' * (hd - minHd)}{data}{'-' * (maxHd - hd)}")
     print()
 
 def printNodesAtDistanceKFromLeaf(root, path, hd, maxHd, minHd):
     if root is None:
         return
-    path.append((root, hd, maxHd, minHd))
+    path.append((root.data, hd))
     if root.left is None and root.right is None:
-        printPath(path)
-    printNodesAtDistanceKFromLeaf(root.left, path, hd - 1, max(maxHd, hd - 1), min(minHd, hd - 1))
-    printNodesAtDistanceKFromLeaf(root.right, path, hd + 1, max(maxHd, hd + 1), min(minHd, hd + 1))
+        printPath(path, minHd, maxHd)
+    printNodesAtDistanceKFromLeaf(root.left, path, hd - 1, maxHd, min(minHd, hd - 1))
+    printNodesAtDistanceKFromLeaf(root.right, path, hd + 1, max(maxHd, hd + 1), minHd)
     path.pop()
 
 root = Node(8)

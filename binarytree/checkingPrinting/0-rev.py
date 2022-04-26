@@ -2,42 +2,29 @@ import heapq
 from tree import Node
 from collections import deque, defaultdict
 
-def printNodesAtKDistanceDown(root, k):
+# 26 29
+def longestLeafToLeafPathUtil(root, maxLen, maxPath):
     if root is None:
-        return
-    if k == 0:
-        print(root.data, end = " ")
-    printNodesAtKDistanceDown(root.left, k - 1)
-    printNodesAtKDistanceDown(root.right, k - 1)
-
-# 20, 22, 24, 25, 26, 27, 28, 29 
-def printNodesAtDistanceK(root, source, k):
-    if root is None:
-        return -1
-    if root == source:
-        printNodesAtKDistanceDown(root, k)
-        return 0
-    dl = printNodesAtDistanceK(root.left, source, k)
-    if dl != -1:
-        if dl + 1 == k:
-            print(root.data, end = " ")
-        else:
-            printNodesAtKDistanceDown(root.right, k - dl - 2)
-        return dl + 1
-    dr = printNodesAtDistanceK(root.right, source, k)
-    if dr != -1:
-        if dr + 1 == k:
-            print(root.data, end = " ")
-        else:
-            printNodesAtKDistanceDown(root.left, k - dr - 2)
-        return dr + 1
-    return -1
-
-
-
-
-
-
+        return (0, [])
+    lHeight, lPath = longestLeafToLeafPathUtil(root.left, maxLen, maxPath)
+    rHeight, rPath = longestLeafToLeafPathUtil(root.right, maxLen, maxPath)
+    if len(lPath) <= len(rPath):
+        mPath = rPath
+    else:
+        mPath = lPath
+    if 1 + lHeight + rHeight > maxLen[0]:
+        maxLen[0] = 1 + lHeight + rHeight
+        maxPath[0] = lPath[:]
+        maxPath[0].append(root.data)
+        maxPath[0].extend(reversed(rPath))
+    mPath.append(root.data)
+    return (1 + max(lHeight, rHeight), mPath)
+    
+def longestLeafToLeafPath(root):
+    maxLen = [0]
+    maxPath = [[]]
+    longestLeafToLeafPathUtil(root, maxLen, maxPath)
+    return (maxLen[0], maxPath[0])
 '''
         8
       /   \
@@ -58,7 +45,32 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-printNodesAtDistanceK(root, root.left, 4)
-print()
+print(longestLeafToLeafPath(root))
+
+
+'''
+        a
+      /   \
+     b     c
+   /   \     \
+  d     e      f
+       /  \   /  \
+      g    h  i   j
+'''
+'''
+---rootToLeaf
+---rootToAnyNode
+---AnyNodeToLeaf (NoBack)
+---AnyNodeToAnyNode (NoBack)
+AnyNodeToLeafNode (Back)
+AnyNodeToAnyNode (Back)
+Leaf to Leaf
+
+printAllPaths
+printPathWithMaxSum
+printLongestPath
+checkSequence
+checkPathWithSum
+'''
 
 

@@ -1,23 +1,24 @@
 from tree import Node
+from collections import deque
 
-def printCousins(root, s):
-    if root is None or root == s:
+def printCousins(root, target):
+    if root is None or root == target:
         return
-    q1, q2 = [root], []
-    shallPrintNextLevel = False
+    q1, q2 = deque([root]), deque()
+    targetFound = False
     while len(q1) > 0:
         while len(q1) > 0:
-            node = q1.pop(0)
-            if node.left == s or node.right == s:
-                shallPrintNextLevel = True
+            node = q1.popleft()
+            if node.left == target or node.right == target:
+                targetFound = True
                 continue
             if node.left:
                 q2.append(node.left)
             if node.right:
                 q2.append(node.right)
-        if shallPrintNextLevel:
+        if targetFound:
             while len(q2) > 0:
-                print(q2.pop(0).data, end = " ")
+                print(q2.popleft().data, end = " ")
             break
         q1, q2 = q2, q1
     print()
@@ -50,4 +51,4 @@ root.right.right.left.right = Node(31)
         32 
 '''
 
-printCousins(root, root.right.right.right)
+printCousins(root, root.right.right)
