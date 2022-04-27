@@ -12,20 +12,20 @@ Output :          1
             /   \   /  \
            4     5 6    7
 '''
-def construct(pre, preMirror):
-    if len(pre) == 0:
+def construct(pre, preLeft, preRight, mirror, mirrorLeft, mirrorRight):
+    if preLeft > preRight:
         return None
-    if len(pre) == 1:
-        return Node(pre[0])
-    data = pre[0]
-    root = Node(data)
-    a = pre[1]
-    mirrorIndex = preMirror.index(a)
-    root.left = construct(pre[1:len(pre) - mirrorIndex + 1], preMirror[mirrorIndex:])
-    root.right = construct(pre[len(pre) - mirrorIndex + 1:], preMirror[1:mirrorIndex])
+    if preLeft == preRight:
+        return Node(pre[preLeft])
+    root = Node(pre[preLeft])
+    left = pre[preLeft + 1]
+    mirrorIndex = mirror.index(left)
+    root.left = construct(pre, preLeft + 1, preLeft + mirrorIndex - mirrorLeft - 1, mirror, mirrorIndex, mirrorRight)
+    root.right = construct(pre, preLeft + mirrorIndex - mirrorLeft, preRight, mirror, mirrorLeft + 1, mirrorIndex - 1)
     return root
 
 pre = [1, 2, 4, 5, 3, 6, 7]
-preMirror = [1, 3, 7, 6, 2, 5, 4]
-inorder(construct(pre, preMirror))
+mirror = [1, 3, 7, 6, 2, 5, 4]
+n = len(mirror)
+inorder(construct(pre, 0, n - 1, mirror, 0, n - 1))
 print()

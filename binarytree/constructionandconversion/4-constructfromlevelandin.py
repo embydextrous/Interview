@@ -1,4 +1,4 @@
-from tree import Node, preorder
+from tree import Node, preorder, inorder
 
 def constructUtil(level, ino, inoIndexMap):
     root = Node(level[0])

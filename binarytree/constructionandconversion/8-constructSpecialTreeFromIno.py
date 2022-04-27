@@ -13,16 +13,18 @@ Output: root of following tree
    1         15    20
 '''
 
-def construct(ino):
-    if len(ino) == 0:
+def construct(ino, inoLeft, inoRight):
+    if inoLeft > inoRight:
         return None
-    data = max(ino)
-    root = Node(data)
-    inoIndex = ino.index(data)
-    root.left = construct(ino[:inoIndex])
-    root.right = construct(ino[inoIndex+1:])
+    maxIndex = inoLeft
+    for i in range(inoLeft + 1, inoRight + 1):
+        if ino[maxIndex] < ino[i]:
+            maxIndex = i
+    root = Node(ino[maxIndex])
+    root.left = construct(ino, inoLeft, maxIndex - 1)
+    root.right = construct(ino, maxIndex + 1, inoRight)
     return root
 
 ino = [1, 5, 10, 40, 30, 15, 28, 20]
-preorder(construct(ino))
+preorder(construct(ino, 0, len(ino) - 1))
 print()

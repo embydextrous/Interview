@@ -11,21 +11,23 @@ A complete binary tree can be represented in an array in the following approach.
       25  30  36   
 '''
 from tree import Node, inorder
+from collections import deque
 
-def construct(head):
-    if head is None:
-        return head
-    q = [head]
-    while head:
-        root = q.pop(0)
-        root.left = head.next
-        head = head.next
-        if head:
-            q.append(head)
-            root.right = head.next
-        head = head.next
-        if head:
-            q.append(head)
+def construct(root):
+    if root is None:
+        return None
+    q = deque([root])
+    head = root
+    while len(q) > 0:
+        node = q.popleft()
+        if head.next:
+            node.left = head.next
+            q.append(head.next)
+            head = head.next
+        if head.next:
+            node.right = head.next
+            q.append(head.next)
+            head = head.next
 
 root = Node(10)
 root.next = Node(12)
