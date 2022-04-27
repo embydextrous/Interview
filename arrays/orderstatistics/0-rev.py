@@ -1,8 +1,7 @@
-from heapq import heappop, heappush
+from collections import deque
+from heapq import heapify, heappop, heapreplace, heappush
 
-# Similar Question https://www.geeksforgeeks.org/find-k-pairs-smallest-sums-two-arrays/ (We have to find minimum here)
-
-def maxSumCombination(a, b, k):
+def kMaxSumCombination(a, b, k):
     n = len(a)
     a.sort()
     b.sort()
@@ -18,13 +17,13 @@ def maxSumCombination(a, b, k):
         if i - 1 >= 0 and (i - 1, j) not in visited:
             heappush(h, [-a[i - 1] - b[j], i - 1, j])
             visited.add((i - 1, j))
-    
+
+# 1 2 4 5
+# 0 3 5 8  
 a = [4, 2, 5, 1]
 b = [8, 0, 3, 5]
 k = 14
-maxSumCombination(a, b, k)
+kMaxSumCombination(a, b, k)
 
-# 1 2 4 5
-# 0 3 5 8
-
+    
 
