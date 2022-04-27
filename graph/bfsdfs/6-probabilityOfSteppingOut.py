@@ -6,13 +6,14 @@ a given position (i, j) in the matrix, we will not cross boundaries of the matri
 def isSafe(R, C, i, j):
     return i >= 0 and i < R and j >= 0 and j < C
 
+ROW = [-1, 0, 1, 0]
+COL = [0, 1, 0, -1]
+
 def probability(R, C, i, j, n):
     if not isSafe(R, C, i, j):
         return 0.0
     if n == 0:
         return 1.0
-    ROW = [-1, 0, 1, 0]
-    COL = [0, 1, 0, -1]
     p = 0.0
     for k in range(4):
         x, y = i + ROW[k], j + COL[k]

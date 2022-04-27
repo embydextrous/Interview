@@ -1,4 +1,4 @@
-from tree import Node, inorder
+from tree import Node, postorder, preorder, inorder
 
 def construct(pre, preLeft, preRight, post, postLeft, postRight):
     if preLeft > preRight:
@@ -12,6 +12,7 @@ def construct(pre, preLeft, preRight, post, postLeft, postRight):
     root.right = construct(pre, preLeft + postIndex - postLeft + 2, preRight, post, postIndex + 1, postRight)
     return root
 
+
 '''
             1
           /   \
@@ -23,6 +24,6 @@ def construct(pre, preLeft, preRight, post, postLeft, postRight):
 '''
 pre = [ 1, 2, 4, 8, 9, 5, 3, 6, 7 ]
 post = [ 8, 9, 4, 5, 2, 6, 7, 3, 1 ]
-size = len(pre)
+
 inorder(construct(pre, 0, len(pre) - 1, post, 0, len(post) - 1))
 print()

@@ -1,5 +1,5 @@
 def printPost(pre, ino, preIndex, inoLeft, inoRight):
-    if inoLeft > inoRight or preIndex[0] < inoLeft and preIndex[0] > inoRight:
+    if preIndex[0] >= len(pre) or inoLeft > inoRight:
         return
     root = pre[preIndex[0]]
     preIndex[0] += 1

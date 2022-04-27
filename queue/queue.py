@@ -1,51 +1,18 @@
 from collections import deque
-from typing import Sized
 
-class Queue:
+class Stack:
     def __init__(self):
-        self.a = []
-
-    def enqueue(self, data):
-        self.a.append(data)
-
-    def dequeue(self):
-        if len(self.a) == 0:
-            return None
-        return self.a.pop(0)
-
-class Deque:
-    def __init__(self):
-        self.a = []
-
-    def enqueueRight(self, data):
-        self.a.append(data)
-
-    def enqueueLeft(self, data):
-        self.a.insert(0, data)
-
-    def dequeueLeft(self):
-        if len(self.a) == 0:
-            return None
-        return self.a.pop(0)
-
-    def dequeueRight(self):
-        if len(self.a) == 0:
-            return None
-        return self.a.pop()
-
-class StackUsingDeque:
-    def __init__(self):
-        self.q = deque()
+        self.s = deque()
 
     def push(self, data):
-        self.q.append(data)
+        self.s.append(data)
 
     def pop(self):
-        if len(self.q) == 0:
+        if len(self.s) == 0:
             return None
-        return self.q.pop()
+        return self.s.pop()
 
-class QueueUsingDeque:
+class Queue:
     def __init__(self):
         self.q = deque()
 

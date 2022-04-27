@@ -4,7 +4,7 @@
 # Also see, https://www.geeksforgeeks.org/minimum-number-of-edges-between-two-vertices-of-a-graph/
 from graph import Graph
 
-def numNodesAtLevel(g, root, level):
+def numNodestLevel(g, root, level):
     q1, q2 = [root], []
     lvl = 0
     while len(q1) > 0 and lvl != level:

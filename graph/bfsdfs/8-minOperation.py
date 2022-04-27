@@ -29,12 +29,14 @@ Answer = 4
 Note that other sequences of two operations 
 would take more operations.
 '''
+from collections import deque
+
 def minOperation(x, y):
-    q1, q2 = [x], []
+    q1, q2 = deque([x]), deque()
     c = 0
     while len(q1) > 0:
         while len(q1) > 0:
-            n = q1.pop(0)
+            n = q1.popleft()
             if n == y:
                 return c
             q2.append(n * 2)

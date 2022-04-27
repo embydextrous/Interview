@@ -16,10 +16,12 @@ Explanation: 11101 is a multiple of 17.
 
 Recommended: Please try your approach on {IDE} first, before moving on to the s
 '''
+from collections import deque
+
 def smallestBinaryDigitMultiple(n):
-    q = [1]
+    q = deque([1])
     while len(q) > 0:
-        x = q.pop(0)
+        x = q.popleft()
         if x % n == 0:
             return x
         q.append(10 * x + 0)
