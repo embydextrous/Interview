@@ -3,13 +3,19 @@
 from tree import Node, inorder
 
 '''
+Given an arbitrary binary tree, convert it to a binary tree that holds Children Sum Property. 
+You can only increment data values in any node (You cannot change the structure of the tree and 
+cannot decrement the value of any node). 
+For example, the below tree doesn't hold the children sum property, convert it to a tree that holds
+the property.
+
               50
            /     \     
           /       \
          7         2
         / \       / \
-     /     \     /   \
-    3        5  1     30
+       /   \     /   \
+      3     5   1     30
 '''
 
 def convert(root):
@@ -19,22 +25,18 @@ def convert(root):
         return root.data
     left = convert(root.left)
     right = convert(root.right)
-    diff = left + right - root.data
-    if diff >= 0:
-        root.data += diff
+    if left + right >= root.data:
+        root.data = left + right
     else:
-        if root.left:
-            increment(root.left, diff * -1)
-        elif root.right:
-            increment(root.right, diff * -1)
+        increment(root, root.data - left - right)
     return root.data
 
 def increment(root, diff):
-    root.data += diff
-    print(diff)
     if root.left:
+        root.left.data += diff
         increment(root.left, diff)
     elif root.right:
+        root.right.data += diff
         increment(root.right, diff)
 
 root = Node(50)
