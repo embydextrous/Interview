@@ -18,13 +18,13 @@ def partition(a, l, r):
     return i
         
 def kthSmallest(a, l, r, k):
-    if k > 0 and k <= r - l + 1 :
+    if l <= r and k - 1 >= l and k - 1 <= r :
         position = randomPartition(a, l, r)
-        if position - l == k - 1:
+        if position == k - 1:
             return a[position]
-        if position - l > k - 1:
+        if position > k - 1:
             return kthSmallest(a, l, position - 1, k)
-        return kthSmallest(a, position + 1, r, k - position + l - 1)
+        return kthSmallest(a, position + 1, r, k)
 
 arr = [2, 1, 9, 6, 8, 4, 5, 7]
 n = len(arr)

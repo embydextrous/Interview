@@ -7,7 +7,7 @@ def findSmallestUtil(a, l, r):
     if l > r:
         return len(a)
     mid = (l + r ) // 2
-    if mid > 0 and a[mid] > mid and a[mid-1] == mid - 1:
+    if mid > l and a[mid] > mid and a[mid-1] == mid - 1:
         return mid
     if a[mid] == mid:
         return findSmallestUtil(a, mid + 1, r)
