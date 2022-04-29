@@ -34,8 +34,8 @@ def construct(level, ino):
 
 '''
 
-pre = [ 1, 2, 4, 8, 9, 5, 3, 6, 7 ]
-post = [ 8, 9, 4, 5, 2, 6, 7, 3, 1 ]
+level = [ 20, 8, 22, 4, 12, 10, 14 ]
+ino = [ 4, 8, 10, 12, 14, 20, 22 ]
 
-inorder(construct(pre, post))
+preorder(construct(level, ino))
 print()

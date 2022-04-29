@@ -1,18 +1,28 @@
 from tree import Node, inorder
 from collections import deque
 
-# 15, 20, 23, 25, 28, 29, 30
+# 15, 20, 23, 25, 28, 29
 # 31, 32, 33, 34, 36, 37, 38, 39
+def findMirrorNodeUtil(a, b, target):
+    print(a.data, b.data, target.data)
+    if a is None or b is None:
+        return None
+    if a == target:
+        return b
+    if b == target:
+        return a
+    mirror = findMirrorNodeUtil(a.left, b.right, target)
+    if mirror:
+        return mirror
+    return findMirrorNodeUtil(a.right, b.left, target)
+    
 
-def connectNodes(root):
+def findMirrorNode(root, target):
     if root is None:
-        return
-    while root:
-        if root.left:
-            if root.right:
-                root.left.next = root.right
-            else:
-
+        return None
+    if target == root:
+        return root
+    return findMirrorNodeUtil(root.left, root.right, target)
 
 
 root = Node(8)
@@ -37,6 +47,4 @@ root.right.right.right = Node(2)
       /  \   /  \
      4    7 19   2
 '''
-root = removesLeavesLessThanK(root, 3)
-inorder(root)
-print()
+print(findMirrorNode(root, root.right.right))

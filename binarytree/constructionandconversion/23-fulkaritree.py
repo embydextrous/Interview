@@ -18,7 +18,6 @@ def height(n, k):
     if n == 1:
         return 0
     h = 1
-    i = 1
     m = 0
     num = 1
     while num < n:
@@ -37,6 +36,6 @@ a = [ 1, 2, 5, 6, 7, 3, 8, 9, 10, 4]
 n = len(a)
 k = 3
 h = height(n, k)
-root = createTree(a, n, k, k, [0])
+root = createTree(a, n, h, k, [0])
 postorder(root)
 print()

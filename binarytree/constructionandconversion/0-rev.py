@@ -1,41 +1,39 @@
 from tree import Node, inorder
 from collections import deque
+from math import ceil, log
 
-'''
-Input
-       1
-      /  \
-     2    3
-    / \  / \
-   4   5 6  7
-Output:
-      12
-     / \
-    6   3
-   / \   \
-  4   5   6    
-'''
-def flip(root, parent, result):
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.bacche = []
+
+    def __repr__(self):
+        return f"{self.data}"
+
+def postorder(root):
     if root:
-        flip(root.left, root, result)
-        if result[0] is None:
-            result[0] = root
-        root.right = parent
-        if parent:
-            root.left = parent.right
-        else:
-            root.left = None         
+        for baccha in root.bacche:
+            postorder(baccha)
+        print(root.data, end = " ")
 
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-root.right.left = Node(6)
-root.right.right = Node(7)
-root.left.right.left = Node(8)
+def createTree(a, n, k, h, index):
+    if index[0] >= n or h == 0:
+        return None
+    root = Node(a[index[0]])
+    if h != 1 and index[0] + k <= n:
+        for i in range(k):
+            index[0] += 1
+            root.bacche.append(createTree(a, n, k, h - 1, index))
+    return root
 
-result = [None]
-flip(root, None, result)
-inorder(result[0])
+def height(n, k):
+    return ceil(log(n * (k - 1) + 1) / log(k))
+
+a = [ 1, 2, 5, 6, 7, 3, 4]
+n = len(a)
+k = 3
+h = height(n, k)
+root = createTree(a, n, k, h, [0])
+print(root.data, root.bacche)
+postorder(root)
 print()

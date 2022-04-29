@@ -17,6 +17,7 @@ def minSwaps(a):
     n = len(a)
     arrPos = [[a[i], i] for i in range(n)]
     arrPos.sort(key = lambda x : x[0])
+    print(arrPos)
     # to add index
     visited = set()
     result = 0
@@ -31,6 +32,6 @@ def minSwaps(a):
         i += 1 
     return result
             
-a = [101, 758, 315, 730, 472, 619, 460, 479]
+a = [4, 2, 3, 8, 5, 6, 7, 1]
 # 101 315 460 472 479 619 730 758
 print(minSwaps(a))

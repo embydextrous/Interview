@@ -1,20 +1,16 @@
-import heapq
+from heapq import heapify, heappush, heapreplace
 
 def maxFromSubArraysOfSizeK(a, k):
     h = [-1 * a[i] for i in range(k)]
-    heapq.heapify(h)
+    heapify(h)
     n = len(a)
-    for i in range(k, n+1):
+    for i in range(k, n):
         print(-1 * h[0], end = " ")
-        if i == n:
-            break
-        enter, exit = -1 * a[i], -1 * a[i - k]
-        for j in range(k):
-            if h[j] == exit:
-                h[j] = enter
-                heapq.heapify(h)
-                break
-    print()
+        if -h[0] < a[i]:
+            heapreplace(h, -a[i])
+        else:
+            heappush(h, -a[i])
+    print(-h[0])
 
 a = [8, 5, 10, 7, 9, 4, 15, 12, 90, 13]
 maxFromSubArraysOfSizeK(a, 4)

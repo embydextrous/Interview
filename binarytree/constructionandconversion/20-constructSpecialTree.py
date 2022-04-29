@@ -1,8 +1,8 @@
 # https://www.geeksforgeeks.org/construct-a-special-tree-from-given-preorder-traversal/
 from tree import Node, inorder
 
-pre = [10, 30, 20, 5, 15]
-preLN = ['N', 'N', 'L', 'L', 'L']
+pre = [1, 2, 3, 4, 5]
+preLN = ['N', 'L', 'N', 'L', 'L']
 '''
           10
          /  \
@@ -29,6 +29,17 @@ def construct(pre, preLN):
         i += 1
     return result
 
-root = construct(pre, preLN)
+def construct2(pre, preLN, preIndex):
+    if preIndex[0] >= len(pre):
+        return None
+    root = Node(pre[preIndex[0]])
+    if preLN[preIndex[0]] == 'N':
+        preIndex[0] += 1
+        root.left = construct2(pre, preLN, preIndex)
+        preIndex[0] += 1
+        root.right = construct2(pre, preLN, preIndex)
+    return root
+
+root = construct2(pre, preLN, [0])
 inorder(root)
 print()

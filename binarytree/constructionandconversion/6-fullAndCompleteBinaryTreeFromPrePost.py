@@ -9,7 +9,7 @@ def construct(pre, preLeft, preRight, post, postLeft, postRight):
     left = pre[preLeft + 1]
     postIndex = post.index(left)
     root.left = construct(pre, preLeft + 1, preLeft + postIndex - postLeft + 1, post, postLeft, postIndex)
-    root.right = construct(pre, preLeft + postIndex - postLeft + 2, preRight, post, postIndex + 1, postRight)
+    root.right = construct(pre, preLeft + postIndex - postLeft + 2, preRight, post, postIndex + 1, postRight - 1)
     return root
 
 '''

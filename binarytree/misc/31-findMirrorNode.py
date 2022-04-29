@@ -42,4 +42,4 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-print(findMirrorNode(root, root.right.right).data)
+print(findMirrorNode(root, root.right.left).data)
