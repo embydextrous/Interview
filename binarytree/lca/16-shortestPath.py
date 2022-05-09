@@ -11,10 +11,10 @@ Examples:
 Input: root = [5, 1, 2, 3, null, 6, 4], startValue = 3, destValue = 6
 
               5
-          /      \
-       1          2
-    /          /     \
-  3        6         4
+            /   \
+           1     2
+         /     /   \
+        3     6     4
 
 Output: “UURL” 
 Explanation: The shortest path is: 3 → 1 → 5 → 2 → 6.

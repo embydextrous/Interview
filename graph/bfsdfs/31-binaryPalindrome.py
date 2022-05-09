@@ -16,6 +16,7 @@ Explanation : the 8 sized substring is 11......
 wrapped to two places to give 11.
 '''
 from random import randint
+
 def bp(n, k):
     if k > n or n % k == 0:
         return 10 ** (n - 1) + 1

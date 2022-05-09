@@ -2,7 +2,7 @@ from tree import Node, inorder
 from collections import defaultdict, deque
 
 # 20, 23, 25
-# 31, 32, 33, 34, 36, 37, 38, 39
+# 32, 33, 34, 36, 37, 38, 39
 def findMirrorNodeUtil(a, b, target):
     if a is None or b is None:
         return None

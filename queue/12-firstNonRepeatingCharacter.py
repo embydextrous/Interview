@@ -1,14 +1,14 @@
+from collections import deque, defaultdict
+
 def firstNonRepeatingCharacter(s):
-    d = {}
-    q = []
+    d = defaultdict(int)
+    q = deque()
     for c in s:
         if c not in d:
-            d[c] = 1
             q.append(c)
-        else:
-            d[c] += 1
+        d[c] += 1
     while len(q) > 0:
-        x = q.pop(0)
+        x = q.popleft()
         if d[x] == 1:
             return x
     return None

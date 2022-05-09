@@ -1,31 +1,29 @@
-import sys
+from collections import deque
 
 def sort(q):
+    c = 0
     n = len(q)
-    s = 0
-    lastMinEle = None
-    minEle = sys.maxsize
-    while s < n:
-        minEle = sys.maxsize
-        for i in range(n):
-            x = q.pop(0)
-            if lastMinEle is None:
-                minEle = min(x, minEle)
+    q1 = deque()
+    while c != n:
+        maxi = None
+        while len(q) > c:
+            x = q.popleft()
+            if maxi == None:
+                maxi = x
+            elif x >= maxi:
+                q1.append(maxi)
+                maxi = x
             else:
-                if x > lastMinEle:
-                    minEle = min(x, minEle)
-            q.append(x)
-        c = 0
-        for i in range(n):
-            x = q.pop(0)
-            if x == minEle:
-                c += 1
-            else:
-                q.append(x)
-        for i in range(c):
-            q.append(minEle)
-        s += c
-        lastMinEle = minEle
+                q1.append(x)
+        q1.append(maxi)
+        while len(q) > 0:
+            q1.append(q.popleft())
+        c += 1
+        q1, q = q, q1
+    return q
+
+q = deque([9, 9, 1, 1])
+print(sort(q))
 
 q = [9, 1, 1, 6, 1, 3, 5, 6, 9, 4]
 sort(q)

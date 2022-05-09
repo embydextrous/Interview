@@ -1,40 +1,36 @@
-# https://www.geeksforgeeks.org/distance-nearest-cell-1-binary-matrix/
-def isValid(M, R, C, i, j):
-    return i >= 0 and j >= 0 and i < R and j < C and M[i][j] == 0
+from collections import deque
 
+ROW = [0, -1, 0, 1]
+COL = [-1, 0, 1, 0]
 
-def findNearestOne(M):
+def isSafe(R, C, i, j):
+    return i >= 0 and i < R and j >= 0 and j < C
+
+def bfs(M, R, C, i, j):
+    q = deque([[i, j, 0]])
+    visited = set()
+    visited.add((i, j))
+    while len(q) > 0:
+        i, j, d = q.popleft()
+        if M[i][j] == 1:
+            return d
+        for k in range(4):
+            x, y = i + ROW[k], j + COL[k]
+            if isSafe(R, C, x, y) and (x, y) not in visited:
+                visited.add((x, y))
+                q.append([x, y, d + 1])
+
+def nearest1(M):
     R, C = len(M), len(M[0])
-    visited = [[False for i in range(C)] for j in range(R)]
-    q = []
+    result = [[0 for j in range(C)] for i in range(R)]
     for i in range(R):
         for j in range(C):
-            if M[i][j] == 1:
-                q.append((i, j, 0))
-    while len(q) > 0:
-        (i, j, d) = q.pop(0)
-        visited[i][j] = True
-        M[i][j] = d
-        if isValid(M, R, C, i - 1, j) and not visited[i-1][j]:
-            M[i - 1][j] = 1
-            q.append((i - 1, j, d + 1))
-        if isValid(M, R, C, i, j - 1) and not visited[i][j-1]:
-            M[i][j - 1] = 1
-            q.append((i, j - 1, d + 1))
-        if isValid(M, R, C, i + 1, j) and not visited[i+1][j]:
-            M[i + 1][j] = 1
-            q.append((i + 1, j, d + 1))
-        if isValid(M, R, C, i, j + 1) and not visited[i][j+1]:
-            M[i][j+1] = 1
-            q.append((i, j + 1, d + 1))
-    print(M)
+            if M[i][j] != 1:
+                result[i][j] = bfs(M, R, C, i, j)
+    return result
 
-mat = [[0, 0, 0, 1], 
-       [0, 0, 1, 1],
-       [0, 1, 1, 0]]
+M = [[0, 0, 0, 1], 
+     [0, 0, 1, 1],
+     [0, 1, 1, 0]]
 
-findNearestOne(mat)
-
-
-
-
+print(nearest1(M))

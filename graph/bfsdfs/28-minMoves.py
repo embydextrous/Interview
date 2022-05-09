@@ -26,7 +26,6 @@ Output : 4
 '''
 from collections import deque
 
-
 def canTravel(M, N, x, y):
     return x >= 0 and x < N and y >= 0 and y < N and (M[x][y] == 2 or M[x][y] == 3)
 
