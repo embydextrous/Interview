@@ -16,6 +16,9 @@ class Node:
         self.left = None
         self.right = None
 
+    def __repr__(self):
+        return f"{self.data}"
+
 def insert(root, data):
     if root is None:
         return Node(data)

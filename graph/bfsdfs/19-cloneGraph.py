@@ -1,3 +1,5 @@
+from collections import deque
+
 class GraphNode:
     def __init__(self, data):
         self.data = data
@@ -21,9 +23,9 @@ class Graph:
             print("{} -> {}".format(vertex, vertex.neighbors))
 
 def bfs(clone, vertex, nodeMap):
-    q = [vertex]
+    q = deque([vertex])
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         if node not in nodeMap:
             nodeMap[node] = GraphNode(node.data)
         cloneNode = nodeMap[node]
@@ -31,8 +33,8 @@ def bfs(clone, vertex, nodeMap):
             if v not in nodeMap:
                 nodeMap[v] = GraphNode(v.data)
                 q.append(v)
-            cloneNode.neighbors.append(nodeMap[v])
-        clone.addVertex(cloneNode)
+            clone.addEdge(cloneNode, nodeMap[v])
+        
 
 def cloneGraph(g):
     clone = Graph()
@@ -40,6 +42,8 @@ def cloneGraph(g):
     for vertex in g.vertices:
         if vertex not in nodeMap:
             bfs(clone, vertex, nodeMap)
+    for vertex in g.vertices:
+        clone.addVertex(nodeMap[vertex])
     return clone
 
 g = Graph()

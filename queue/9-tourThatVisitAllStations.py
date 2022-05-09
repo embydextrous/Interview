@@ -1,35 +1,39 @@
 # https://www.geeksforgeeks.org/find-a-tour-that-visits-all-stations/
-
 class Station:
-    def __init__(self, petrol, distanceToNextStation):
+    def __init__(self, petrol, next):
         self.petrol = petrol
-        self.distanceToNextStation = distanceToNextStation
+        self.next = next
 
-def findTour(stations):
+def tour(stations):
     start = -1
-    numStations = len(stations)
-    for i in range(numStations):
-        if stations[i].petrol >= stations[i].distanceToNextStation:
+    n = len(stations)
+    for i in range(n):
+        if stations[i].petrol > stations[i].next:
             start = i
             break
     if start == -1:
-        return -1
-    end = (start + 1) % numStations
-    petrolLeft = stations[start].petrol - stations[start].distanceToNextStation
+        return "Not Possible"
+    end = (start + 1) % n
+    petrol = stations[start].petrol - stations[start].next
     while start != end:
-        petrol = petrolLeft + stations[end].petrol
-        if petrol >= stations[end].distanceToNextStation:
-            petrolLeft = petrol - stations[end].distanceToNextStation
+        petrol += stations[end].petrol
+        if petrol >= stations[end].next:
+            petrol -= stations[end].next
+            end = (end + 1) % n
         else:
-            if (end + 1) % numStations <= start:
-                return -1
-            start = end + 1
-            petrolLeft = stations[start].petrol - stations[start].distanceToNextStation
-        end = (end + 1) % numStations
-    return end
+            start = -1
+            while True:
+                i = end + 1
+                if i >= n:
+                    return "Not Possible"
+                if stations[i].petrol > stations[i].next:
+                    start = i
+                    break
+                end = (start + 1) % n
+    return start
 
-stations = [Station(4, 6), Station(6, 5)]
-print(findTour(stations))
+stations = [Station(6, 4), Station(3, 6), Station(7, 3)]
+print(tour(stations))
     
 
 

@@ -1,61 +1,56 @@
 from tree import Node
 
-def findDistance(root, node, distance):
+def distanceDown(root, a, k):
     if root is None:
         return -1
-    if root == node:
-        return distance
-    lDistance = findDistance(root.left, node, distance + 1)
-    if lDistance != -1:
-        return lDistance
-    return findDistance(root.right, node, distance + 1)
-
-def lcaUtil(root, a, b, visitedA, visitedB):
-    if root is None:
-        return None
     if root == a:
-        visitedA[0] = True
-        return root
-    if root == b:
-        visitedB[0] = True
-        return root
-    rootA = lcaUtil(root.left, a, b, visitedA, visitedB)
-    rootB = lcaUtil(root.right, a, b, visitedA, visitedB)
-    if rootA and rootB:
-        return root
-    return rootA if rootA else rootB
+        return k
+    l = distanceDown(root.left, a, k + 1)
+    if l != -1:
+        return l
+    return distanceDown(root.right, a, k + 1)
 
-def lca(root, a, b):
+def findDistanceUtil(root, a, b, k):
     if root is None:
-        return None
-    visitedA = [False]
-    visitedB = [False]
-    _lca = lcaUtil(root, a, b, visitedA, visitedB)
-    if (visitedA[0] and visitedB[0]) or (visitedA[0] and find(root, b)) or (visitedB[0] and find(root, a)):
-        return _lca
-    return None
+        return (None, -1)
+    if root == a or root == b:
+        if root == a and find(a, b):
+            return (root, distanceDown(a, b, 0))
+        if root == b and find(b, a):
+            return (root, distanceDown(b, a, 0))
+        return (root, k)
+    left, distLeft = findDistanceUtil(root.left, a, b, k+1)
+    right, distRight = findDistanceUtil(root.right, a, b, k+1)
+    print(distLeft, distRight)
+    if left and right:
+        return (root, distLeft + distRight - 2 * k)
+    return (left, distLeft) if left else (right, distRight)
 
 def find(root, a):
     if root is None:
         return False
     return root == a or find(root.left, a) or find(root.right, a)
 
-def findDist(root, a, b):
-    l = lca(root, a, b)
-    if l is None:
-        return -1
-    if l == a:
-        return findDistance(a, b, 0)
-    if l == b:
-        return findDistance(b, a, 0)
-    return findDistance(l, a, 0) + findDistance(l, b, 0)
 
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-root.right.left = Node(6)
-root.right.right = Node(7)
+'''
+        8
+      /   \
+     3     10
+   /   \     \
+  1    16     14
+      /  \   /  \
+     4    7 19   2
+'''
 
-print(findDist(root, root.left, root.right))
+root = Node(8)
+root.left = Node(3)
+root.left.left = Node(1)
+root.left.right = Node(16)
+root.left.right.left = Node(4)
+root.left.right.right = Node(7)
+root.right = Node(10)
+root.right.right = Node(14)
+root.right.right.left = Node(19)
+root.right.right.right = Node(2)
+
+print(findDistanceUtil(root, root.left.right.left, root.left.right.right, 0))

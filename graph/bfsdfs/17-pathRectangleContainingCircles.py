@@ -18,7 +18,7 @@ def constructMatrix(m, n, circles, r):
         x, y = circle[0] - 1, circle[1] - 1
         for i in range(max(0, x - r), min(m, x + r + 1)):
             for j in range(max(0, y - r), min(m, y + r + 1)):
-                M[i][j] = 1
+                M[i][j] = 2
     return M
 
 def isSafe(R, C, i, j):

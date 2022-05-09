@@ -39,6 +39,17 @@ def height(parent):
     print(depth)
     return max(depth)
 
+def h(parent):
+    maxH = 0
+    for i in range(len(parent)):
+        j = i
+        height = 0
+        while parent[j] != -1:
+            height += 1
+            j = parent[j]
+        maxH = max(maxH, height)
+    return height
+
 parent = [1, 5, 5, 2, 2, -1, 3]
 # len(parent) = 7
 # idx - 5

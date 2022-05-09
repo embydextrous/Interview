@@ -24,8 +24,11 @@ Input : M[4][4] = {{ 3 , 3 , 1 , 0 },
                    { 0 , 3 , 3 , 3 }};
 Output : 4
 '''
-def isSafe(N, x, y):
-    return x >= 0 and x < N and y >= 0 and y < N
+from collections import deque
+
+
+def canTravel(M, N, x, y):
+    return x >= 0 and x < N and y >= 0 and y < N and (M[x][y] == 2 or M[x][y] == 3)
 
 def minMoves(M):
     ROW = [0, -1, 0, 1]
@@ -39,33 +42,20 @@ def minMoves(M):
                 break
         if x != -1:
             break
-    q1, q2 = [(x, y)], []
-    foundDest = False
-    pathLen = 0
-    while len(q1) > 0:
-        while len(q1) > 0:
-            (x, y) = q1.pop(0)
-            for k in range(4):
-                i, j = x + ROW[k], y + COL[k]
-                if isSafe(N, i, j):
-                    if M[i][j] == 2:
-                        foundDest = True
-                        break
-                    elif M[i][j] == 3:
-                        M[i][j] == 0
-                        q2.append((i, j))
-            if foundDest:
-                break
-        pathLen += 1
-        if foundDest:
-            break
-        q1, q2 = q2, q1
-    if foundDest:
-        return pathLen
-    return 0
+    q = deque([[x, y, 0]])
+    while len(q) > 0:
+        (x, y, d) = q.popleft()
+        for k in range(4):
+            i, j = x + ROW[k], y + COL[k]
+            if canTravel(M, N, i, j):
+                if M[i][j] == 2:
+                    return d + 1    
+                M[i][j] = 0
+                q.append([i, j, d + 1])
+    return -1
 
 M = [[ 3 , 3 , 1, 0 ],
-     [ 3 , 0 , 3, 3 ],
+     [ 0 , 0 , 3, 3 ],
      [ 2 , 3 , 0, 3 ],
      [ 0 , 3 , 3, 3 ]]
 

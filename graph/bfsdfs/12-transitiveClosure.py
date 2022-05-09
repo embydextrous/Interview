@@ -6,18 +6,12 @@ The reachability matrix is called transitive closure of a graph.
 from graph import Graph, printMatrix
 
 def dfs(g, s, t, tc):
-    if(s == t):
-        # Check if graph points to itself, necessary as entry function calls for same value of s and t
-        if(t in g.graph[s]):
-            tc[s][t] = 1
-    else:
-        # t is reachable from s
+    if s != t:
         tc[s][t] = 1
-    # Look for deeper nodes
     for i in g.graph[t]:
         if tc[s][i] == 0:
+            # Self edge
             if i == s:
-                # Simply mark because this will be anyways called by entry function
                 tc[s][i] = 1
             else:
                 dfs(g, s, i, tc)

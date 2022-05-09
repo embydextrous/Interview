@@ -26,16 +26,14 @@ def lca(root, a, b):
     lvlB = level(root, b, 0)
     if lvlB == -1:
         return None
-    if lvlA - lvlB > 0:
-        i = 0
-        while i < lvlA - lvlB:
+    if lvlA > lvlB:
+        while lvlA != lvlB:
+            lvlA -= 1
             a = a.parent
-            i += 1
-    elif lvlB - lvlA > 0:
-        i = 0
-        while i < lvlB - lvlA:
+    if lvlB > lvlA:
+        while lvlA != lvlB:
+            lvlB -= 1
             b = b.parent
-            i += 1
     while a != b:
         a = a.parent
         b = b.parent
@@ -49,4 +47,4 @@ root.left.right = Node(5, root.left)
 root.right.left = Node(6, root.right)
 root.right.right = Node(7, root.right)
 
-print(lca(root, root.left, Node(10, None)).data)
+print(lca(root, root.left, root.left.right).data)

@@ -1,5 +1,6 @@
 # https://www.geeksforgeeks.org/applications-of-breadth-first-traversal/
 # https://www.geeksforgeeks.org/applications-of-depth-first-search/
+from collections import defaultdict
 
 class Graph:
     def __init__(self, V):

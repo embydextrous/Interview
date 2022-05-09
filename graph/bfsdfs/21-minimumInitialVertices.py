@@ -48,7 +48,6 @@ def findStartingPoints(M):
         for j in range(C):
             vArr.append((M[i][j], (i, j)))
     vArr.sort(key = lambda x : -x[0])
-    print(vArr)
     result = []
     for element in vArr:
         (i, j) = element[1]

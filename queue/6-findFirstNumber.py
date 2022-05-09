@@ -1,9 +1,10 @@
 # https://www.geeksforgeeks.org/smallest-multiple-of-a-given-number-made-of-digits-0-and-9-only/
+from collections import deque
 
 def findFirstNumber(k):
-    q = [9]
+    q = deque([9])
     while True:
-        n = q.pop(0)
+        n = q.popleft()
         if n % k == 0:
             return n
         q.append(n * 10)

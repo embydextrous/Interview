@@ -7,27 +7,28 @@ from the root to the bottom.
 For example, consider the below tree, if given queries are (1, 5), (1, 6), and (2, 6), then answers 
 should be true, true, and false respectively. 
 '''
+from collections import defaultdict
+from email.policy import default
 from graph import UndirectedGraph
 
 class Solution:
     def __init__(self, g, root):
-        self.root = root
-        self.timeMap = {}
-        self.g = g
-        self.fillTimeMap(root, [0], set())
+        self.timeMap = defaultdict(list)
+        self.fillTimeMap(g, root, None, [0])
 
-    def fillTimeMap(self, u, time, visited):
-        visited.add(u)
-        self.timeMap[u] = [time[0], -1]
+    def fillTimeMap(self, g, root, parent, time):
         time[0] += 1
-        for v in self.g.graph[u]:
-            if v not in visited:
-                self.fillTimeMap(v, time, visited)
-                time[0] += 1
-        self.timeMap[u][1] = time[0]
+        self.timeMap[root].append(time[0])
+        for v in g.graph[root]:
+            if v != parent:
+                self.fillTimeMap(g, v, root, time)
+        time[0] += 1
+        self.timeMap[root].append(time[0])
 
     def areOnSamePath(self, u, v):
-        return self.timeMap[v][0] > self.timeMap[u][0] and self.timeMap[v][1] < self.timeMap[u][1]or self.timeMap[u][0] > self.timeMap[v][0] and self.timeMap[u][1] < self.timeMap[v][1]
+        enterU, exitU = self.timeMap[u]
+        enterV, exitV = self.timeMap[v]
+        return (enterV > enterU and exitV < exitU) or (enterU > enterV and exitU < exitV)
 
 
 g = UndirectedGraph(7)

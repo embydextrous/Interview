@@ -1,3 +1,4 @@
+from collections import deque
 from tree import Node
 
 def find(root, a):
@@ -12,22 +13,23 @@ def printCommonPath(root, a, b, path):
     if root == a:
         if find(a, b):
             print(path)
-        return root
+        return a
     if root == b:
         if find(b, a):
             print(path)
-        return root
+        return b
     left = printCommonPath(root.left, a, b, path)
     right = printCommonPath(root.right, a, b, path)
     if left and right:
-        print(path)
         path.pop()
         path.pop()
         print(path)
+        return root
+    result = left if left else right
     path.pop()
-    return left if left else right
-    
+    return result
 
+    
 '''
         8
       /   \
@@ -37,6 +39,8 @@ def printCommonPath(root, a, b, path):
       /  \   /  \
      4    7 19   2
 '''
+
+
 
 root = Node(8)
 root.left = Node(3)
@@ -49,4 +53,5 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-printCommonPath(root, root.left.right.left, root.right.right.right, [])
+print(printCommonPath(root, root.left.right.right, root.left.right.left, []))
+

@@ -1,24 +1,19 @@
 # https://www.geeksforgeeks.org/minimum-sum-squares-characters-counts-given-string-removing-k-characters/
+from collections import Counter
 import heapq
 
 def minimumSumOfSquares(s, k):
-    # 1. find frequency of each element - value is -ve to simulate maxHeap
-    d = { x : -1 * s.count(x) for x in s }
-    values = list(d.values())
-    # Build max heap
-    heapq.heapify(values)
-    # In each turn check if heap top
-    # if heap top is 0 return 0
-    # else remove 1 from top element and call heapify again
+    d = Counter(s)
+    h = []
+    for key in d:
+        heapq.heappush(h, -d[key])
     for i in range(k):
-        x = -values[0]
-        if x == 0:
-            return 0
-        values[0] += 1
-        heapq.heapify(values)
+        x = heapq.heappop(h) * -1
+        if x > 1:
+            heapq.heappush(h, (x - 1) * -1)
     sum = 0
-    for i in range(len(values)):
-        sum += values[i] ** 2
+    while len(h) > 0:
+        sum += heapq.heappop(h) ** 2
     return sum
 
 s = "abbccc"

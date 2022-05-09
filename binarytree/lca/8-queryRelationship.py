@@ -1,3 +1,4 @@
+from collections import defaultdict
 from tree import Node
 
 # Also see, https://www.geeksforgeeks.org/lowest-common-ancestor-for-a-set-of-nodes-in-a-rooted-tree/
@@ -5,7 +6,7 @@ from tree import Node
 class AncestorDescendentRelationship:
     def __init__(self, root):
         self.root = root
-        self.inOutMap = {}
+        self.inOutMap = defaultdict(list)
         self.fillInOutMap(root, [0])
         print(self.inOutMap)
 
@@ -13,11 +14,11 @@ class AncestorDescendentRelationship:
         if root is None:
             return
         time[0] += 1
-        self.inOutMap[root.data] = [time[0], -1]
+        self.inOutMap[root.data].append(time[0])
         self.fillInOutMap(root.left, time)
         self.fillInOutMap(root.right, time)
         time[0] += 1
-        self.inOutMap[root.data][1] = time[0]
+        self.inOutMap[root.data].append(time[0])
     
     def isAncestor(self, a, b):
         if not a in self.inOutMap or not b in self.inOutMap:

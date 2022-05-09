@@ -9,45 +9,38 @@ from (4, 5) to (1, 1) (4, 5) -> (5, 3) -> (3, 2) -> (1, 1)  as shown in diagram
 '''
 # https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/
 
-def isSafe(N, i, j):
-    return i >= 1 and i <= N and j >=1 and j <= N
+from collections import deque
 
-def minHops(N, sx, sy, fx, fy):
-    if fx == sx and fy == sy:
-        return 0
-    visited = set()
-    q1, q2 = [(sx, sy)], []
+def isSafe(N, x, y):
+    return x > 0 and x <= N and y > 0 and y <= N
+
+def knightTour(N, sx, sy, fx, fy):
+    q = deque([[sx, sy, 0]])
+    result = {}
+    result[(sx, sy)] = (-1, -1)
     ROW = [1, -1, -2, -2, -1, 1, 2, 2]
     COL = [-2, -2, -1, 1, 2, 2, 1, -1]
-    steps = 0
-    result = {}
-    while len(q1) > 0:
-        steps += 1
-        while len(q1) > 0:
-            (i, j) = q1.pop(0)
-            for k in range(8):
-                x, y = i + ROW[k], j + COL[k]
-                if x == fx and y == fy:
-                    result[(x, y)] = (i, j)
-                    break
-                point = (x, y)
-                if isSafe(N, x, y) and point not in visited:
-                    result[(x, y)] = (i, j)
-                    visited.add(point)
-                    q2.append(point)
-        q1, q2 = q2, q1
-        if (fx, fy) in result:
+    minSteps = 0
+    while len(q) > 0:
+        i, j, d = q.popleft()
+        if i == fx and j == fy:
+            minSteps = d
             break
-    s = []
+        for k in range(8):
+            x, y = i + ROW[k], j + COL[k]
+            if isSafe(N, x, y) and (x, y) not in result:
+                result[(x, y)] = (i, j)
+                q.append([x, y, d + 1])
+    print(f"Minimum steps to reach {(fx, fy)} from {(sx, sy)} are {minSteps}.")
+    s = deque()
     i, j = fx, fy
-    while (i, j) != (sx, sy):
-        s.append((i, j))
-        (i, j) = result[(i, j)]
-    s.append((sx, sy))
-    return s[::-1]
+    while (i, j) != (-1, -1):
+        s.appendleft((i, j))
+        i, j = result[(i, j)]
+    print(s)
 
 N = 30
 sx, sy = 1, 1
 fx, fy = 30, 30
-print(minHops(N, sx, sy, fx, fy))
+print(knightTour(N, sx, sy, fx, fy))
 
