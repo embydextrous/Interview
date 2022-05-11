@@ -45,6 +45,7 @@ def solution(a):
         left = prevSmaller[i]
         right = nextSmaller[i] if nextSmaller[i] != -1 else n
         lg = right - left - 1
+        print(i, left, right, lg)
         result[lg] = max(result[lg], a[i])
     for i in range(n-1, 0, -1):
         result[i] = max(result[i], result[i+1])

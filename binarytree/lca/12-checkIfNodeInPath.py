@@ -1,43 +1,37 @@
 from tree import Node
 
-def getPath(root, node, path):
+def checkDown(root, a, target, targetFound):
     if root is None:
         return False
-    path.append(root.data)
-    if root == node:
-        return True
-    left = getPath(root.left, node, path)
+    if root == a:
+        return a == target or targetFound
+    left = checkDown(root.left, a, target, target == root)
     if left:
         return left
-    right = getPath(root.right, node, path)
-    if right:
-        return right
-    path.pop()
-    return False
-    
-def checkNodeInPath(root, a, b, key):
+    return checkDown(root.right, a, target, target == root)
+
+def checkInPathUtil(root, a, b, target, result):
     if root is None:
-        return 0
-    path1 = []
-    path2 = []
-    existA = getPath(root, a, path1)
-    existsB = getPath(root, b, path2)
-    if not existA or not existsB:
-        return 0
-    lca = None
-    while path1[0] == path2[0]:
-        lca = path1.pop(0)
-        path1.pop(0)
-        path2.pop(0)
-    if lca == key:
+        return False
+    if root == a:
+        if checkDown(a, b, target, False):
+            result[0] = True
         return True
-    for data in path1:
-        if data == key:
-            return True
-    for data in path2:
-        if data == key:
-            return True
-    return False
+    if root == b:
+        if checkDown(b, a, target, False):
+            result[0] = True
+        return True
+    left = checkInPathUtil(root.left, a, b, target, result)
+    right = checkInPathUtil(root.right, a, b, target, result)
+    if left and right:
+        result[0] = root == target
+        return result[0]
+    return left if left else right
+
+def checkInPath(root, a, b, target):
+    result = [False]
+    checkInPathUtil(root, a, b, target, result)
+    return result[0]
 
 root = Node(8)
 root.left = Node(3)
@@ -59,5 +53,5 @@ root.right.right.right = Node(2)
       /  \   /  \
      4    7 19   2
 '''
-print(checkNodeInPath(root, root.left.right.left, root.right.right.left, 1))
+print(checkInPath(root, root.left.right.left, root.right.right.left, root.left.left))
 

@@ -58,11 +58,5 @@ s.push(4)
 print(s.getMiddle())
 s.push(5)
 print(s.getMiddle())
-s.deleteMiddle()
-print(s.getMiddle())
-s.deleteMiddle()
-print(s.getMiddle())
-s.deleteMiddle()
-print(s.getMiddle())
 
 

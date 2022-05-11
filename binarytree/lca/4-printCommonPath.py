@@ -20,7 +20,6 @@ def printCommonPath(root, a, b, path):
     left = printCommonPath(root.left, a, b, path)
     right = printCommonPath(root.right, a, b, path)
     if left and right:
-        print(path)
         path.pop()
         path.pop()
         print(path)
@@ -49,4 +48,4 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-printCommonPath(root, root.left.right.left, root.right.right.right, [])
+printCommonPath(root, root.left, root.right.right.left, [])

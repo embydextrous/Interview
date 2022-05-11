@@ -1,9 +1,11 @@
-def deleteMiddle(s, n, curr):
-    if len(s) > 0:
-        q = s.pop()
-        deleteMiddle(s, n, curr + 1)
-        if curr != n//2:
-            s.append(q)
+def deleteMiddle(s, n, i):
+    if n == 0:
+        return
+    x = s.pop()
+    if i == n // 2:
+        return
+    deleteMiddle(s, n, i + 1)
+    s.append(x)
 
 s = [1, 2, 3, 4, 5, 6]
 deleteMiddle(s, len(s), 0)

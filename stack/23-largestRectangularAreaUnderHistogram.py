@@ -1,6 +1,5 @@
 # https://www.geeksforgeeks.org/largest-rectangle-under-histogram/
 
-
 hist = [6, 2, 5, 4, 5, 1, 6]
 
 def nextSmallerIndex(a):
