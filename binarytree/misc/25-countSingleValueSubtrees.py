@@ -27,32 +27,25 @@ There are five subtrees with single values.
 
 def countUtil(root, count):
     if root is None:
-        return (True, -1)
-    isLeftSingly, leftValue = countUtil(root.left, count)
-    if not isLeftSingly:
-        return
-    isRightSingly, rightValue = countUtil(root.right, count)
-    if not isRightSingly:
-        return
-    if isLeftSingly and isRightSingly:
-        isSingly = False
-        if leftValue == -1 and rightValue == -1:
+        return True
+    left = countUtil(root.left, count)
+    right = countUtil(root.right, count)
+    if left and right:
+        if root.left is None and root.right is None:
             count[0] += 1
-            isSingly = True
-        elif leftValue == -1 and rightValue == root.data:
+            return True
+        elif root.left is None and root.right.data == root.data:
             count[0] += 1
-            isSingly = True
-        elif rightValue == -1 and leftValue == root.data:
+            return True
+        elif root.right is None and root.left.data == root.data:
             count[0] += 1
-            isSingly = True
-        elif leftValue == rightValue and rightValue == root.data:
+            return True
+        elif root.data == root.left.data and root.data == root.right.data:
             count[0] += 1
-            isSingly = True
-    return (isSingly, root.data)
+            return True
+    return False
 
-def countSubtrees(root):
-    if root is None:
-        return 0
+def count(root):
     count = [0]
     countUtil(root, count)
     return count[0]
@@ -64,4 +57,4 @@ root.left.left = Node(4)
 root.left.right = Node(4)
 root.right.right = Node(5)
 
-print(countSubtrees(root))
+print(count(root))

@@ -1,5 +1,5 @@
 from tree import Node
-import sys
+from collections import deque
 
 '''
           10
@@ -13,47 +13,50 @@ import sys
       1 2  3 4  5 6  7  8
 '''
 
-def closestLeafDown(root, dist, result):
+def closestLeafDown(root):
     if root is None:
-        return
-    q1, q2 = [root], []
-    print(root.data, dist)
-    while len(q1) > 0:
-        while len(q1) > 0:
-            node = q1.pop(0)
-            if node.left is None and node.right is None and dist < result[1]:
-                result[0] = node
-                result[1] = dist
-                return
-            if node.left:
-                q2.append(node.left)
-            if node.right:
-                q2.append(node.right)
-        q1, q2 = q2, q1
-        dist += 1
+        return -1
+    q = deque([[root, 0]])
+    while len(q) > 0:
+        node, d = q.popleft()
+        if node.left is None and node.right is None:
+            return d
+        if node.left:
+            q.append([node.left, d + 1])
+        if node.right:
+            q.append([node.right, d + 1])
 
-def closestLeafUp(root, node, result):
+def closestLeafUtil(root, node, dist, leaf):
     if root is None:
         return -1
     if root == node:
-        closestLeafDown(root, 0, result)
+        x = closestLeafDown(root)
+        if x < dist[0]:
+            dist[0] = x
+            leaf[0] = root
         return 0
-    dl = closestLeafUp(root.left, node, result)
+    dl = closestLeafUtil(root.left, node, dist, leaf)
     if dl != -1:
-        closestLeafDown(root.right, dl + 2, result)
-        return 1 + dl
-    dr = closestLeafUp(root.right, node, result)
+        x = dl + 2 + closestLeafDown(root.right)
+        if x < dist[0]:
+            dist[0] = x
+            leaf[0] = root
+        return dl + 1
+    dr = closestLeafUtil(root.right, node, dist, leaf)
     if dr != -1:
-        closestLeafDown(root.left, dr + 2, result)
-        return 1 + dr
+        x = dr + 2 + closestLeafDown(root.left)
+        if x < dist[0]:
+            dist[0] = x
+            leaf[0] = root
+        return dr + 1
     return -1
 
 def closestLeaf(root, node):
-    if root is None:
-        print(None)
-    result = [None, sys.maxsize]
-    closestLeafUp(root, node, result)
-    print("The closest leaf to {} is {} at a distance of {}".format(node.data, result[0].data, result[1]))
+    dist = [10**9]
+    leaf = [None]
+    closestLeafUtil(root, node, dist, leaf)
+    print(dist[0])
+    return leaf[0]
 
 root = Node(1)
 root.left = Node(12)

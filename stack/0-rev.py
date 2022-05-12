@@ -1,5 +1,6 @@
 from collections import deque
 
+# 9, 25 - 39
 hist = [6, 2, 5, 4, 5, 1, 6]
 
 def nextSmallerIndex(a):

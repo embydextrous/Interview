@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, data, parent):
         self.data = data
@@ -5,39 +7,28 @@ class Node:
         self.right = None
         self.parent = parent
 
-def findRight(node):
-    if node is None:
+def findRight(root):
+    if root is None:
         return None
-    if node.parent is None:
+    if root.parent is None:
         return None
-    parent = node.parent
-    level = 0
+    upd = 1
+    parent = root.parent
     while parent:
-        if parent.right == node:
-            parent, node = parent.parent, parent 
-            level += 1
-        else:
-            break
-    while parent:
-        if parent.right is None:
-            parent = parent.parent
-            level += 1
-            continue
-        k = 0
-        q1, q2 = [parent.right], []
-        while len(q1) > 0:
-            while len(q1) > 0:
-                noad = q1.pop(0)
-                if level == k:
-                    return noad
-                if noad.left:
-                    q2.append(noad.left)
-                if noad.right:
-                    q2.append(noad.right)
-            k += 1
-            q1, q2 = q2, q1
-        level += 1
-        parent = parent.parent
+        if parent.right == root:
+            upd += 1
+        elif parent.left == root:
+            q = deque([[parent, 0]])
+            while len(q) > 0:
+                node, d = q.popleft()
+                if d == upd:
+                    return node.data
+                if node.left and node.left != root:
+                    q.append([node.left, d + 1])
+                if node.right:
+                    q.append([node.right, d + 1])
+            upd += 1
+        root, parent = parent, parent.parent
 
 '''
              1
@@ -63,7 +54,7 @@ root.right.right = Node(5, root.right)
 root.right.right.right = Node(8, root.right.right)
 root.right.right.right.right = Node(12, root.right.right.right)
 
-print(findRight(root.left.left.left.left).data)
+print(findRight(root.left.left.left.left))
     
     
     

@@ -7,7 +7,7 @@ def countStrictlyIncreasingSubArrays(a):
         if r < n - 1 and a[r] < a[r+1]:
             r += 1
         else:
-            count += ((r-l+1) * (r-l)) // 2
+            count += ((r-l+1) * (r-l+2)) // 2
             l = r = r + 1
     return count
 

@@ -12,17 +12,18 @@ def printCommonPath(root, a, b, path):
     if root == a:
         if find(a, b):
             print(path)
-        return root
+        path.pop()
+        return a
     if root == b:
         if find(b, a):
             print(path)
-        return root
+        path.pop()
+        return b
     left = printCommonPath(root.left, a, b, path)
     right = printCommonPath(root.right, a, b, path)
     if left and right:
-        path.pop()
-        path.pop()
         print(path)
+        return root
     path.pop()
     return left if left else right
     

@@ -1,49 +1,61 @@
-from tree import Node, inorder
 from collections import defaultdict, deque
 
-# 20, 23, 25
-# 32, 33, 34, 36, 37, 38, 39
-def findMirrorNodeUtil(a, b, target):
-    if a is None or b is None:
+class Node:
+    def __init__(self, data, parent):
+        self.data = data
+        self.left = None
+        self.right = None
+        self.parent = parent
+
+    def __repr__(self):
+        return f"{self.data}"
+
+'''
+             1
+            / \
+           2   3
+          /  \  \
+         4    6  5
+        /      \  \
+       7        9  8
+       /         \
+      10         12
+'''
+def findRight(node):
+    if node is None:
         return None
-    if a == target:
-        return b
-    if b == target:
-        return a
-    mirror = findMirrorNodeUtil(a.left, b.right, target)
-    if mirror:
-        return mirror
-    return findMirrorNodeUtil(a.right, b.left, target)
-    
-def findMirrorNode(root, target):
-    return findMirrorNodeUtil(root, root, target)
+    if node.parent is None:
+        return None
+    upd = 1
+    parent = node.parent
+    while parent:
+        if parent.right == node:
+            upd += 1
+        elif parent.left == node:
+            q = deque([[parent, 0]])
+            while len(q) > 0:
+                noad, d = q.popleft()
+                if d == upd:
+                    return noad.data
+                if noad.left and noad.left != node:
+                    q.append([noad.left, d + 1])
+                if noad.right:
+                    q.append([noad.right, d + 1])
+            upd += 1
+        node, parent = parent, parent.parent
+            
 
-root = Node(8)
-root.left = Node(3)
-root.left.left = Node(1)
-root.left.right = Node(16)
-root.left.right.left = Node(4)
-root.left.right.right = Node(7)
-root.right = Node(10)
-root.right.right = Node(14)
-root.right.right.left = Node(19)
-root.right.right.right = Node(2)
-root.left.right.left.left = Node(11)
-root.right.right.left.right = Node(18)
-root.right.right.left.right.left = Node(22)
+        
+root = Node(1, None)
+root.left = Node(2, root)
+root.right = Node(3, root)
+root.left.left = Node(4, root.left)
+root.left.right = Node(6, root.left)
+root.left.left.left = Node(7, root.left.left)
+root.left.left.left.left = Node(10, root.left.left.left)
+root.left.right.right = Node(9, root.left.right)
+root.right.right = Node(5, root.right)
+root.right.right.right = Node(8, root.right.right)
+root.right.right.right.right = Node(12, root.right.right.right)
 
-
-'''
-        8
-      /   \
-     3     10
-   /   \     \
-  1    16     14
-      /  \   /  \
-     4    7 19   2
-    /        \
-   11        18 
-             /
-            22 
-'''
-print(findMirrorNode(root, root.right).data)
+print(findRight(root.left.left.left))

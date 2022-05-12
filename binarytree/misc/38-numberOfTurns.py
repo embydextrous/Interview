@@ -1,42 +1,48 @@
 from tree import Node
 
-def lca(root, a, b):
+def numTurnsDown(root, a, pdir, dir):
     if root is None:
-        return None
-    if root == a or root == b:
-        return root
-    left = lca(root.left, a, b)
-    right = lca(root.right, a, b)
-    if left and right:
-        return root
-    return left if left else right
+        return -1
+    if root == a:
+        return 1 if pdir != None and pdir != dir else 0
+    left = numTurnsDown(root.left, a, dir, 0)
+    if left != -1:
+        return left + (1 if pdir != None and pdir != dir else 0)
+    right = numTurnsDown(root.right, a, dir, 1)
+    if right != -1:
+        return right + (1 if pdir != None and pdir != dir else 0)
+    return -1
 
-# Assuming both nodes are in tree
-def getPath(root, node, bendHash):
+def numTurnsUtil(root, a, b, pdir, dir, result):
     if root is None:
-        return ""
-    if root == node:
-        return bendHash
-    l = getPath(root.left, node, bendHash + "l")
-    if l != "":
-        return l
-    r = getPath(root.right, node, bendHash + "r")
-    return r
+        return -1
+    if root == a:
+        x = numTurnsDown(a, b, None, None)
+        if x != -1:
+            result[0] = x
+        return 1 if pdir != None and pdir != dir else 0
+    if root == b:
+        x = numTurnsDown(b, a, None, None)
+        if x != -1:
+            result[0] = x
+        return 1 if pdir != None and pdir != dir else 0
+    left = numTurnsUtil(root.left, a, b, dir, 0, result)
+    right = numTurnsUtil(root.right, a, b, dir, 1, result)
+    print(root.data, left, right)
+    if left != -1 and right != -1:
+        result[0] = left + right + 1
+        return result[0]
+    if left == -1 and right == -1:
+        return -1
+    if left != -1:
+        return left + (1 if pdir != None and pdir != dir else 0)
+    if right != -1:
+        return right + (1 if pdir != None and pdir != dir else 0)
 
-def numberTurns(root, a, b):
-    if root is None:
-        return 0
-    _lca = lca(root, a, b)
-    leftbendHash = getPath(_lca, a, "") 
-    rightBendHash = getPath(_lca, b, "")
-    bendCount = 0
-    for i in range(1, len(leftbendHash)):
-        if leftbendHash[i] != leftbendHash[i-1]:
-            bendCount += 1
-    for i in range(1, len(rightBendHash)):
-        if rightBendHash[i] != rightBendHash[i-1]:
-            bendCount += 1
-    return bendCount + 1
+def numTurns(root, a, b):
+    result = [0]
+    numTurnsUtil(root, a, b, None, None, result)
+    return result[0]
 
 '''
         8
@@ -61,3 +67,4 @@ root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
 print(numberTurns(root, root.left.right.left, root.right.right.left))
+print(numTurns(root, root.left.right.left, root.right.right.left))

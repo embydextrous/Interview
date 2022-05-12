@@ -13,11 +13,16 @@ Examples :
   Input: {9, 2, 3, 4, 5, 6, 7, 8, 18, 0}
   Output: 8 ( j = 8, i = 0)
 
+  # 9 2 2 2 2 2 2 2 2 0
+  # 18 18 18 18 18 18 18 18 18 0
+
   Input:  {1, 2, 3, 4, 5, 6}
   Output: 5  (j = 5, i = 0)
 
   Input:  {6, 5, 4, 3, 2, 1}
   Output: -1 
+  # 6 5 4 3 2 1
+  # 6 5 4 3 2 1
 '''
 def findMaxDiff(a):
     n = len(a)
