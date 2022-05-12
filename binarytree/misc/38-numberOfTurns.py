@@ -66,5 +66,4 @@ root.right.right = Node(14)
 root.right.right.left = Node(19)
 root.right.right.right = Node(2)
 
-print(numberTurns(root, root.left.right.left, root.right.right.left))
 print(numTurns(root, root.left.right.left, root.right.right.left))
