@@ -1,3 +1,18 @@
+'''
+Given a string of open bracket '(' and closed bracket ')'. The task is to find the length
+of longest balanced prefix. 
+Examples: 
+ 
+
+Input : S = "((()())())((" 
+Output : 10
+From index 0 to index 9, they are forming 
+a balanced parentheses prefix.
+
+Input : S = "()(())((()"
+Output : 6
+'''
+
 def findMaxLength(exp):
     st = [-1]
     result = 0
@@ -13,4 +28,19 @@ def findMaxLength(exp):
                 st.append(i)
     return result
 
-print(findMaxLength("()(()))))"))
+def findMax(exp):
+    s = 0
+    result = 0
+    for i in range(len(exp)):
+        if exp[i] == '(':
+            s += 1
+        else:
+            s -= 1
+            if s == 0:
+                result = max(result, i + 1)
+            if s < 0:
+                break
+    return result
+
+
+print(findMax("()(())((()"))

@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -8,17 +10,17 @@ def checkMirror(a, b):
         return True
     if a is None or b is None:
         return False
-    q1, q2 = [[a]], [[b]]
+    q1, q2 = deque([deque([a])]), deque([deque([b])])
     while len(q1) > 0 and len(q2) > 0:
-        n1, n2 = q1.pop(0), q2.pop(0)
+        n1, n2 = q1.popleft(), q2.popleft()
         if len(n1) != len(n2):
             return False
         while len(n1) > 0 and len(n2) > 0:
-            x, y = n1.pop(0), n2.pop()
+            x, y = n1.popleft(), n2.pop()
             if x.data != y.data:
                 return False
-            q1.append(x.child)
-            q2.append(y.child)
+            q1.append(deque(x.child))
+            q2.append(deque(y.child))
     return True
 
 root1 = Node(1)

@@ -16,6 +16,6 @@ def findNumbers(n):
             q.append(num)
     return c + len(q)
 
-print(findNumbers(187887))
+print(findNumbers(20))
         
 

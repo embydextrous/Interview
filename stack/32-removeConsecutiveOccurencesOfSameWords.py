@@ -3,9 +3,7 @@ def removeConsecutiveWords(s):
     s = []
     while len(words) > 0:
         word = words.pop(0)
-        if len(s) == 0:
-            s.append(word)
-        elif s[-1] != word:
+        if len(s) == 0 or s[-1] != word:
             s.append(word)
         else:
             s.pop()

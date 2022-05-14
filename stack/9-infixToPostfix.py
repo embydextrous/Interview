@@ -19,11 +19,11 @@ def isParantheses(c):
 
 def infixToPostFix(exp):
     s = []
-    result = ""
+    result = []
     for c in exp:
         # if operand just append to result
         if isOperand(c):
-            result += c
+            result.append(c)
         # if parantheses
         elif isParantheses(c):
             # if open parantheses just append
@@ -35,7 +35,7 @@ def infixToPostFix(exp):
                     v = s.pop()
                     if isCloseParantheses(v):
                         break
-                    result += v
+                    result.append(v)
         else:
             if len(s) == 0 or isOpenParantheses(s[len(s) - 1]) or operatorsOrder[s[len(s) - 1]] < operatorsOrder[c]:
                 s.append(c)
@@ -44,11 +44,11 @@ def infixToPostFix(exp):
                     if isParantheses(s[len(s) - 1]):
                         break
                     elif operatorsOrder[s[len(s) - 1]] >= operatorsOrder[c]:
-                        result += s.pop()
+                        result.append(s.pop())
                 s.append(c)
     while len(s) > 0:
-        result += s.pop()
-    return result
+        result.append(s.pop())
+    return "".join(result)
 
 def prefixToInfix(exp):
     s = []
@@ -109,3 +109,6 @@ print(infixToPrefix(exp))
 print(infixToPostFix(exp))
 #print(posfixToPrefix(prefixToPostfix(exp)))
 #print(posfixToInfix(prefixToPostfix(exp)))
+
+# -
+# abcd^e-fgh*+^*+i-

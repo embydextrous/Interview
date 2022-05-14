@@ -14,6 +14,18 @@ def maxDepth(s):
         return -1
     return maxDepth
 
-exp = "(b)((c)()"
+exp = "(b)((c)())"
 print(maxDepth(exp))
     
+def maxDepth2(exp):
+    s = 0
+    result = 0
+    for c in exp:
+        if c == '(':
+            s += 1
+            result = max(result, s)
+        elif c == ')':
+            s -= 1
+    return result if s == 0 else -1
+
+print(maxDepth2(exp))

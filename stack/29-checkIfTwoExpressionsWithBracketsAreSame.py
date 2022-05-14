@@ -29,7 +29,7 @@ def evaluateSignsOfAll(exp):
     s = [True]
     for i in range(len(exp)):
         if exp[i] == "(":
-            s.append(checkLocalSign(exp, i))
+            s.append(not checkLocalSign(exp, i) ^ s[-1])
         elif exp[i] == ")":
             s.pop()
         elif exp[i] != '-' and exp[i] != '+':
@@ -42,7 +42,38 @@ def evaluateSignsOfAll(exp):
 def check(exp1, exp2):
     return evaluateSignsOfAll(exp1) == evaluateSignsOfAll(exp2)
 
+# True False False
+# a -1
 
-exp1 = "-(a+b+c)"
-exp2 = "-a-b-c"
+def removeBrackets(exp):
+    s = [False]
+    result = []
+    for i in range(len(exp)):
+        c = exp[i]
+        if c == '(':
+            if len(s) != 0 and exp[i-1] == '-':
+                s.append(s[-1] ^ True)
+            else:
+                s.append(s[-1])
+        elif c == ')':
+            s.pop()
+        elif c == '+' or c == '-':
+            if s[-1]:
+                result.append('+' if c == '-' else '-')
+            else:
+                result.append(c)
+        else:
+            result.append(c)
+    return "".join(result)
+
+
+def check2(exp1, exp2):
+    return removeBrackets(exp1) == removeBrackets(exp2)
+
+exp1 = "-(a-b+c)"
+exp2 = "-a+b-c"
 print(check(exp1, exp2))
+print(check2(exp1, exp2))
+print(removeBrackets(exp1))
+
+

@@ -28,3 +28,27 @@ q = [e - d - c - b]
 
 exp = "(a-(b+c)+d)"
 print(removeBrackets(exp))
+
+def removeBrackets(exp):
+    result = []
+    s = [False]
+    for i in range(len(exp)):
+        c = exp[i]
+        if c == '(':
+            if i != 0 and exp[i-1] == '-':
+                s.append(s[-1] ^ True)
+            else:
+                s.append(s[-1] ^ False)
+        elif c == ')':
+            s.pop()
+        elif c == '+' or c == '-':
+            if not s[-1]:
+                result.append(c)
+            else:
+                result.append('+' if c == '-' else '-')
+        else:
+            result.append(c)
+    return "".join(result)
+
+exp = "((a + b))"
+print(removeBrackets(exp))
