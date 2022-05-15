@@ -1,16 +1,21 @@
+# Maintain order - voila
 def moveZeroesToEnd(a):
-    l, r = 0, len(a) - 1
-    while l < r:
-        if a[l] != 0:
-            l += 1
-            continue
-        if a[r] == 0:
-            r -= 1
-            continue
-        a[l], a[r] = a[r], a[l]
-        l += 1
-        r -= 1
+    n = len(a)
+    for i in range(n):
+        if a[i] != 0:
+            l = i
+            r = -1
+            for j in range(i + 1, n):
+                if a[j] == 0:
+                    r = j
+                    break
+            if r == -1:
+                break
+            for i in range(r, l, -1):
+                a[i] = a[i-1]
+            a[l] = 0
 
 a = [1, 2, 0, 0, 0, 3, 6]
+# [1, 2, 0, 0, 0, 3, 6lr]
 moveZeroesToEnd(a)
 print(a)

@@ -1,5 +1,6 @@
 # https://www.geeksforgeeks.org/rearrange-array-arri/
 
+# 32 40 (2)
 def rearrange(a):
     n = len(a)
     for i in range(n):
