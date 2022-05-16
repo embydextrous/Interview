@@ -14,11 +14,11 @@ def findKey(a, l, r, x):
     if l > r:
         return -1
     m = (l + r) // 2
-    if a[m] == x:
+    if a[m] == x and (m == r or a[m+1] > a[m]):
         return m
     if a[m] > x:
         return findKey(a, l, m - 1, x)
     return findKey(a, m + 1, r, x)
 
-a = [6, 3, 9, 8, 10, 2, 1, 15, 7]
+a = [6, 6, 9, 8, 10, 2, 1, 15, 7]
 print(smallestGreaterElement(a))

@@ -30,16 +30,16 @@ def segregateNonNegativeAndPositive(a):
 
 def findMinPositiveNumber(a):
     n = len(a)
-    segregateNonNegativeAndPositive(a)
-    print(a)
+    copyA = a[:]
+    segregateNonNegativeAndPositive(copyA)
     for i in a:
         if i - 1 >= 0 and i - 1 < len(a):
-            a[i-1] = -1
+            copyA[i-1] = -1
     for i in range(n):
-        if a[i] > 0:
+        if copyA[i] > 0:
             return i + 1
     return n + 1
 
-a = [2, 4, 5, 6, 7, -1, -10, 8]
+a = [2, 3, -7, 1, 4, 5, -10, 15]
 print(findMinPositiveNumber(a))
         

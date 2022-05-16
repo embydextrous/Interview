@@ -1,28 +1,37 @@
+from cgitb import reset
 from collections import Counter
 from random import randint
 from heapq import heappush, heapreplace, heappop, heapify
 
-# 16, 20, 21, 23, 26
 # 5, 10, 30
-def kSmallestElements(a, k):
-    n  =len(a)
-    for i in range(k, n):
-        maxindex = 0
-        for j in range(1, k):
-            if a[j] > a[maxindex]:
-                maxindex = j
-        x = a[maxindex]
-        for j in range(maxindex, k):
-            a[j] = a[j+1]
-        a[i], a[k] = x, a[i]
-    return a[:k]
+# 6, 8, 9, 14, 21, 26
+def zeroesToBeFlipped(a, m):
+    n = len(a)
+    l = r = 0
+    bestL = bestWindow = 0
+    zeroCount = 0
+    while r < n:
+        if zeroCount <= m:
+            if a[r] == 0:
+                zeroCount += 1
+            r += 1
+        if zeroCount > m:
+            if a[l] == 0:
+                zeroCount -= 1
+            l += 1
+        if zeroCount <= m and (r - l) > bestWindow:
+            bestL = l
+            bestWindow = r - l
+    result = []
+    for i in range(bestL, bestL + bestWindow):
+        if a[i] == 0:
+            result.append(i)
+    return result
 
-# 3 1 9 2 7 4
-    
 
-a = [9, 3, 1, 7, 2, 4]
-k = 3
-print(kSmallestElements(a, k))
+a = [1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1]
+print(zeroesToBeFlipped(a, 2))
+
 
 
 

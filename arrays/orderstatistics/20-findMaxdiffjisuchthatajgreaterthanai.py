@@ -26,21 +26,21 @@ Examples :
 '''
 def findMaxDiff(a):
     n = len(a)
-    lMin = [a[i] for i in range(n)]
-    rMax = [a[i] for i in range(n)]
+    leftMin = [i for i in a]
+    rightMax = [i for i in a]
     for i in range(1, n):
-        lMin[i] = min(lMin[i], lMin[i-1])
+        leftMin[i] = min(leftMin[i], leftMin[i-1])
     for i in range(n-2, -1, -1):
-        rMax[i] = max(rMax[i], rMax[i+1])
-    i, j = 0, 0
-    maxDiff = -1
-    while i < n and j < n:
-        if lMin[i] <= rMax[j]:
-            maxDiff = max(maxDiff, j - i)
+        rightMax[i] = max(rightMax[i], rightMax[i+1])
+    i = j = 0
+    maxi = 0
+    while j < n:
+        if leftMin[i] <= rightMax[j]:
+            maxi = max(maxi, j - i)
             j += 1
         else:
             i += 1
-    return maxDiff
+    return maxi
 
 a = [34, 8, 10, 3, 2, 80, 30, 33, 1]
 print(findMaxDiff(a))
