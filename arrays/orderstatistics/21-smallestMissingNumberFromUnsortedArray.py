@@ -31,6 +31,7 @@ def segregateNonNegativeAndPositive(a):
 def findMinPositiveNumber(a):
     n = len(a)
     segregateNonNegativeAndPositive(a)
+    print(a)
     for i in a:
         if i - 1 >= 0 and i - 1 < len(a):
             a[i-1] = -1

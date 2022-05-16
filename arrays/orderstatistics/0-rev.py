@@ -2,20 +2,27 @@ from collections import Counter
 from random import randint
 from heapq import heappush, heapreplace, heappop, heapify
 
-# 14, 16, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+# 16, 20, 21, 23, 26
 # 5, 10, 30
-def maxDiff(a):
-    mini = a[0]
-    maxDiff = 0
-    for i in a:
-        if i < mini:
-            mini = i
-        else:
-            maxDiff = max(maxDiff, i - mini)
-    return maxDiff
+def kSmallestElements(a, k):
+    n  =len(a)
+    for i in range(k, n):
+        maxindex = 0
+        for j in range(1, k):
+            if a[j] > a[maxindex]:
+                maxindex = j
+        x = a[maxindex]
+        for j in range(maxindex, k):
+            a[j] = a[j+1]
+        a[i], a[k] = x, a[i]
+    return a[:k]
 
-a = [4, 8, 1, 9, 7, 2, 11]
-print(maxDiff(a))
+# 3 1 9 2 7 4
+    
+
+a = [9, 3, 1, 7, 2, 4]
+k = 3
+print(kSmallestElements(a, k))
 
 
 

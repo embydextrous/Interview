@@ -50,5 +50,9 @@ def zeroesToBeFlipped(a, m):
             zeroes.append(i)
     return zeroes
 
+# [1, 0, 0, 1l, 1, 0, 1, 0, 1, 1, 1r]   m = 2
+# zeroCount = 2
+# bestL = 0
+# bestWindow = 7
 a = [1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1]
 print(zeroesToBeFlipped(a, 2))

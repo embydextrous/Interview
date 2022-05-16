@@ -6,6 +6,8 @@ def findMostFrequentElement(a, k):
     for i in range(1, n):
         if a[i] > a[maxIndex]:
             maxIndex = i
+    for i in range(n):
+        a[i] %= k
     return maxIndex
 
 a = [2, 3, 3, 5, 3, 4, 1, 7]

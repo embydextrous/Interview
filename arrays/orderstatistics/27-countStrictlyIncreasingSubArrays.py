@@ -2,7 +2,7 @@ def countStrictlyIncreasingSubArrays(a):
     n = len(a)
     count = 0
     l = 0
-    r = 1
+    r = 0
     while r < n:
         if r < n - 1 and a[r] < a[r+1]:
             r += 1

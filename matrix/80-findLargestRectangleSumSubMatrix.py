@@ -29,15 +29,12 @@ def largestRectangleSum(M):
             for i in range(R):
                 temp[i] += M[i][right]
             (sum, start, finish) = kadane(temp)
-            print(sum, left, right, start, finish)
             if sum > maxSum:
                 maxSum = sum
                 finalLeft = left
                 finalRight = right
                 finalTop = start
                 finalBottom = finish
-    if maxSum < 0:
-        return (0, None, None)
     return(maxSum, [finalLeft, finalTop], [finalBottom, finalRight])
 
 # -2 -5 22 3
@@ -49,4 +46,3 @@ M = [[1,  2, -1, -4, -20],
      [-4, -1, 1, 7, -6]]
 
 print(largestRectangleSum(M))
-print(kadane([-2, -1, -3]))

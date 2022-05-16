@@ -15,6 +15,6 @@ def kSmallestElements(a, k):
             a[k], a[i] = a[i], x
     return a[:k]
 
-a = [2, 4, 5, 8, 6]
+a = [9, 3, 1, 7, 2, 4]
 k = 3
 print(kSmallestElements(a, k))
