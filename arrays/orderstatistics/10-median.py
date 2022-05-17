@@ -18,7 +18,7 @@ def partition(a, l, r):
 
 def findMedianUtil(a, l, r, k):
     n = r - l + 1
-    if n > 0:
+    if n > 0 and k >= l and k <= r:
         pos = partition(a, l, r)
         if pos == k:
             return a[pos]

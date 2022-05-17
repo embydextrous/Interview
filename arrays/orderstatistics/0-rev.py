@@ -2,8 +2,7 @@ from collections import Counter
 from random import randint
 from heapq import heappush, heapreplace, heappop, heapify
 
-# 5, 10, 30
-# 6, 8, 9, 14, 21, 26
+# 21
 def zeroesToBeFlipped(a, m):
     n = len(a)
     l = r = 0
