@@ -1,5 +1,6 @@
 '''
-Catalan numbers are a sequence of natural numbers that occurs in many interesting counting problems like following.
+Catalan numbers are a sequence of natural numbers that occurs in many interesting counting problems
+like following.
 
 1. Count the number of expressions containing n pairs of parentheses which are correctly matched. 
     For n = 3, possible expressions are ((())), ()(()), ()()(), (())(), (()()).
@@ -12,11 +13,12 @@ C(0) = 1
 C(n+1) = C(0)C(n) + C(1)C(n-1).......... C(n)C(0) 
 '''
 def catalan(n):
-    dp = [0] * (n + 1)
-    dp[0] = 1
+    c = [0] * (n + 1)
+    c[0] = 1
     for i in range(1, n + 1):
         for j in range(i):
-            dp[i] += dp[j] * dp[i-j-1]
-    return dp[n]
+            c[i] += c[j] * c[i-j-1]
+    return c[n]
 
-print(catalan(2022))
+n = 5
+print(catalan(4))

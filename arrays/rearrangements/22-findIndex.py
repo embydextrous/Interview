@@ -17,38 +17,40 @@ Output:
   Index 4
 '''
 def findIndex(a):
-    n = len(a)
-    prevZeroIndex = -1
-    prevPrevZeroIndex = -1
-    maxi = 0
-    maxIndex = -1
-    for i in range(n):
-        if prevZeroIndex == -1:
-            maxi = i + 1
-            if a[i] == 0:
-                maxIndex = i
-        elif prevPrevZeroIndex == -1:
-            if a[i] == 0:
-                if i - prevZeroIndex > maxi:
-                    maxi = i - prevZeroIndex
-                    maxIndex = i
-            else:
-                maxi = i + 1
-                maxIndex = prevZeroIndex
-        else:
-            if a[i] == 0:
-                if i - prevZeroIndex > maxi:
-                    maxi = i - prevZeroIndex
-                    maxIndex = i
-            else:
-                if i - prevPrevZeroIndex > maxi:
-                    maxi = i - prevPrevZeroIndex
-                    maxIndex = prevZeroIndex
+    zeroCount = 0
+    l, r = 0, 0
+    bestL = bestWindow = 0
+    while r < len(a):
+        if zeroCount <= 1:
+            if a[r] == 0:
+                zeroCount += 1
+            r += 1
+        if zeroCount > 1:
+            if a[l] == 0:
+                zeroCount -= 1
+            l += 1
+        if zeroCount <= 1 and r-l > bestWindow:
+            bestWindow = r - l
+            bestL = l
+    for i in range(bestL, bestL + bestWindow):
         if a[i] == 0:
-            prevZeroIndex, prevPrevZeroIndex = i, prevZeroIndex
-    return maxIndex
+            return i
+    return -1
 
+def findIndex(a):
+    prevZeroIndex = prevPrevZeroIndex = -1
+    maxi = 0
+    resultIndex = -1
+    for i in range(len(a)):
+        if a[i] == 0:
+            prevPrevZeroIndex, prevZeroIndex = prevZeroIndex, i
+        if i - prevPrevZeroIndex > maxi:
+            maxi = i - prevPrevZeroIndex
+            if a[i] == 0:
+                resultIndex = i
+            else:
+                resultIndex = prevZeroIndex
+    return resultIndex
 
-a = [1, 1, 0, 1, 0, 1, 1, 1, 1, 0]
+a = [1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1]
 print(findIndex(a))
-

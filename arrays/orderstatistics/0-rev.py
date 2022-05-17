@@ -1,4 +1,3 @@
-from cgitb import reset
 from collections import Counter
 from random import randint
 from heapq import heappush, heapreplace, heappop, heapify

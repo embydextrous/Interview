@@ -1,6 +1,6 @@
 from bst import Node, insert
 
-def findSmallest(root):
+def lca(root):
     if root is None:
         return None
     while root.left:

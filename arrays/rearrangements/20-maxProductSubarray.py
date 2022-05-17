@@ -20,10 +20,9 @@ def maxProduct(a):
     for i in range(1, len(a)):
         x = a[i]
         temp = max(x, maxEndingHere * x, minEndingHere * x)
-        minEndingHere = min(minEndingHere, maxEndingHere * x, minEndingHere * x)
+        minEndingHere = min(x, maxEndingHere * x, minEndingHere * x)
         maxEndingHere = temp
         maxSoFar = max(maxSoFar, minEndingHere, maxEndingHere)
-        print(maxSoFar, minEndingHere, maxEndingHere)
     return maxSoFar
 
 a = [6, -3, -10, 0, 2]

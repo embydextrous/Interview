@@ -39,3 +39,5 @@ def minSwaps(a, k):
 a = [2, 7, 9, 5, 8, 7, 4]
 k = 5
 print(minSwaps(a, k))
+
+
