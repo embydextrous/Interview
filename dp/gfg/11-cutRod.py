@@ -14,14 +14,16 @@ length   | 1   2   3   4   5   6   7   8
 --------------------------------------------
 price    | 3   5   8   9  10  17  17  20
 '''
-def cutRod(prices, L):
-    dp = [0] * (L+1)
-    for i in range(1, L + 1):
-        dp[i] = prices[i-1]
-        for j in range(1, i//2 + 1):
-            dp[i] = max(dp[i], dp[j] + dp[i-j])
-    return dp[L]
+def cutRod(a):
+    n = len(a)
+    dp =  [a[i] for i in range(n)]
+    for i in range(1, n):
+        for j in range(i):
+            if dp[j] + dp[i-j-1] > dp[i]:
+                dp[i] = dp[i-j-1] + dp[j]
+    print(dp)
+    return max(dp)
 
-prices = [3, 5, 8, 9, 10, 17, 17, 20]
-L = 8
-print(cutRod(prices, L))
+a = [3, 5, 8, 9, 10, 17, 17, 20]
+print(cutRod(a))
+

@@ -9,7 +9,7 @@ def firstTimePositive():
         return 0
     i = 1
     while f(i) <= 0:
-        i += 1
+        i *= 2
     return binarySearch(i // 2, i)
 
 def binarySearch(l, r):

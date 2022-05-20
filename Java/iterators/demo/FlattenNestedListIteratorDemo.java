@@ -9,6 +9,9 @@ import iterators.FlattenNestedListIterator;
 
 public class FlattenNestedListIteratorDemo {
 
+    /*
+    * 12, [8, [17, 19], 9, [3, 1, 16]], [[18], 14, [11, 6, 9]], [[]], [21]
+    */
     public static void main(String[] args) {
         Nested<Integer> n1 = new GenericNested<>(12);
         

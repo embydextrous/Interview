@@ -1,127 +1,159 @@
 package iterators.revision;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.Stack;
 
+import iterators.PeekingIterator;
+import iterators.demo.Nested;
+/*
+            7
+          /   \
+         3     12
+        / \    /
+       1   5  8
+          /    \
+         4      11
+*/
 public class Revision {
     public static void main(String[] args) {
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(0);
-        list1.add(1);
-        list1.add(2);
-        list1.add(4);
-        list1.add(6);
-        list1.add(7);
+        Nested<Integer> n1 = new GenericNested<>(12);
+        
+        Nested<Integer> n21 = new GenericNested<>(8);
+        
+        Nested<Integer> n221 = new GenericNested(17);
+        Nested<Integer> n222 = new GenericNested(19);
+        Nested<Integer> n22 = new GenericNested<>(n221, n222);
+       
+        Nested<Integer> n23 = new GenericNested<>(9);
+        
+        Nested<Integer> n241 = new GenericNested<>(3);
+        Nested<Integer> n242 = new GenericNested<>(1);
+        Nested<Integer> n243 = new GenericNested<>(16);
+        
+        Nested<Integer> n24 = new GenericNested<>(n241, n242, n243);
+        
+        Nested<Integer> n2 = new GenericNested<>(n21, n22, n23, n24);
+        
+        Nested<Integer> n311 = new GenericNested<>(18);
+        Nested<Integer> n31 = new GenericNested<>(n311);
+        
+        Nested<Integer> n32 = new GenericNested<>(14);
+        
+        Nested<Integer> n331 = new GenericNested<>(11);
+        Nested<Integer> n332 = new GenericNested<>(6);
+        Nested<Integer> n333 = new GenericNested<>(9);
+        Nested<Integer> n33 = new GenericNested<>(n331, n332, n333);
+        
+        Nested<Integer> n3 = new GenericNested<>(n31, n32, n33);
+        
+        Nested<Integer> n41 = new GenericNested<>(Collections.emptyList());
+        Nested<Integer> n4 = new GenericNested<>(n41);
+        
+        Nested<Integer> n5 = new GenericNested<>(21);
 
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(0);
-        list2.add(2);
-        list2.add(5);
-        list2.add(7);
-        list2.add(8);
-        List<Integer> list3 = new ArrayList<>();
-        list3.add(1);
-        List<Integer> list4 = new ArrayList<>();
-        list4.add(0);
-        list4.add(4);
-        list4.add(6);
-        List<Iterator<Integer>> lists = new ArrayList<>();
-        lists.add(list1.iterator());
-        lists.add(list2.iterator());
-        lists.add(list3.iterator());
-        lists.add(list4.iterator());
-        UnionIterator<Integer> unionIterator = new UnionIterator<>(list1.iterator(), list2.iterator());
-        while(unionIterator.hasNext()) {
-            System.out.println(unionIterator.next());
+        List<Nested<Integer>> nestedList = new ArrayList<>();
+        nestedList.add(n1);
+        nestedList.add(n2);
+        nestedList.add(n3);
+        nestedList.add(n4);
+        nestedList.add(n5);
+
+        FlattenNestedListIterator<Integer> iterator = new FlattenNestedListIterator<>(nestedList);
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 }
 
-class UnionIterator<T extends Comparable<T>> implements Iterator<T> {
-    private PeekingIterator<T> p1;
-    private PeekingIterator<T> p2;
-    private T next;
+class FlattenNestedListIterator<T> implements Iterator<T> {
+    private Stack<Nested<T>> stack;
 
-    UnionIterator(Iterator<T> p1, Iterator<T> p2) {
-        this.p1 = new PeekingIterator<>(p1);
-        this.p2 = new PeekingIterator<>(p2);
-        advanceIterator();
+    FlattenNestedListIterator(List<Nested<T>> nesteds) {
+        stack = new Stack<>();
+        ListIterator<Nested<T>> iterator = nesteds.listIterator(nesteds.size());
+        while (iterator.hasPrevious()) {
+            stack.push(iterator.previous());
+        }
+        prepareStack();
     }
 
     @Override
     public boolean hasNext() {
-        return next != null;
+        return !stack.isEmpty();
     }
 
     @Override
     public T next() {
         if (hasNext()) {
-            T value = next;
-            advanceIterator();
-            return value;
+            T next = stack.pop().get();
+            prepareStack();
+            return next;
         }
         throw new NoSuchElementException();
     }
 
-    private void advanceIterator() {
-        next = null;
-        if (p1.hasNext() && p2.hasNext()) {
-            int c = p1.peek().compareTo(p2.peek());
-            if (c == 0) {
-                next = p1.next();
-                p2.next();
-            } else if (c < 0) {
-                next = p1.next();
-            } else {
-                next = p2.next();
+    /**
+     * /*
+    * , 17, 19, 9, [3, 1, 16], [[18], 14, [11, 6, 9]], [[]], 21
+    */
+    public void prepareStack() {
+        while(!stack.isEmpty() && stack.peek().isList()) {
+            Nested<T> n1 = stack.pop();
+            ListIterator<Nested<T>> iterator = n1.getList().listIterator(n1.getList().size());
+            while (iterator.hasPrevious()) {
+                stack.push(iterator.previous());
             }
-        } else if (p1.hasNext()) {
-            next = p1.next();
-        } else if (p2.hasNext()) {
-            next = p2.next();
         }
     }
 }
 
-class PeekingIterator<T> implements Iterator<T> {
-    private Iterator<T> iterator;
-    private T next;
-    private boolean hasNext;
+class GenericNested<T> implements Nested<T> {
+    private final T value;
+    private final List<Nested<T>> list;
 
-    PeekingIterator(Iterator<T> iterator) {
-        this.iterator = iterator;
-        advanceIterator();
-    }
-
-    @Override
-    public boolean hasNext() {
-        return hasNext;
-    }
-
-    public T peek() {
-        return next;
-    }
-
-    @Override
-    public T next() {
-        if (hasNext) {
-            T value = next;
-            advanceIterator();
-            return value;
-        } else {
-            throw new NoSuchElementException();
+    public GenericNested(T value) throws IllegalArgumentException {
+        if (value == null) {
+            throw new IllegalArgumentException();
         }
+        this.value = value;
+        this.list = null;
     }
 
-    private void advanceIterator() {
-        hasNext = iterator.hasNext();
-        if (hasNext) {
-            next = iterator.next();
+    public GenericNested(List<Nested<T>> list) {
+        if (list == null) {
+            this.list = new ArrayList<>();
         } else {
-            next = null;
+            this.list = list;
         }
+        this.value = null;
+    }
+
+    public GenericNested(Nested<T>... nesteds) {
+        this.list = Arrays.asList(nesteds);
+        this.value = null;
+    }
+    
+    @Override
+    public boolean isList() {
+        return value == null;
+    }
+    @Override
+    public T get() {
+        return value;
+    }
+    @Override
+    public List<Nested<T>> getList() {
+        return list;
     }
 }
 

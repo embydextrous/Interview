@@ -16,56 +16,55 @@ import java.util.Stack;
  *                    18
  */
 
-public class BstIterator implements Iterator<Integer> {
-    private final Stack<Node> stack = new Stack<>();
-    private Node next;
+public class BstIterator<T> implements Iterator<T> {
+    private final Stack<Node<T>> stack = new Stack<>();
+    private Node<T> next;
 
-    public BstIterator(Node root) {
-        locateNext(root);
+    public BstIterator(Node<T> root) {
+        advanceIterator(root);
     }
-    
+
     @Override
     public boolean hasNext() {
         return next != null;
     }
 
     @Override
-    public Integer next() throws NoSuchElementException {
+    public T next() {
         if (hasNext()) {
-            Integer value = next.data;
-            Node temp = next;
-            next = null;
-            locateNext(temp.right);
+            T value = next.data;
+            advanceIterator(next.right);
             return value;
-        } else {
-            throw new NoSuchElementException();
         }
+        throw new NoSuchElementException();
     }
 
-    private void locateNext(Node current) {
-        if (next != null) {
-            return;
-        }
-        while(true) {
+    private void advanceIterator(Node<T> current) {
+        while (true) {
             if (current != null) {
                 stack.push(current);
                 current = current.left;
             } else {
                 if (!stack.isEmpty()) {
                     next = stack.pop();
+                    break;
+                } else {
+                    next = null;
+                    break;
                 }
-                break;
             }
         }
     }
 
-    static public class Node {
-        public int data;
-        public Node left;
-        public Node right;
-
-        public Node(int data) {
+    static public class Node<T> {
+        T data;
+        public Node<T> left;
+        public Node<T> right;
+    
+        public Node(T data) {
             this.data = data;
+            this.left = null;
+            this.right = null;
         }
     }
 }
