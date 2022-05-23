@@ -19,6 +19,7 @@ Output : Length of LIS = 4
 The longest increasing subsequence is {3, 7, 40, 80}
 '''
 # Variations 
+# https://www.geeksforgeeks.org/longest-subsequence-such-that-difference-between-adjacents-is-one/
 from collections import deque
 
 

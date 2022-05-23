@@ -20,21 +20,16 @@ Now, second element is 4 which makes dp[4] = 1 and dp[7] = 1. But it will also m
 and dp[3] both are 1. So, start with last till element as higher element will be encountered before to
 avoid any false positives.
 '''
-# Time Complexity - O(sum * N), Space Complexity - O(sum)
-def hasSubsetWithSum(a, x):
-    dp = [0] * (x + 1)
-    dp[0] = 1
+def subsetSum(a, x):
+    dp = [False] * (x + 1)
+    dp[0] = True
     for i in a:
-        if i == x:
-            return True
-        for k in range(x, i - 1, -1):
-            if dp[k - i] == 1:
-                dp[k] = 1
-        if dp[x] == 1:
-            return True
-        print(dp)
-    return False
+        for j in range(x, i - 1, -1):
+            if dp[j-i]:
+                dp[j] = True
+    print(dp)
+    return dp[x]
 
-a = [3, 34, 4, 12, 5, 2]
-N = 10
-print(hasSubsetWithSum(a, N))
+a = [3, 4, 3, 5]
+x = 20
+print(subsetSum(a, x))
