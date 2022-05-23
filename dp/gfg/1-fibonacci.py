@@ -8,6 +8,8 @@ Output : 1
 
 Input  : n = 9
 Output : 34
+
+# https://www.geeksforgeeks.org/count-ways-reach-nth-stair/
 '''
 def fib(n):
     if n <= 1:

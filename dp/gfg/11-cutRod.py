@@ -24,6 +24,6 @@ def cutRod(a):
     print(dp)
     return max(dp)
 
-a = [3, 5, 8, 9, 10, 17, 17, 20]
+a = [2, 5, 8, 9, 10, 17, 17, 20]
 print(cutRod(a))
 

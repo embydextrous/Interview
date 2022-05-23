@@ -45,4 +45,4 @@ def friendPairing(n):
         a, b = b, b + (i - 1) * a
     return b
 
-print(friendPairing(20000))
+print(friendPairing(6))

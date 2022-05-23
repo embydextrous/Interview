@@ -1,4 +1,4 @@
-def matrixChainMultiplication(dimens):
+def matrixChainMultiplication(dimens, names):
     n = len(dimens) - 1
     M = [[10 ** 9 for i in range(n)] for j in range(n)]
     S = [[10 ** 9 for i in range(n)] for j in range(n)]
@@ -15,35 +15,23 @@ def matrixChainMultiplication(dimens):
                     S[i][j] = k
             i += 1
             j += 1
-    printBrackets(M, S, n)
+    printBrackets(0, n - 1, S, names)
+    print()
     return M[0][n-1]
 
-def printBrackets(M, S, n):
-    s = []
-    i = 0
-    j = n - 1
-    visited = set()
-    while i != j:
-        s.append(f"M{S[i][j]}")
-        visited.add(S[i][j])
-        if M[i+1][j] < M[i][j-1]:
-            i += 1
-        else:
-            j -= 1
-    print(visited)
-    for i in range(n):
-        if i not in visited:
-            s.append(f"M{i}")
-    while len(s) > 1:
-        a = s.pop()
-        b = s.pop()
-        s.append(f"({b}*{a})")
-    print(s[0])
-
+def printBrackets(i, j, S, names):
+    if i == j:
+        print(names[i], end = "")
+    else:
+        print("(", end = "")
+        printBrackets(i, S[i][j], S, names)
+        printBrackets(S[i][j] + 1, j, S, names)
+        print(")", end = "")
 
 d = [5, 6, 4, 3, 5, 2]
+names = ["A", "B", "C", "D", "E"]
 # (5, 6) (6, 4) (4, 3) (3, 5) (5, 2)
-print(matrixChainMultiplication(d))
+print(matrixChainMultiplication(d, names))
 '''
 x   120    162   237    162
 x     x    72    162    102  
@@ -58,4 +46,5 @@ x   x   x   x   3
 x   x   x   x   x
 '''
 d = [5, 4, 6, 2, 7]
-print(matrixChainMultiplication(d))
+names = ["A", "B", "C", "D"]
+print(matrixChainMultiplication(d, names))
