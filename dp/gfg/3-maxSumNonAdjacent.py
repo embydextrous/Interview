@@ -18,6 +18,8 @@ Examples:
     Output: 15
     Explanation: Pick the subsequence {3, 5, 7}. The sum is 15.
 '''
+# https://www.geeksforgeeks.org/find-maximum-possible-stolen-value-houses/
+
 def maxSum(a):
     incl = excl = 0
     for i in a:

@@ -12,5 +12,5 @@ def getMinMax(a, l, r):
     (min2, max2) = getMinMax(a, m + 1, r)
     return (min(min1, min2), max(max1, max2))
 
-arr = [1000, 11, 445, 1, 330, 3000]
-print(getMinMax(arr, 0, 2))
+a = [1000, 11, 445, 1, 330, 3000]
+print(getMinMax(a, 0, len(a) - 1))
