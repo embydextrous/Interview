@@ -1,14 +1,12 @@
-def check(a):
-    if len(a) == 0:
+def check(pre):
+    n = len(pre)
+    if n == 0:
         return True
-    n = len(a)
-    mini = maxi = a[n-1]
-    for i in range(n-2, -1, -1):
-        if a[i] < mini:
-            mini = a[i]
-        elif a[i] > maxi:
-            maxi = a[i]
-        else:
+    maxi = mini = pre[n-1]
+    for i in range(n - 2, -1, -1):
+        maxi = max(maxi, pre[i])
+        mini = min(mini, pre[i])
+        if pre[i] != maxi and pre[i] != mini:
             return False
     return True
 

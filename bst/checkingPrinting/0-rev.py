@@ -1,9 +1,10 @@
 from collections import defaultdict, deque
 from typing import Counter
+from unittest import result
 from bst import Node, insert, search, inorder
 
-# 14 15 16 17 18 19 20
-# 21 22 23 24 25 26 27 28
+# 16 17
+# 23 25 27
 '''
             7
           /   \
@@ -13,27 +14,29 @@ from bst import Node, insert, search, inorder
           /    \
          4      11
 '''
-def count(root, k1, k2, c):
+# a < b, a, b exists int tree
+def maxElement(root, a, b):
     if root is None:
         return
-    if root.data >= k1 and root.data <= k2:
-        c[0] += 1
-        count(root.left, k1, k2, c)
-        count(root.right, k1, k2, c)
-        return root
-    if root.data < k1:
-        count(root.right, k1, k2, c)
-    if root.data > k2:
-        count(root.left, k1, k2, c)
+    if root.data == a:
+        while root.right:
+            root = root.right
+        return root.data
+    if root.data == b:
+        return b
+    if root.data > a and root.data < b:
+        while root.right:
+            root = root.right
+        return root.data
+    if root.data < a:
+        return maxElement(root.right, a, b)
+    return maxElement(root.left, a, b)
+    
 
-root = Node(7)
-insert(root, 3)
-insert(root, 12)
-insert(root, 5)
-insert(root, 4)
-insert(root, 8)
-insert(root, 11)
-
-c = [0]
-count(root, 5, 11, c)
-print(c[0])
+a = [18, 36, 9, 6, 12, 10, 1, 8]
+root = Node(a[0])
+for i in range(1, len(a)):
+    insert(root, a[i])
+a = 1
+b = 8
+print(maxElement(root, a, b))
