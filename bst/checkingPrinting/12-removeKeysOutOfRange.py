@@ -8,11 +8,10 @@ def removeKeys(root, k1, k2):
         root.right = removeKeys(root.right, k1, k2)
         return root
     if root.data < k1:
-        root.right = removeKeys(root.right, k1, k2)
-        return root.right
+        return removeKeys(root.right, k1, k2)
     if root.data > k2:
-        root.left = removeKeys(root.left, k1, k2)
-        return root.left
+        return removeKeys(root.left, k1, k2)
+
 '''
             12
           /    \

@@ -1,13 +1,9 @@
 import sys
+from typing import Counter
 
 def solution(a, k):
-    d = {}
+    d = Counter(a[:k])
     n = len(a)
-    for i in range(k):
-        if a[i] in d:
-            d[a[i]] += 1
-        else:
-            d[a[i]] = 1
     maxi = -sys.maxsize-1
     for key in d.keys():
         if d[key] == 1:
@@ -35,3 +31,4 @@ def solution(a, k):
 a = [3, 3, 3, 4, 4, 2]
 k = 4
 solution(a, k)
+

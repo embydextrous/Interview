@@ -1,5 +1,5 @@
 def tripletSum(a, x):
-    # Two implement two pointer algorithm
+    # To implement two pointer algorithm
     a.sort()
     n = len(a)
     for i in range(n - 2):
