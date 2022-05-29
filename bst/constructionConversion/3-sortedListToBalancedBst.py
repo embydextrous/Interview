@@ -21,12 +21,19 @@ def sortedListToBalancedBST(head):
     return mid
 
 head = Node(1)
-head.next = Node(2)
-head.next.next = Node(3)
-head.next.next.next = Node(4)
-head.next.next.next.next = Node(5)
-head.next.next.next.next.next = Node(6)
-head.next.next.next.next.next.next = Node(7)
+head.next = Node(3)
+head.next.next = Node(6)
+head.next.next.next = Node(7)
+head.next.next.next.next = Node(8)
+head.next.next.next.next.next = Node(9)
+head.next.next.next.next.next.next = Node(10)
+head.next.next.next.next.next.next.next = Node(11)
+head.next.next.next.next.next.next.next.next = Node(12)
+head.next.next.next.next.next.next.next.next.next = Node(14)
+head.next.next.next.next.next.next.next.next.next.next = Node(15)
+head.next.next.next.next.next.next.next.next.next.next.next = Node(16)
+head.next.next.next.next.next.next.next.next.next.next.next.next = Node(17)
+
 
 root = sortedListToBalancedBST(head)
 preorder(root)
