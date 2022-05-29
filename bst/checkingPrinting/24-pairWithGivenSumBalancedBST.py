@@ -32,15 +32,9 @@ def pairWithSum(root, sum):
     return False
 
 root = Node(15)
-insert(root, 10)
-insert(root, 20)
-insert(root, 8)
-insert(root, 12)
-insert(root, 16)
-insert(root, 25)
 
 # 8, 10, 12, 15, 16, 20, 25
 
-print(pairWithSum(root, 21))
+print(pairWithSum(root, 30))
 
 

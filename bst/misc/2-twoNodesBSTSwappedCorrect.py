@@ -5,10 +5,11 @@ def correctUtil(root, prev, a, b):
         correctUtil(root.left, prev, a, b)
         if prev[0]:
             if root.data < prev[0].data:
-                if a[0]:
+                if a[0] is None:
+                    a[0] = prev[0]
                     b[0] = root
                 else:
-                    a[0] = prev[0]
+                    b[0] = root
         prev[0] = root
         correctUtil(root.right, prev, a, b)
 
@@ -30,9 +31,9 @@ def correct(root):
 # Following 7 lines are for tree formation
 '''
 root = Node(6)
-root.left = Node(10)
-root.right = Node(2)
-root.left.left = Node(1)
+root.left = Node(1)
+root.right = Node(10)
+root.left.left = Node(2)
 root.left.right = Node(3)
 root.right.left = Node(7)
 root.right.right = Node(12)

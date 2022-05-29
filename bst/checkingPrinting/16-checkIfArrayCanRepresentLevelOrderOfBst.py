@@ -8,7 +8,7 @@ import sys
         /       /   
        5       12
 '''
-
+from collections import deque
 
 def check(level):
     n = len(level)
@@ -16,11 +16,11 @@ def check(level):
         return True
     MIN = -sys.maxsize-1
     MAX = sys.maxsize
-    q = [(level[0], MIN, MAX)]
+    q = deque([(level[0], MIN, MAX)])
     i = 1
     while i < n and len(q) > 0:
         print(q)
-        (data, low, high) = q.pop(0)
+        (data, low, high) = q.popleft()
         if level[i] < data:
             if level[i] >= low:
                 q.append((level[i], low, data - 1))

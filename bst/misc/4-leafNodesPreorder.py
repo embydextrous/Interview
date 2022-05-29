@@ -1,23 +1,19 @@
 # https://www.geeksforgeeks.org/leaf-nodes-preorder-binary-search-tree/
 def printLeaves(pre):
     n = len(pre)
-    s = []
     i = 0
-    for j in range(1, n):
-        found = False
-        if pre[i] > pre[j]:
-            s.append(pre[i])
-        else:
-            while len(s) != 0:
-                if pre[j] > s[-1]:
-                    s.pop()
-                    found = True
-                else:
-                    break
-        if found:
-            print(pre[i], end = " ")
-        i += 1
-    print(pre[n - 1])
+    s = []
+    for x in pre:
+        isLeafFound = False
+        while len(s) > 0 and s[-1] < x:
+            item = s.pop()
+            if len(s) > 0 and s[-1] < x and not isLeafFound:
+                isLeafFound = True
+                print(item, end = " ")
+        s.append(x)
+    if len(s) > 0:
+        print(s[-1], end = " ")
+    print()
 
 '''
             12

@@ -1,6 +1,7 @@
 from bst import Node, insert, inorder
 
 # Also see, https://www.geeksforgeeks.org/convert-bst-min-heap/
+from collections import deque
 
 def bstToSortedList(root, tail):
     if root:
@@ -13,22 +14,19 @@ def bstToSortedList(root, tail):
 def sortedListToTree(head):
     if head is None:
         return
-    q = [head]
+    q = deque([head])
     head = head.right
     while head:
-        node = q.pop(0)
+        node = q.popleft()
         node.left = head
         q.append(node.left)
         head = head.right
+        node.right = head
         if head:
-            node.right = head
             q.append(node.right)
             head = head.right
-        else:
-            node.right = None
-            break
     while len(q) > 0:
-        node = q.pop(0)
+        node = q.popleft()
         node.left, node.right = None, None
         
 def bstToMinHeap(root):
