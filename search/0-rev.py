@@ -21,12 +21,5 @@ def trappedWater(a):
             r -= 1
     return w
 
-'''
-[3, 0r, 4l, 0, 2]
-lMax = 3
-rMax = 4
-w = 5
-'''
-
 a = [3, 0, 4, 0, 2]
 print(trappedWater(a))
