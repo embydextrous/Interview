@@ -2,20 +2,18 @@
 from math import sqrt
 
 def printAll(N):
-    for i in range(2, int(sqrt(N))):
-        if i % 2 == 0:
-            if (N//i) * i + i // 2 == N:
-                f = N // i + 1 - i // 2
-                t = N // i + 1 + i // 2
-                for j in range(f, t):
-                    print(j, end = " ")
-                print()
-        else:
-            if (N//i) * i == N:
-                f = N // i - i // 2
-                t = N // i + i // 2 + 1
-                for j in range(f, t):
-                    print(j, end = " ")
-                print()
+    for i in range(2, int(sqrt(N)+ 1)):
+        if i % 2 == 0 and N == (N // i) * i + i // 2:
+            first = N // i - i // 2 + 1
+            last = N // i + i // 2
+            for x in range(first, last + 1):
+                print(x, end = " ")
+            print()
+        elif i % 2 == 1 and N % i == 0:
+            first = N // i - i // 2
+            last = N // i + i // 2
+            for x in range(first, last + 1):
+                print(x, end = " ")
+            print()
 
-printAll(999)
+printAll(1000)

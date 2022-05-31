@@ -28,14 +28,9 @@ def fixedPoint(a, l, r):
     m = l + (r - l) // 2
     if a[m] == m:
         return m
-    res = -1
-    if m + 1 <= a[r]:
-        res = fixedPoint(a, m + 1, r)
-    if res != -1:
-        return res
-    if m - 1 >= a[l]:
-        return fixedPoint(a, l, m - 1)
-    return -1
+    if a[m] < m:
+        return fixedPoint(a, m + 1, r)
+    return fixedPoint(a, l, m - 1)
 
-a = [-10, -5, 3, 4, 7, 9]
+a = [-10, -5, -1, 1, 2, 5]
 print(fixedPoint(a, 0, len(a) - 1))

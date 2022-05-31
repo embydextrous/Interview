@@ -13,5 +13,5 @@ def countSteps(a):
         i += 1
     return maxSteps
 
-a = [1, 2, 2, 3, 2, 1, 2, 3, 4, 3, 2, 1]
+a = [4, 4, 4, 4]
 print(countSteps(a))

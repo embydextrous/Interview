@@ -26,5 +26,5 @@ def findPeakElement(a, l, r):
         return findPeakElement(a, l, m - 1)
     return findPeakElement(a, m + 1, r)
 
-a = [10, 20, 15, 2, 23, 90, 67]
+a = [12, 11, 10, 2, 23, 90, 67]
 print(findPeakElement(a, 0, len(a) - 1))

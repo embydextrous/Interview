@@ -7,17 +7,14 @@ In case of adjacent swap there won't be second odd element
 
 def sort(a):
     n = len(a)
-    f, s = None, None
+    x , y = -1, -1
     for i in range(1, n):
-        if a[i] < a[i-1]:
-            if f is None:
-                f = i - 1
+        if a[i-1] > a[i]:
+            if x == -1:
+                x, y = i-1, i
             else:
-                s = i
-    if s is None:
-        a[f], a[f+1] = a[f+1], a[f]
-    else:
-        a[f], a[s] = a[s], a[f]
+                y = i
+    a[x], a[y] = a[y], a[x]
 
 # 1 2 7 4 5 6 3 8
 a = [1, 2, 3, 4, 5, 6, 8, 7]

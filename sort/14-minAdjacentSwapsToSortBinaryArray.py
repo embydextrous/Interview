@@ -23,5 +23,5 @@ def count(a):
             result += zeroesTillNow
     return result
 
-a = [0, 0, 1, 0, 1, 0, 1, 1]
+a = [0, 0, 1, 0, 1, 0, 1, 0]
 print(count(a))

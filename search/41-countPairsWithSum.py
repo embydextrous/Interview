@@ -25,17 +25,17 @@ Input  :  arr[] = {10, 12, 10, 15, -1, 7, 6,
           sum = 11
 Output :  9
 '''
+from collections import defaultdict
+
 def countPairs(a, x):
-    d = {}
+    d = defaultdict(int)
     c = 0
     for i in a:
         if x - i in d:
             c += d[x-i]
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
+        d[i] += 1
     return c
-a = [1, 5, 7, -1, 5]
-x = 6
+    
+a = [10, 12, 10, 15, -1, 7, 6, 5, 4, 2, 1, 1, 1]
+x = 11
 print(countPairs(a, x))

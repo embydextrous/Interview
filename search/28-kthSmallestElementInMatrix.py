@@ -25,30 +25,18 @@ def kthSmallest(M, k):
     R, C = len(M), len(M[0])
     h = []
     for i in range(R):
-        h.append(HeapNode(M[i][0], i, 0))
-    heapq.heapify(h)
-    while k > 0:
-        node = h[0]
+        heapq.heappush(h, [M[i][0], i, 0])
+    while len(h) > 0:
+        x, row, col = heapq.heappop(h)
         k -= 1
         if k == 0:
-            return node.data
-        i, j = node.i, node.j
-        if j + 1 < C:
-            heapq.heapreplace(h, HeapNode(M[i][j+1], i, j + 1))
-        else:
-            heapq.heappop(h)
+            return x
+        if col + 1 < C:
+            heapq.heappush(h, [M[row][col + 1], row, col + 1])
+    return None
 
 
-class HeapNode:
-    def __init__(self, data, i, j):
-        self.data = data
-        self.i = i
-        self.j = j
-
-    def __lt__(self, other):
-        return self.data < other.data
-
-k = 14 
+k = 7 
 M = [[10, 20, 30, 40],
         [15, 25, 35, 45],
         [24, 29, 37, 48],

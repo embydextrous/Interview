@@ -26,4 +26,5 @@ def findTwoRepeatingElements(a, n):
     return (x, y)
 
 a = [4, 2, 4, 5, 2, 3, 1]
-print(findTwoRepeatingElements(a, 5))
+n = 5
+print(findTwoRepeatingElements(a, n))

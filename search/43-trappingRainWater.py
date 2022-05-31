@@ -32,6 +32,13 @@ and 4.  See below diagram also.
 Input: arr[] = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 Output: 6
 
+'''
+# [0, 1, 0, 2, 1, 0, 1, 3r, 2l, 1, 2, 1]
+lMax = 3
+rMax = 2
+w = 6
+'''
+
 Explanation:
 The structure is like below
 

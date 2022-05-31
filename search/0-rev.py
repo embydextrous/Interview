@@ -1,29 +1,32 @@
-# 16 17 18 19 20
-# 21 22 24 25 26 27 28 29 30
-# 31 32 33 34 35 36 37 38 39 40
-# 41 42 43 44 45 46 47 48 49
-# 51 52
-import random
+# 29
+# 33 37 39 40
+# 44 45 46 48 49
+# 51
+from collections import defaultdict
+from math import sqrt, ceil
 
-def search(a, x, k):
-    if k == 1:
-        return search1(a, x)
-    i = 0
-    while i < len(a):
-        if a[i] == x:
-            return i
-        i += (abs(a[i] - x) - 1) // k + 1
-    return -1
+def trappedWater(a):
+    l = 0
+    r = len(a) - 1
+    w = 0
+    lMax = rMax = 0
+    while l <= r:
+        if lMax <= rMax:
+            w += max(0, lMax - a[l])
+            lMax = max(lMax, a[l])
+            l += 1
+        else:
+            w += max(0, rMax - a[r])
+            rMax = max(rMax, a[r])
+            r -= 1
+    return w
 
-def search1(a, x):
-    i = 0
-    while i < len(a):
-        if a[i] == x:
-            return i
-        i += abs(a[i] - x)
-    return -1
-    
-a = [8, 7, 6, 7, 6, 5, 4, 3, 2, 3, 4, 3]
-print(search1(a, 3))
-a = [2, 4, 5, 7, 7, 6]
-print(search(a, 6, 2))
+'''
+[3, 0r, 4l, 0, 2]
+lMax = 3
+rMax = 4
+w = 5
+'''
+
+a = [3, 0, 4, 0, 2]
+print(trappedWater(a))

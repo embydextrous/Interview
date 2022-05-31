@@ -16,32 +16,18 @@ Examples:
 '''
 def search(a):
     n = len(a)
-    if n <= 2:
-        return -1
-    idx = -1
-    element = a[0]
-    maxi = a[0]
-    i = 1
-    while i < n - 1:
-        if a[i] < maxi:
-            i += 1
-        else:
-            element = a[i]
-            idx = i
-            maxi = a[i]
-            i += 1
-            while i < n - 1:
-                if a[i] >= element:
-                    if a[i] > maxi:
-                        maxi = a[i]
-                    if i == n - 1:
-                        return idx if element <= a[n-1] else -1
-                    i += 1
-                else:
-                    i += 1
-                    element = a[i]
-                    idx = -1
-    return idx if element <= a[n-1] else -1
-
-a = [5, 1, 4, 3, 6, 0]
+    leftMax = a[:]
+    rightMin = a[:]
+    for i in range(1, n):
+        leftMax[i] = max(leftMax[i], leftMax[i-1])
+    for i in range(n-2, -1, -1):
+        rightMin[i] = min(rightMin[i], rightMin[i+1])
+    for i in range(n):
+        if leftMax[i] == a[i] and rightMin[i] == a[i]:
+            return a[i]
+    print(leftMax)
+    print(rightMin)
+    return None
+            
+a = [5, 1, 4, 3, 6, 8, 10, 7, 9]
 print(search(a))

@@ -4,7 +4,7 @@ def tripletSum(a, x):
     n = len(a)
     for i in range(n - 2):
         # fixes ith element so we need to find if x - a[i] sum exists in remaining array
-        l = 0
+        l = i + 1
         r = n - 1
         while l < r:
             if a[l] + a[r] + a[i] == x:
