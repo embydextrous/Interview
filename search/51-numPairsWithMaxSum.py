@@ -14,23 +14,21 @@ Output : 1
 Explanation: The pair 4, 5 yields the 
 maximum sum i.e, 9 which is given by 1 pair only
 '''
-import sys
+from collections import defaultdict
 
 def numPairs(arr):
-    d = {}
-    a = b = -sys.maxsize-1
-    for i in arr:
-        if i in d:
-            d[i] += 1
-        else:
-            d[i] = 1
-        if i >= a:
-            a, b = i, a
-        elif i > b:
-            b = i
-    if a == b:
-        return (d[a] * (d[a] - 1)) // 2
-    return d[b]
+    maxi = secMaxi = -10 ** 9
+    d = defaultdict(int)
+    for i in a:
+        if i > maxi:
+            maxi, secMaxi = i, maxi
+        elif i > secMaxi:
+            secMaxi = i
+        d[i] += 1
+    if maxi == secMaxi:
+        return (d[maxi] * (d[maxi] - 1)) // 2
+    else:
+        return d[secMaxi]
 
-a = [1, 2, 2, 1, 2, 1, 2, 1, 2, 3]
+a = [1, 2, 2, 1, 2, 1, 2, 1, 2]
 print(numPairs(a))

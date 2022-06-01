@@ -17,20 +17,20 @@ def findClosest(a, l, r, x):
     if l == r:
         return a[l]
     if l + 1 == r:
-        if x <= a[l]:
-            return a[l]
-        elif x >= a[r]:
-            return a[r]
-        else:
-            return a[l] if x - a[l] <= a[r] - x else a[r]
+        return a[l] if abs(x - a[l]) <= abs(x - a[r]) else a[r]
     m = l + (r - l) // 2
     if a[m] == x:
         return a[m]
-    if a[m-1] < x and a[m+1] > x:
-        return a[m-1] if x - a[m-1] <= a[m+1] - x else a[m+1]
-    if x < a[m]:
-        return findClosest(a, l, m-1, x)
-    return findClosest(a, m+1, r, x)
+    if a[m] < x:
+        if a[m+1] > x:
+            return a[m] if abs(x - a[m]) <= abs(x - a[m+1]) else a[m+1]
+        else:
+            return findClosest(a, m + 1, r, x)
+    else:
+        if a[m-1] < x:
+            return a[m] if abs(x - a[m]) <= abs(x - a[m-1]) else a[m-1]
+        else:
+            return findClosest(a, l, m - 1, x)
 
 a = [1, 2, 4, 5, 6, 6, 8, 9]
 for i in range(11):

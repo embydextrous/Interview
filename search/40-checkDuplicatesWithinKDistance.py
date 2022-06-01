@@ -22,15 +22,15 @@ def check(a, k):
     n = len(a)
     s = set()
     for i in range(k + 1):
-        if a[i] in s:
-            return True
         s.add(a[i])
+    if len(s) != k + 1:
+        return True
     for i in range(k + 1, n):
-        print(s, a[i-k-1], a[i])
-        s.remove(a[i-k-1])
-        if a[i] in s:
+        enter, exit = a[i], a[i-k-1]
+        s.remove(exit)
+        s.add(enter)
+        if len(s) != k + 1:
             return True
-        s.add(a[i])
     return False
 
 a = [1, 2, 3, 4, 5]

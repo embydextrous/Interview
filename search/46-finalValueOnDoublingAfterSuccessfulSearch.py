@@ -30,6 +30,6 @@ def finalValue(a, k):
 
 # 1 2 3 4 8 10
 # k = 2
-a = [2, 4, 5, 6, 7, 9]
-k = 3
+a = [2, 3, 4, 10, 8, 1]
+k = 1
 print(finalValue(a, 2))

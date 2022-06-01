@@ -14,21 +14,19 @@ Input:   arr[] = {1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8}
 Output:  8
 '''
 def findNonRepeating(a, l, r):
-    if l > r:
-        return None
     if l == r:
         return a[l]
     m = l + (r - l) // 2
-    if m % 2 == 0:
+    if (m - l) % 2 == 0:
         if m == r:
             return a[m]
-        elif a[m+1] == a[m]:
+        if a[m] == a[m+1]:
             return findNonRepeating(a, m + 2, r)
         return findNonRepeating(a, l, m)
     else:
         if m == l:
             return a[m]
-        elif a[m-1] == a[m]:
+        if a[m] == a[m-1]:
             return findNonRepeating(a, m + 1, r)
         return findNonRepeating(a, l, m - 1)
 

@@ -19,23 +19,25 @@ Output : 50 45 84
 '''
 
 # Also see, https://www.geeksforgeeks.org/find-n-smallest-element-given-array-order-array/
+from collections import defaultdict
+
 def printKMaxInOrder(a, k):
-    c = a[:]
-    c.sort()
-    c = c[::-1]
-    d = {}
-    for i in range(k):
-        if c[i] in d:
-            d[c[i]] += 1
-        else:
-            d[c[i]] = 1
+    c = sorted(a, reverse=True)
+    count = 0
+    for i in range(k-1, -1, -1):
+        if c[i] != c[k-1]:
+            break
+        count += 1
+    print(count)
     for i in a:
-        if i in d and d[i] > 0:
+        if i > c[k-1]:
             print(i, end = " ")
-            d[i] -= 1
+        elif i == c[k-1] and count > 0:
+            print(i, end = " ")
+            count -= 1
     print()
 
-a = [42, 42, 45]
-k = 2
+a = [1, 2, 3, 2, 3, 1, 2, 3, 4, 3]
+k = 5
 printKMaxInOrder(a, k)
 

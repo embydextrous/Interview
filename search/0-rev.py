@@ -1,25 +1,25 @@
-# 29
-# 33 37 39 40
-# 44 45 46 48 49
-# 51
 from collections import defaultdict
 from math import sqrt, ceil
+from search import binarySearchUtil
 
-def trappedWater(a):
-    l = 0
-    r = len(a) - 1
-    w = 0
-    lMax = rMax = 0
-    while l <= r:
-        if lMax <= rMax:
-            w += max(0, lMax - a[l])
-            lMax = max(lMax, a[l])
-            l += 1
-        else:
-            w += max(0, rMax - a[r])
-            rMax = max(rMax, a[r])
-            r -= 1
-    return w
+def check(a):
+    n = len(a)
+    a.sort()
+    missCount = 0
+    for i in range(a[0] + 1, a[0] + n):
+        if binarySearchUtil(a, 0, n - 1, i) == -1:
+            missCount += 1
+    if missCount == 0:
+        return "AC"
+    if missCount == 1:
+        return a[n-1]
+    missCount = 0
+    for i in range(a[n-1] - 1, a[0] - n, -1):
+        if binarySearchUtil(a, 0, n - 1, i) == -1:
+            missCount += 1
+    if missCount == 1:
+        return a[0]
+    return -1
 
-a = [3, 0, 4, 0, 2]
-print(trappedWater(a))
+a = [5, 6, 7, 9, 10]
+print(check(a))
