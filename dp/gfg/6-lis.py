@@ -22,7 +22,6 @@ The longest increasing subsequence is {3, 7, 40, 80}
 # https://www.geeksforgeeks.org/longest-subsequence-such-that-difference-between-adjacents-is-one/
 from collections import deque
 
-
 def lis(a):
     dp = [1] * len(a)
     maxi = 1

@@ -23,10 +23,9 @@ Examples:
 def maxSum(a):
     incl = excl = 0
     for i in a:
-        newIncl = max(excl + i, incl)
+        newIncl = excl + i
         excl = max(incl, excl)
         incl = newIncl
-        print(max(incl, excl))
     return max(incl, excl)
 
 a = [3, 2, 5, 10, 7]

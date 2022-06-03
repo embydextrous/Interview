@@ -17,18 +17,16 @@ Examples:
     Output : 9 7 5 3 2 1 
 
 '''
-def ropesLeft(ropes):
-    n = len(ropes)
-    ropes.sort()
-    allEqual = True
-    for i in range(1, n):
-        if ropes[i] > ropes[i-1]:
-            print(n-i, end = " ")
-            allEqual = False
-    if allEqual:
-        print(0, end = " ")
+def ropesLeft(a):
+    a.sort()
+    n = len(a)
+    i = 0
+    while i < n:
+        if i + 1 < n and a[i] != a[i+1]:
+            print(n - i - 1, end = " ")
+        i += 1
     print()
 
-a = [5, 1, 1, 2, 3, 5]
+a = [5, 1, 6, 9, 8, 11, 2, 2, 6, 5]
 ropesLeft(a)
     

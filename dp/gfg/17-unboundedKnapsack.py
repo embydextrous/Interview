@@ -10,5 +10,5 @@ def unboundedKnapsack(W, weights, values):
 
 values = [1, 4, 1, 6, 5, 4]
 weights = [2, 3, 1, 6, 4, 5]
-W = 10    
+W = 10   
 print(unboundedKnapsack(W, weights, values))

@@ -1,19 +1,20 @@
 
-# 4, 5, 8, 9, 10
 # 12, 13, 14, 15, 16, 17, 18, 19, 20
-# 
-def sort(a):
-    n = len(a)
-    x , y = -1, -1
-    for i in range(1, n):
-        if a[i-1] > a[i]:
-            if x == -1:
-                x, y = i-1, i
-            else:
-                y = i
-    a[x], a[y] = a[y], a[x]
+from math import ceil
 
+def count(a, k):
+    target = a[0]
+    c = 0
+    for i in range(1, len(a)):
+        x = a[i]
+        print(x, target, c)
+        if x <= target:
+            continue
+        else:
+            t = ceil((x - target) / k)
+            target = x - k * t
+            c += t
+    return c
 
-a = [1, 2, 8, 4, 5, 6, 7, 3]
-sort(a)
-print(a)
+a = [1, 8, 10, 6, 9, 12]
+print(count(a, 3))

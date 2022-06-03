@@ -10,27 +10,18 @@ Input : 10 12 15 12 10 25 12
 Output : 1.5, 4.0, 6.0, 4.0, 1.5, 7.0, 4.0
 '''
 def rankify(a):
-    n = len(a)
-    rankArray = []
-    for i in range(n):
-        rankArray.append([a[i], i])
-    rankArray.sort(key = lambda x : x[0])
-    i = 0
-    while i < n - 1:
-        c = 1
-        j = i
-        while j < n - 1 and rankArray[j][0] == rankArray[j+1][0]:
-            c += 1
-            j += 1
-        for k in range(i, j + 1):
-            rank = ((j + 2) * (j + 1) / 2 - (i + 1) * i / 2) / (j - i + 1)
-            rankArray[k][0] = rank
-        i = j + 1
-    if rankArray[n-1][0] != rankArray[n-2][0]:
-        rankArray[n-1][0] = n / 1.0
-    rankArray.sort(key = lambda x : x[1])
-    for i in range(n):
-        print(rankArray[i][0], end = " ")
+    sortedA = sorted(a)
+    d = {}
+    for i in range(len(sortedA)):
+        x = sortedA[i]
+        if x not in d:
+            d[x] = [i + 1, i + 1]
+        else:
+            d[x][1] = i + 1
+    for i in a:
+        n = d[i][1] - d[i][0] + 1
+        s = (d[i][1] * (d[i][1] + 1)) // 2 - (d[i][0] * (d[i][0] - 1)) // 2
+        print(s / n, end = " ")
     print()
     
 
