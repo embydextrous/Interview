@@ -12,17 +12,18 @@ Output: "ee"
 
 def lps(s):
     n = len(s)
-    dp = [[True for j in range(n)] for i in range(n)]
-    x, y = 0, 0
-    size = 1
-    for i in range(1, n):
-        for j in range(n-i):
-            dp[j][j+i] = s[j] == s[j+i] and dp[j+1][j+i-1]
-            if dp[j][j+i] and i + 1 > size:
-                size = i + 1
-                x, y = j, j+i
-    print(s[x:y+1])
-    return size
+    M = [[True for i in range(n)] for j in range(n)]
+    maxSize = 1
+    x = 0
+    for size in range(2, n + 1):
+        for i in range(n - size + 1):
+            j = i + size - 1
+            M[i][j] = s[i] == s[j] and M[i+1][j-1]
+            if M[i][j]:
+                maxSize = size
+                x = i
+    print(s[x:x+maxSize])
+    return maxSize
 
 s = "forgeeksskeegfor"
 print(lps(s))

@@ -11,10 +11,25 @@ def longestCommonSubstring(s1, s2):
                 if 1 + dp[i-1][j-1] > maxi:
                     maxi = 1 + dp[i-1][j-1]
                     x = i - 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    for row in dp:
+        print(row)
     print(x)
     print(s1[x-maxi+1:x+1])
     return maxi
 
-s1 = "pqabcxy"
-s2 = "xyzabcp"
+s2 = "pqabcxy"
+s1 = "xyzabcp"
 print(longestCommonSubstring(s1, s2))
+'''
+             p       pq        pqa       pqab        pqabc       pqabcx          pqabcxy
+
+x            0       0          0          0           0            1               1 
+xy           0       0          0          0           0            1               2 
+xyz          0       0          0          0           0            1               2
+xyza         0       0          1          1           1            1               2    
+xyzab        0       0          1          2           2            2               2    
+xyzabc       0       0          1          2           3            3               3   
+xyzabcp      0       0          1          2           3            3               3  
+'''

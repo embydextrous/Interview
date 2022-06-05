@@ -24,20 +24,21 @@ Output : 18
 '''
 
 def billboard(M, distance, revenue, t):
-    dp = [0 for i in range(M+1)]
-    for i in range(len(distance)):
-        x = distance[i]
-        if i == 0:
-            dp[x] = revenue[i]
-        else:
-            for j in range(distance[i-1] + 1, distance[i]):
-                dp[j] = dp[j-1]
-            if x - t > distance[i-1]:
-                dp[x] = dp[x-1] + revenue[i]
+    dp = [0] * (M + 1)
+    idx = 0
+    for i in range(1, M + 1):
+        if idx >= len(distance) or i < distance[idx]:
+            dp[i] = dp[i-1]
+        elif i == distance[idx]:
+            if idx == 0:
+                dp[i] = revenue[idx]
             else:
-                dp[x] = max(dp[x-1], dp[x-t-1] + revenue[i])
-    print(dp)
-    return dp[min(distance[-1], M)]
+                if i - t > 0:
+                    dp[i] = max(dp[i-1], dp[i-t-1] + revenue[idx])
+                else:
+                    dp[i] = revenue[idx]
+            idx += 1
+    return dp[M]
 
 M = 15
 distance = [6, 9, 12, 14]

@@ -14,27 +14,25 @@ Maximum evaluated value = (1 + 2)*(3 + 4)*5 = 105
 def maxValue(exp):
     nums = []
     ops = []
+    cNum = 0
     for c in exp:
         if c == '*' or c == '+':
+            nums.append(cNum)
             ops.append(c)
+            cNum = 0
         else:
-            nums.append(int(c))
+            cNum = 10 * cNum + int(c)
+    nums.append(cNum)
     n = len(nums)
     dp = [[nums[i] if i == j else 0 for i in range(n)] for j in range(n)]
     for s in range(2, n + 1):
-        i = 0
-        j = i + s - 1
-        while j < n:
+        for i in range(n-s+1):
+            j = i + s - 1
             for k in range(i, j):
-                print(i, j, k, dp[i][k], dp[k][j], ops[k])
                 if ops[k] == '*':
                     dp[i][j] = max(dp[i][j], dp[i][k] * dp[k+1][j])
                 else:
                     dp[i][j] = max(dp[i][j], dp[i][k] + dp[k+1][j])
-            i += 1
-            j += 1
-    for row in dp:
-        print(row)
     return dp[0][n-1]
 
     

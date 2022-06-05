@@ -32,22 +32,23 @@ x   x   x   x   0
 def palindromePartition(s):
     n = len(s)
     lps = [[True for i in range(n)] for j in range(n)]
-    for i in range(1, n):
-        for j in range(n-i):
-            lps[j][j+i] = s[j] == s[j+i] and lps[j+1][j+i-1]
-    for row in lps:
-        print(row)
-    dp = [10**9] * n
+    for size in range(2, n + 1):
+        for i in range(n - size + 1):
+            j = i + size - 1
+            lps[i][j] = s[i] == s[j] and lps[i+1][j-1]
+    dp = [10 ** 9] * n
     dp[0] = 0
     for i in range(1, n):
         if lps[0][i]:
             dp[i] = 0
-            continue
-        for j in range(i, -1, -1):
-            if lps[j][i]:
-                dp[i] = min(dp[i], 1 + dp[j-1])
+        else:
+            for j in range(i, 0, -1):
+                if lps[j][i]:
+                    if i == n - 1 and 1 + dp[j-1] > dp[i]:
+                        print(i, j)
+                    dp[i] = min(dp[i], 1 + dp[j-1])
     print(dp)
-    return max(dp)
+    return dp[n-1]
 
-s = "abbac"
+s = "ababbbabbababa"
 print(palindromePartition(s))

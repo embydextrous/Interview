@@ -8,6 +8,7 @@ def countTriangles(a):
         r = i - 1
         while l < r:
             if a[l] + a[r] > a[i]:
+                print(l, r)
                 c += (r - l)
                 r -= 1
             else:
@@ -16,3 +17,8 @@ def countTriangles(a):
 
 a = [1, 2, 3, 5, 6, 8, 10]
 print(countTriangles(a))
+# 2 5 6
+# 3 5 6
+# 5 6 8
+# 5 6 10
+# 6 8 10

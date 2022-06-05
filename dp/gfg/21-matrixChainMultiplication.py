@@ -1,20 +1,14 @@
 def matrixChainMultiplication(dimens, names):
     n = len(dimens) - 1
-    M = [[10 ** 9 for i in range(n)] for j in range(n)]
-    S = [[10 ** 9 for i in range(n)] for j in range(n)]
-    for i in range(n):
-        M[i][i] = 0
-        S[i][i] = i
+    M = [[10 ** 9 if i != j else 0 for i in range(n)] for j in range(n)]
+    S = [[10 ** 9 if i != j else i for i in range(n)] for j in range(n)]
     for s in range(2, n+1):
-        i = 0
-        j = i + s - 1
-        while j < n:
+        for i in range(n-s+1):
+            j = i + s - 1
             for k in range(i, j):
                 if M[i][k] + M[k+1][j] + dimens[i] * dimens[k+1] * dimens[j+1] < M[i][j]:
                     M[i][j] = M[i][k] + M[k+1][j] + dimens[i] * dimens[k+1] * dimens[j+1]
                     S[i][j] = k
-            i += 1
-            j += 1
     printBrackets(0, n - 1, S, names)
     print()
     return M[0][n-1]
@@ -33,10 +27,10 @@ names = ["A", "B", "C", "D", "E"]
 # (5, 6) (6, 4) (4, 3) (3, 5) (5, 2)
 print(matrixChainMultiplication(d, names))
 '''
-x   120    162   237    162
-x     x    72    162    102  
+x    120   162   247    162
+x     x    72    162    102
 x     x     x    60     54
-x     x     x     x     30   
+x     x     x     x     30        
 x     x     x     x      x 
 
 x   0   0   2   0

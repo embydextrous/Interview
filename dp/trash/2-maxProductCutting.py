@@ -6,4 +6,4 @@ def maxProductCutting(n):
     return 3 ** (n//3 - 1) * 4
 
 n = 17
-print(maxProductCutting(10))
+print(maxProductCutting(n))

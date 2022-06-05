@@ -36,6 +36,8 @@ P(n) = P(n-1) + (n - 1) * P(n-2)
 Base cases:
 P(0) = 1 -> O persons can be paired in one way.
 P(1) = 1 -> 1 person can be only kept alone.
+
+f(n) = f(n-1) + (n-1)f(n-2)
 '''
 def friendPairing(n):
     if n <= 1:
