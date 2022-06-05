@@ -1,6 +1,5 @@
 from collections import defaultdict, deque
 
-# Climb Stairs - Tomorrow
 # Dominoes and Trominoes - Tomorrow
 # Stock Problems - Today
 from math import floor, sqrt
