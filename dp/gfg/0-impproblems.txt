@@ -1,0 +1,130 @@
+1. Word Wrap Problem
+2. Min Insertions to Form Palindrome
+3. Dice Throw
+4. Optimal Strategy Game
+5. Word Break
+6. Interleaved String
+7. Longest AP
+8. Travelling Salesman
+9. Count Possible Paths
+10. Remove Min Elements
+11. Boolean Paranthesisation
+12. Count Possible Decodings
+13. Mobile Numeric Keypad
+14. Min Cost to Reach Destination
+15. Print Max A’s
+19. Sum of All Digits from 1 to N
+20. Count Numbers 1 to n with 4 as digit
+21. Min Steps to Reach Destination
+22. Collect Max Points In Grid
+23. Min Squares whose sum equals N
+24. Min Initial Points to Reach Destination
+25. Count n digit numbers whose sum equals given sum
+26. Bitmasking and DP - 1
+27. Longest Repeating Subsequence
+28. Count Even Length Binary Sequences
+29. Longest Valid Substring
+30. Longest Path in Matrix With Constraints
+31. Num Paths with Exactly K Coins
+32. Collect max coins before dead end
+33. Num Paths with At Most k Turns
+34. Partition Set with min diff
+35. Longest ZigZag Subsequence
+36. Ways to arrange balls adjacent balls different color
+37. Max Length Snake Sequence
+38. String is K Palindrome
+39. Wildcard Pattern Matching
+40. Max Absolute Difference Between Sum of Contiguous Sub Arrays
+41. Longest Common Increasing Subsequence
+42. Number of Non Negative Integral Solutions of a + b + c = n
+43. Longest GP
+44. Number of Times Subsequence
+45. Min Cost to Fill Weight in Bag
+46. Count Distinct Subsequences
+47. Min Sum One of every three consecutive is taken
+48. Count Increasing Subsequences
+49. Count All Palindromic Subsequence
+50. Recursively Break Number in 3 Parts
+51. Max Sum Alternating Subsequence
+52. Min Cost Path with Left Right Bottom
+53. Max Sum No Three Consecutive
+54. Number of palindromic paths in a matrix
+55. Count Number of Ways to reach destination in a maze
+56. Probability of Knight to Remain on Chessboard
+57. Max Dot Product
+
+Tomorrow
+1. Word Wrap Problem
+2. Dice Throw
+3. Optimal Strategy Game
+4. Word Break
+5. Count Possible Decodings
+6. Mobile Numeric Keypad
+7. String is K Palindrome
+8. Wildcard Pattern Matching
+9. Longest AP
+10. Count Increasing Subsequences
+11. Count All Palindromic Subsequences
+12. Count Distinct Subsequences
+
+1. Largest Sum Zigzag Sequence
+2. Temple Offerings
+3. Circular LIS
+4. Largest Sum Subarrray with at least K numbers
+5. Paper Cut Squares
+6. Smallest Sum Subsquare
+7. Bridge and Torch
+8. Burst Balloons
+9. Minimize Number of teddies
+10. Maximize Marks Obtained
+
+1. Check row or column swaps produce max with all 1s
+2. Max Points Collected by two persons
+3. Check if all people can vote on two machines
+4. Size after repeated deletion of lis
+5. Max square sub matrix with all equal elements
+6. Count of strings formed with a b and c under given constraints
+7. Perfect Sum Problem
+8. Largest Sum Zigzag Sequence in a matrix
+9. Digit DP
+10. Temple Offerings
+11. Count number of ways to reach end
+12. Shortest Uncommon Subsequence
+13. Largest Sum Subarrray with at least K numbers
+14. Minimum jumps to reach end
+15. LIS in Circular Manner
+16. Bitmasking and DP - Set 2
+17. Paper Cut Squares
+18. Ways Transforming 1 string to other removing 0 or more chars
+19. Smallest Sum Contiguous Subarray
+20. Max Games Played by Winner
+21. Coin Game Winner 3 Choices
+22. Unique path in grid with obstacles
+23. Count ways build street
+24. Maximize binary matrix flipping sub matrix once
+27. Longest Balanced Subsequence
+28. Number of NGE to right
+29. Painter’s Partition
+30. Bridge and Torch
+31. Max Size Subset with given sum
+32. Max diff of 0 and 1
+33. Number of ways to form heap
+34. Longest Odd Even Subsequence
+35. Subarray Size With Max Sum
+36. Max profit sale of wines
+37. Burst Balloon to maximise coins
+38. N Kg Sweets for M persons Min Cost
+39. Minimise number of teddies
+40. Count ways to reach score 12 no consecutive 2
+41. Treasure and Cities
+42. Number of ways to partition a string into two balanced subsequences
+43. Size of smallest subset with max bitwise OR
+44. Min steps to reach boundary edges
+45. Check if word exists in grid or not
+46. Variation of rat in a maze - jumps allowed
+47. Double Knapsack
+48. Sum of Bitwise AND of all sub matrices
+49. Longest subsequence such that adjacent have 1 common digit
+50. Max subarray sum after inverting at most 2 elements
+51. Sum of diagonal elements of NxN Spiral matrix
+52. Max topics to prepare to pass exam

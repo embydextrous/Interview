@@ -9,6 +9,9 @@ Output: "geeksskeeg"
 Input: Given string :"Geeks", 
 Output: "ee"
 '''
+# Also see, Count All Palindrome Substrings
+# https://www.geeksforgeeks.org/count-palindrome-sub-strings-string/
+# https://www.geeksforgeeks.org/find-number-distinct-palindromic-sub-strings-given-string/
 
 def lps(s):
     n = len(s)
