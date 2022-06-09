@@ -19,25 +19,22 @@ def maxProfitSingleTrade(a):
 
 # Cashout is minimized, cashin is maximized, fees applies on sell
 def maxProfitInfiniteTradesWithFee(a, fee):
-    cashout, cashin = a[0], 0
+    bsp, ssp = -a[0], 0
     for i in range(1, len(a)):
-        tempCashout = cashout
-        cashout = min(cashout, a[i] - cashin)
-        cashin = max(cashin, a[i] - tempCashout - fee)
-    return cashin
+        lastbsp = bsp
+        bsp = max(bsp, ssp - a[i])
+        ssp = max(ssp, a[i] + lastbsp - fee)
+    return ssp
 
 # Cool means cannot buy for 1 day after sell
 def maxProfitInfiniteTradesCoolOff(a):
-    cashout, cashin, cashinCoolOff = a[0], 0, 0
+    bsp, ssp, csp = -a[0], 0, 0
     for i in range(1, len(a)):
-        lastCashin, lastCashout = cashin, cashout
-        # Calculated from last cashout and cool off as you can't buy after sell
-        cashout = min(lastCashout, a[i] - cashinCoolOff)
-        # Calculated from last cashout and last cash in
-        cashin = max(lastCashin, a[i] - lastCashout)
-        # Calculated from last cashin and previous cashinCoolOff
-        cashinCoolOff = max(lastCashin, cashinCoolOff)
-    return cashin
+        lastbsp, lastssp = bsp, ssp
+        bsp = max(bsp, csp - a[i])
+        ssp = max(ssp, a[i] + lastbsp)
+        csp = max(lastssp, csp)
+    return ssp
 
 def maxProfitTwoTrades(a):
     n = len(a)

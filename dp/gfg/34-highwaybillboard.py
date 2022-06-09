@@ -36,12 +36,12 @@ def billboard(M, distance, revenue, t):
                 if i - t > 0:
                     dp[i] = max(dp[i-1], dp[i-t-1] + revenue[idx])
                 else:
-                    dp[i] = revenue[idx]
+                    dp[i] = max(dp[i-1], revenue[idx])
             idx += 1
     return dp[M]
 
 M = 15
-distance = [6, 9, 12, 14]
-revenue = [5, 6, 3, 7]
+distance = [1, 2, 6, 9, 12, 14]
+revenue = [4, 3, 5, 6, 3, 7]
 t = 2
 print(billboard(M, distance, revenue, t))
