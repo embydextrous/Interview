@@ -10,29 +10,30 @@ subarray lies between the indexes 2 and 5.
 def findSubArray(a):
     n = len(a)
     x = -1
-    for i in range(n-1):
-        if a[i] > a[i+1]:
-            x = i
+    for i in range(1, n):
+        if a[i] < a[i-1]:
+            x = i - 1
             break
     if x == -1:
+        print("Already sorted.")
         return []
     y = -1
-    for i in range(n-1, 0, -1):
-        if a[i] < a[i-1]:
-            y = i
+    for i in range(n - 2, x - 1, -1):
+        if a[i] > a[i+1]:
+            y = i + 1
             break
-    maxi = max(a[x:y+1])
-    mini = min(a[x:y+1])
-    for i in range(x):
-        if a[i] > mini:
-            x = i
-            break
-    for i in range(n-1, y, -1):
-        if a[i] < maxi:
-            y = i
-            break
+    maxi = mini = a[x]
+    for i in range(x + 1, y + 1):
+        if a[i] < mini:
+            mini = a[i]
+        elif a[i] > maxi:
+            maxi = a[i]
+    while x > 0 and a[x-1] > mini:
+        x -= 1
+    while y < n - 1 and a[y+1] < maxi:
+        y += 1
     return a[x:y+1]
 
-a = [5, 4, 3, 2, 1]
+a = [0, 1, 15, 25, 6, 7, 30, 40, 50]
 print(findSubArray(a))
 

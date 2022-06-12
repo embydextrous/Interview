@@ -16,33 +16,29 @@ Output : No
 def check(a):
     n = len(a)
     x = -1
-    for i in range(n - 1):
-        if a[i] > a[i + 1]:
-            x = i
+    for i in range(1, n):
+        if a[i] < a[i-1]:
+            x = i - 1
             break
     if x == -1:
-        return (True, "Already Sorted")
+        print("Already sorted.")
+        return False
     y = -1
-    for i in range(n - 1, x, -1):
-        if a[i] < a[i - 1]:
-            y = i
+    for i in range(n - 2, x - 1, -1):
+        if a[i] > a[i+1]:
+            y = i + 1
             break
-    mini = min(a[x:y+1])
-    maxi = max(a[x:y+1])
-    for i in range(x):
-        if a[i] > mini:
-            x = i
-            break
-    for i in range(n-1, y, -1):
-        if a[i] < maxi:
-            y = i
-            break
-    for i in range(x, y):
-        if a[i] < a[i+1]:
-            return (False, None)
-    return (True, a[x:y+1])
+    print(x, y)
+    for i in range(y, x, -1):
+        if a[y] > a[y-1]:
+            return False
+    return True
 
-a = [5, 4, 3, 2, 1]
+x = 0
+y = 4
+    
+
+a = [1, 2, 2, 2, 4, 4, 4, 2, 4, 4, 5]
 print(check(a))
     
     

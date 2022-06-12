@@ -13,30 +13,30 @@ Since there are 3 elements, the elements can be from 0 to 8.
 Input: arr[] = {7, 0, 2}
 Output: arr[] = {0, 2, 7}
 '''
-import math
+from math import ceil, sqrt
 
-def countSort(a, N, exp):
+def countSort(a, exp, N):
     count = [0] * N
     output = [0] * len(a)
     for i in a:
         count[(i // exp) % N] += 1
     for i in range(N-1):
         count[i+1] += count[i]
-    for i in range(N-1, -1, -1):
-        idx = (a[i] // exp) % N
-        output[count[idx] - 1] = a[i]
-        count[idx] -= 1
+    for i in range(len(a) - 1, -1, -1):
+        idx = count[(a[i] // exp) % N] - 1
+        output[idx] = a[i]
+        count[(a[i] // exp) % N] -= 1
     a[:] = output[:]
-
 
 def sort(a):
     maxi = max(a)
-    N = math.ceil(math.sqrt(maxi + 1))
+    N = ceil(sqrt(maxi + 1))
     exp = 1
     for i in range(2):
-        countSort(a, N, exp)
-        exp = exp * N
+        countSort(a, exp, N)
+        print(a)
+        exp *= N
 
-a = [0, 23, 14, 12, 9]
+a = [0, 40, 34, 23, 14, 12, 9, 46, 34, 47]
 sort(a)
 print(a)

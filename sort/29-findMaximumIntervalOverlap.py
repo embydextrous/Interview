@@ -33,6 +33,6 @@ def maxOverlaps(intervals):
     return maxOverlap
 
 # 1 2 5 5 9
-# 4 5 9 12 12
+# 5 4 9 12 12
 intervals = [[5, 9], [2, 5], [5, 12], [9, 12], [1, 4]]
 print(maxOverlaps(intervals))
