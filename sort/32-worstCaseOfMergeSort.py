@@ -90,7 +90,7 @@ def merge(a, L, R):
         return 1
     return count
 
-a = [5, 9, 11, 16, 13, 2, 4, 8, 10, 6, 15, 7, 1, 3, 14, 12]
+a = [5, 2, 4, 8, 6, 7, 1, 3]
 a.sort()
 print(mergeSort(a))
 print(a)

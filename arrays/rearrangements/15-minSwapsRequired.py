@@ -36,7 +36,7 @@ def minSwaps(a, k):
         mini = min(mini, badCount)
     return mini
 
-a = [2, 7, 9, 5, 8, 7, 4]
+a = [2, 7, 9, 5, 8, 1, 4]
 k = 5
 print(minSwaps(a, k))
 

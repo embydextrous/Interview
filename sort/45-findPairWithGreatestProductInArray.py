@@ -20,27 +20,22 @@ Output:  4
 Input  : arr[] = {17, 2, 1, 35, 30}
 Output : 35
 '''
-def checkIfHasPairOfFactors(d, x):
-    i = 1
-    while i * i <= x:
-        if x % i == 0:
-            a, b = i, x // i
-            if a == b:
-                if d[a] == 2:
-                    return True
-            else:
-                if a in d and b in d:
-                    return True
-        i += 1
-    return False
+from collections import Counter
 
 def findPair(a):
-    d = {x : a.count(x) for x in a}
+    n = len(a)
     a.sort()
-    for i in range(len(a) - 1, -1, -1):
-        if checkIfHasPairOfFactors(d, a[i]):
-            return a[i]
-    return -1
+    c = Counter(a)
+    for i in range(n-1, 1, -1):
+        x = 1
+        while x * x <= a[i]:
+            if a[i] % x == 0:
+                if x == a[i] // x and c[x] == 2:
+                    return a[i]
+                if x in c and a[i] // x in c:
+                    return a[i]
+            x += 1
+    return None
 
 a = [17, 2, 1, 35, 30]
 print(findPair(a))

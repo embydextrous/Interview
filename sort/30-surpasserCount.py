@@ -8,52 +8,42 @@ Examples :
 Input:  [2, 7, 5, 3, 0, 8, 1]
 Output: [4, 1, 1, 1, 2, 0, 0]
 '''
-def mergeSort(a, surpasser):
-    if len(a) < 2:
+def surpasserCount(a, l, r, surpasser):
+    if l == r:
         return
-    m = len(a) // 2
-    L = a[:m]
-    R = a[m:]
-    mergeSort(L, surpasser)
-    mergeSort(R, surpasser)
-    merge(a, L, R, surpasser)
+    m = l + (r - l) // 2
+    surpasserCount(a, l, m, surpasser)
+    surpasserCount(a, m + 1, r, surpasser)
+    merge(a, l, m, r)
 
-def merge(a, L, R, surpasser):
+def merge(a, l, m, r):
+    temp = [a[i] for i in range(l, r + 1)]
     i = 0
-    j = 0
-    k = 0
-    while i < len(L) and j < len(R):
-        if L[i] <= R[j]:
-            if L[i] < R[j]:
-                surpasser[L[i]] += len(R) - j
-            a[k] = L[i]
+    j = m - l + 1
+    k = l
+    while i < m - l + 1 and j < r - l + 1:
+        if temp[i][0] < temp[j][0]:
+            surpasser[temp[i][1]] += r - l + 1 - j
+            a[k] = temp[i]
             i += 1
         else:
-            a[k] = R[j]
+            a[k] = temp[j]
             j += 1
         k += 1
-    while i < len(L):
-        a[k] = L[i]
+    while i < m - l + 1:
+        a[k] = temp[i]
         i += 1
         k += 1
-    while j < len(R):
-        a[k] = R[j]
+    while j < r - m + 1:
+        a[k] = temp[j]
         j += 1
         k += 1
 
-def surpasserCount(arr):
-    a = arr[:]
-    n = len(a)
-    if n == 0:
-        return []
-    if n == 1:
-        return [0]
-    surpasser = { x : 0 for x in a }
-    mergeSort(a, surpasser)
-    return surpasser
 
 a = [2, 7, 5, 3, 0, 8, 1]
-#    [2, 7, 5]          [3, 0, 8, 1]
-#     [2, 5, 7]         [0, 3]  [1, 8] 
-# 2:2, 7:0, 5:0, 3:0, 0:2, 8:0, 1:0
-print(surpasserCount(a).values())
+n = len(a)
+surpasser = [0] * n
+aux = [[a[i], i] for i in range(n)]
+print(surpasserCount(aux, 0, len(a) - 1, surpasser))
+print(surpasser)
+    

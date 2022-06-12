@@ -13,59 +13,50 @@ every element x we get, {-4,-1, 0, -1, -4, -9}
 After sorting, we get {-9, -4, -4, -1, -1, 0}
 '''
 def sortedToEqn(a, A, B, C):
+    if A == 0:
+        return
+    ip = (-1 * B) / (2 * A)
     n = len(a)
-    result = []
-    minIndex = 0
-    maxIndex = 0
-    for i in range(n):
-        a[i] = A * a[i] ** 2 + B * a[i] + C
-        if a[i] < a[minIndex]:
-            minIndex = i
-        if a[i] > a[maxIndex]:
-            maxIndex = i
-    i = minIndex if A >= 0 else maxIndex
-    j = i + 1
-    if A >= 0:
-        while i >= 0 and j < n:
-            if a[i] <= a[j]:
-                result.append(a[i])
-                i -= 1
-            else:
-                result.append(a[j])
-                j += 1
-        while i >= 0:
-            result.append(a[i])
-            i -= 1
-        while j < n:
-            result.append(a[j])
-            j += 1
-    else:
+    result = [0] * n
+    if A > 0:
+        l = 0
+        r = n - 1
         k = n - 1
-        result = [0] * n
-        while i >= 0 and j < n:
-            if a[i] >= a[j]:
-                result[k] = a[i]
-                i -= 1
+        while l <= r:
+            if abs(a[l] - ip) > abs(a[r] - ip):
+                result[k] = a[l]
+                l += 1
             else:
-                result[k] = a[j]
-                j += 1
+                result[k] = a[r]
+                r -= 1
             k -= 1
-        while i >= 0:
-            result[k] = a[i]
-            i -= 1
-            k -= 1
-        while j < n:
-            result[k] = a[j]
-            j += 1
-            k -= 1
-    return result
+    else:
+        l = 0
+        r = n - 1
+        k = 0
+        while l <= r:
+            if abs(a[l] - ip) >= abs(a[r] - ip):
+                result[k] = a[l]
+                l += 1
+            else:
+                result[k] = a[r]
+                r -= 1
+            k += 1
+    a[:] = result[:]
+
 
 a = [-1, 0, 1, 2, 3, 4]
-b = a[:]
-A = 2
-B = 2
-C = 2
-print(sortedToEqn(a, A, B, C))
+A = -3
+B = -2
+C = 4
+b = []
+for x in a:
+    b.append(A * x * x + B * x + C)
+print(b)
+sortedToEqn(a, A, B, C)
+print(a)
+
+
 
 
 

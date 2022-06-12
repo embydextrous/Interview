@@ -18,6 +18,7 @@ def minSwap(a, b):
     n = len(a)
     d = {b[i]:i for i in range(n)}
     arr = [d[a[i]] for i in range(n)]
+    print(arr)
     arrPos = [[arr[i], i] for i in range(n)]
     arrPos.sort(key = lambda x : x[0])
     i = 0
@@ -33,8 +34,9 @@ def minSwap(a, b):
         i += 1
     return result
 
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+a = [6, 1, 8, 4, 7, 3, 9, 5, 2]
 b = [4, 9, 1, 2, 7, 5, 3, 8, 6]
 print(a)
 print(b)
-print(minSwap(a, b))
+print(minSwap(b, a))
+

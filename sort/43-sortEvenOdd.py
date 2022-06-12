@@ -11,19 +11,22 @@ Input  : arr[] = {0, 4, 5, 3, 7, 2, 1}
 Output : arr[] = {7, 5, 3, 1, 0, 2, 4} 
 '''
 def sort(a):
+    a.sort()
     l = 0
-    r = len(a) - 1
-    while l <= r:
-        if a[l] % 2 == 0 and a[r] % 2 == 1:
-            a[l], a[r] = a[r], a[l]
+    n = len(a)
+    for i in range(n):
+        if a[i] % 2 == 1:
+            x = a[i]
+            for j in range(i, l, -1):
+                a[j] = a[j-1]
+            a[l] = x
             l += 1
-            r -= 1
-        elif a[l] % 2 == 1:
-            l += 1
-        else:
-            r -= 1
-    a[:l] = sorted(a[:l])[::-1]
-    a[l:] = sorted(a[l:])
+    r = l - 1
+    l = 0
+    while l < r:
+        a[l], a[r] = a[r], a[l]
+        l += 1
+        r -= 1
 
 a = [0, 4, 5, 3, 7, 2, 1]
 sort(a)

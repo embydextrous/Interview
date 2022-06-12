@@ -5,6 +5,9 @@ Example :
 
 Input: arrl[] = {1, 2, 9, 5, 5}
        exit[] = {4, 5, 12, 9, 12}
+
+# 1 2 5 5 9
+# 4 5 9 12 9
 First guest in array arrives at 1 and leaves at 4, 
 second guest arrives at 2 and leaves at 5, and so on.
 

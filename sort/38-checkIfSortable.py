@@ -1,6 +1,7 @@
 # https://www.geeksforgeeks.org/check-possible-sort-array-conditional-swapping-adjacent-allowed/
 '''
-We are given an unsorted array of integers in the range from 0 to n-1. We are allowed to swap adjacent elements in array many number of times but only if the absolute difference between these element is 1. Check if it is possible to sort the array.If yes then print “yes” else “no”. 
+We are given an unsorted array of integers in the range from 0 to n-1. We are allowed to swap adjacent elements in array many number of times but only if the absolute difference between these element is 1. 
+Check if it is possible to sort the array.If yes then print “yes” else “no”. 
 Examples: 
  
 
@@ -23,5 +24,5 @@ def isSortable(a):
                 return False
     return True
 
-a = [1, 2, 3]
+a = [1, 0, 3, 2, 4]
 print(isSortable(a))

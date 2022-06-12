@@ -1,5 +1,8 @@
+from typing import Counter
+
+
 def isSubset(a, b):
-    d = {x : a.count(x) for x in a}
+    d = Counter(a)
     for i in b:
         if i not in d or d[i] == 0:
             return False

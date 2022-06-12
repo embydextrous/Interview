@@ -36,29 +36,19 @@ hence the non-increasing sorted order is
 '''
 def numBits(n):
     c = 0
+    x = n
+    n = abs(n)
     while n > 0:
         fsb = n & ~(n-1)
         n = fsb ^ n
         c += 1
+    if x < 0:
+        c += 1
     return c
 
-def calculateBits(n):
-    i = 0
-    while n > 0:
-        n = n >> 1
-        i += 1
-    return i
-
 def sort(a):
-    count = [[] for i in range(calculateBits(max(a)))]
-    for i in a:
-        count[numBits(i) - 1].append(i)
-    k = 0
-    for i in range(len(count) - 1, -1, -1):
-        for x in count[i]:
-            a[k] = x
-            k += 1
+    a.sort(key = lambda x : -numBits(x))
 
-a = [5, 2, 3, 9, 4, 6, 7, 15, 32]
+a = [5, 2, 3, 9, 4, 6, 7, 15, 32, -15, -32]
 sort(a)
 print(a)
