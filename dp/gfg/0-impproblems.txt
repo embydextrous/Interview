@@ -1,18 +1,17 @@
 1. Word Wrap Problem
 2. Min Insertions to Form Palindrome
 3. Dice Throw
-4. Optimal Strategy Game
-5. Word Break
-6. Interleaved String
-7. Longest AP
-8. Travelling Salesman
-9. Count Possible Paths
-10. Remove Min Elements
-11. Boolean Paranthesisation
-12. Count Possible Decodings
-13. Mobile Numeric Keypad
-14. Min Cost to Reach Destination
-15. Print Max A’s
+4. Word Break
+5. Interleaved String
+6. Longest AP
+7. Travelling Salesman
+8. Count Possible Paths
+9. Remove Min Elements
+10. Boolean Paranthesisation
+11. Count Possible Decodings
+12. Mobile Numeric Keypad
+13. Min Cost to Reach Destination
+14. Print Max A’s
 19. Sum of All Digits from 1 to N
 20. Count Numbers 1 to n with 4 as digit
 21. Min Steps to Reach Destination
@@ -56,7 +55,6 @@
 Tomorrow
 1. Word Wrap Problem
 2. Dice Throw
-3. Optimal Strategy Game
 4. Word Break
 5. Count Possible Decodings
 6. Mobile Numeric Keypad

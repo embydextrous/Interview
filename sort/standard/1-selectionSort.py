@@ -9,15 +9,17 @@ The algorithm maintains two subarrays in a given array.
 # Time Complexity - O(n^2) for all cases.
 # Selection sort never makes more than O(n) swaps. Good if writes are costly.
 # Not stable.
-def selectionSort(a):
+def insertionSort(a):
     n = len(a)
-    for i in range(n):
-        minIndex = i
-        for j in range(i + 1, n):
-            if a[j] < a[minIndex]:
-                minIndex = j
-        a[i], a[minIndex] = a[minIndex], a[i]
-
+    for i in range(1, n):
+        j = i - 1
+        x = a[i]
+        while j >= 0 and a[j] > x:
+            a[j+1] = a[j]
+            j -= 1
+        a[j+1] = x
+        
+# 
 a = [3, 2, 7, 8, 3, 1, 9, 6, 2, 1]
-selectionSort(a)
+insertionSort(a)
 print(a)
