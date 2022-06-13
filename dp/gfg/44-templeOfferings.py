@@ -28,6 +28,7 @@ height being higher. The fourth must receive more
 than the fifth, which in turn must receive more 
 than the sixth. Thus the total becomes 10.
 '''
+# Same as, https://www.geeksforgeeks.org/minimize-the-total-number-of-teddies-to-be-distributed/
 def templeOfferings(a):
     n = len(a)
     dp = [0] * n

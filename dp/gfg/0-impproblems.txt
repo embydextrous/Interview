@@ -1,13 +1,10 @@
-1. Min Insertions to Form Palindrome
-2. Dice Throw
-3. Interleaved String
 4. Longest AP
 5. Travelling Salesman
 6. Count Possible Paths
 7. Remove Min Elements
 8. Boolean Paranthesisation
-9. Count Possible Decodings
-10. Mobile Numeric Keypad
+9. Count Possible Decodings - x
+10. Mobile Numeric Keypad - x
 11. Min Cost to Reach Destination
 12. Print Max A’s
 13. Sum of All Digits from 1 to N
@@ -26,14 +23,14 @@
 26. Collect max coins before dead end
 27. Num Paths with At Most k Turns
 28. Partition Set with min diff
-29. Longest ZigZag Subsequence
+29. Longest ZigZag Subsequence - x
 30. Ways to arrange balls adjacent balls different color
 31. Max Length Snake Sequence
-32. String is K Palindrome
-33. Wildcard Pattern Matching
-34. Max Absolute Difference Between Sum of Contiguous Sub Arrays
-35. Longest Common Increasing Subsequence
-36. Number of Non Negative Integral Solutions of a + b + c = n
+32. String is K Palindrome - x
+33. Wildcard Pattern Matching - x
+34. Max Absolute Difference Between Sum of Contiguous Sub Arrays - x
+35. Longest Common Increasing Subsequence - x
+36. Number of Non Negative Integral Solutions of a + b + c = n - x
 37. Longest GP
 38. Number of Times Subsequence
 39. Min Cost to Fill Weight in Bag
