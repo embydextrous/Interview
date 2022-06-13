@@ -18,7 +18,6 @@ def length(preSum, i, j):
 
 def wordWrap(s, k):
     wL = [len(word) for word in s.split()]
-    print(wL)
     n = len(wL)
     preSum = wL[:]
     for i in range(1, n):
@@ -30,19 +29,15 @@ def wordWrap(s, k):
             l = length(preSum, i, j)
             if l <= k:
                 cost[i][j] = (k - l) ** 2
-    for row in cost:
-        print(row)
-    print()
     dp = [INT_MAX] * n
     dp[0] = cost[0][0]
-    print(dp)
     for i in range(1, n):
         if cost[0][i] < INT_MAX:
             dp[i] = cost[0][i]
         else:
             for j in range(i):
                 dp[i] = min(dp[i], dp[j] + cost[j+1][i])
-    print(dp)
+    return dp[n-1]
 
 s = "Geeks for Geeks presents word wrap problem"
 k = 15
