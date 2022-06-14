@@ -1,0 +1,55 @@
+High Priority
+---> Tic-tac-toe
+---> Filesystem
+---> Snake and Ladder
+---> Cache
+Splitwise
+Distributed Id Generation
+Json Parser
+Logger
+Parking Lot
+Chess
+Distributed Message Queue
+Movie Ticket Booking
+Elevator
+ATM
+Event Calendar
+Stock Exchange
+Battleship Game
+
+Medium Priority
+Truecaller
+Uber
+Vending Machine
+Cricbuzz
+Maps Navigator Client
+Configuration Management System
+Logistics System
+Hotel Booking
+
+Low Priority
+Amazon Locker Service
+Zoomcar
+Swiggy
+Tinder
+Blackjack
+CSV Parser
+Microsoft Excel
+
+
+Leetcode
+Git Versioning System
+2048 Game
+Wordle Game
+Trello
+Library Management
+Amazon
+Stack Overflow
+Airline Management System
+Restaurant Management
+LinkedIn
+Facebook
+Instagram
+Online Book Reader
+
+

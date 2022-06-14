@@ -1,51 +1,41 @@
-4. Longest AP
-5. Travelling Salesman
-6. Count Possible Paths
-7. Remove Min Elements
-8. Boolean Paranthesisation
-9. Count Possible Decodings - x
-10. Mobile Numeric Keypad - x
-11. Min Cost to Reach Destination
-12. Print Max A’s
-13. Sum of All Digits from 1 to N
-14. Count Numbers 1 to n with 4 as digit
-15. Min Steps to Reach Destination
-16. Collect Max Points In Grid
-17. Min Squares whose sum equals N
-18. Min Initial Points to Reach Destination
-19. Count n digit numbers whose sum equals given sum
-20. Bitmasking and DP - 1
-21. Longest Repeating Subsequence
-22. Count Even Length Binary Sequences
-23. Longest Valid Substring
-24. Longest Path in Matrix With Constraints
-25. Num Paths with Exactly K Coins
-26. Collect max coins before dead end
-27. Num Paths with At Most k Turns
-28. Partition Set with min diff
-29. Longest ZigZag Subsequence - x
-30. Ways to arrange balls adjacent balls different color
-31. Max Length Snake Sequence
-32. String is K Palindrome - x
-33. Wildcard Pattern Matching - x
-34. Max Absolute Difference Between Sum of Contiguous Sub Arrays - x
-35. Longest Common Increasing Subsequence - x
-36. Number of Non Negative Integral Solutions of a + b + c = n - x
-37. Longest GP
-38. Number of Times Subsequence
-39. Min Cost to Fill Weight in Bag
-40. Count Distinct Subsequences
-41. Min Sum One of every three consecutive is taken
-42. Count Increasing Subsequences
-43. Count All Palindromic Subsequence
-44. Recursively Break Number in 3 Parts
-45. Max Sum Alternating Subsequence
-46. Min Cost Path with Left Right Bottom
-47. Max Sum No Three Consecutive
-48. Number of palindromic paths in a matrix
-49. Count Number of Ways to reach destination in a maze
-50. Probability of Knight to Remain on Chessboard
-51. Max Dot Product
+1. Longest AP
+2. Travelling Salesman
+3. Count Possible Paths
+4. Remove Min Elements
+5. Max Dot Product
+6. Count Possible Decodings - x
+7. Mobile Numeric Keypad - x
+8. Print Max A’s - x
+9. Sum of All Digits from 1 to N
+10. Count Numbers 1 to n with 4 as digit
+11. Min Steps to Reach Destination
+12. Collect Max Points In Grid
+13. Min Squares whose sum equals N
+14. Min Initial Points to Reach Destination
+15. Count n digit numbers whose sum equals given sum
+16. Bitmasking and DP - 1
+17. Longest Repeating Subsequence
+18. Count Even Length Binary Sequences
+19. Longest Path in Matrix With Constraints
+20. Num Paths with Exactly K Coins
+21. Num Paths with At Most k Turns
+22. Partition Set with min diff
+23. Ways to arrange balls adjacent balls different color
+24. Wildcard Pattern Matching - x
+25. Longest Common Increasing Subsequence - x
+26. Number of Non Negative Integral Solutions of a + b + c = n - x
+27. Longest GP
+28. Number of Times Subsequence
+29. Min Cost to Fill Weight in Bag
+30. Count Distinct Subsequences
+31. Min Sum One of every three consecutive is taken
+32. Count Increasing Subsequences
+33. Count All Palindromic Subsequence
+34. Recursively Break Number in 3 Parts
+35. Min Cost Path with Left Right Bottom
+36. Number of palindromic paths in a matrix
+37. Count Number of Ways to reach destination in a maze
+38. Probability of Knight to Remain on Chessboard
 
 1. Check row or column swaps produce max with all 1s
 2. Max Points Collected by two persons
@@ -59,39 +49,94 @@
 10. Count number of ways to reach end
 11. Shortest Uncommon Subsequence
 12. Largest Sum Subarrray with at least K numbers
-13. Minimum jumps to reach end
-14. LIS in Circular Manner
-15. Bitmasking and DP - Set 2
-16. Paper Cut Squares
-17. Ways Transforming 1 string to other removing 0 or more chars
-18. Smallest Sum Contiguous Subarray
-19. Max Games Played by Winner
-20. Coin Game Winner 3 Choices
-21. Unique path in grid with obstacles
-22. Count ways build street
-23. Maximize binary matrix flipping sub matrix once
-24. Longest Balanced Subsequence
-25. Number of NGE to right
-26. Painter’s Partition
-27. Bridge and Torch
-28. Max Size Subset with given sum
-29. Max diff of 0 and 1
-30. Number of ways to form heap
-31. Longest Odd Even Subsequence
-32. Subarray Size With Max Sum
-33. Max profit sale of wines
-34. Burst Balloon to maximise coins
-35. N Kg Sweets for M persons Min Cost
-36. Count ways to reach score 12 no consecutive 2
-37. Treasure and Cities
-38. Number of ways to partition a string into two balanced subsequences
-39. Size of smallest subset with max bitwise OR
-40. Min steps to reach boundary edges
-41. Check if word exists in grid or not
-42. Variation of rat in a maze - jumps allowed
-43. Double Knapsack
-44. Sum of Bitwise AND of all sub matrices
-45. Longest subsequence such that adjacent have 1 common digit
-46. Max subarray sum after inverting at most 2 elements
-47. Sum of diagonal elements of NxN Spiral matrix
-48. Max topics to prepare to pass exam
+13. LIS in Circular Manner
+14. Bitmasking and DP - Set 2
+15. Paper Cut Squares
+16. Ways Transforming 1 string to other removing 0 or more chars
+17. Max Games Played by Winner
+18. Coin Game Winner 3 Choices
+19. Unique path in grid with obstacles
+20. Count ways build street
+21. Maximize binary matrix flipping sub matrix once
+22. Number of NGE to right
+23. Painter’s Partition
+24. Bridge and Torch
+25. Max Size Subset with given sum
+26. Max diff of 0 and 1
+27. Number of ways to form heap
+28. Longest Odd Even Subsequence
+29. Max profit sale of wines
+30. Burst Balloon to maximise coins
+31. N Kg Sweets for M persons Min Cost
+32. Number of ways to partition a string into two balanced subsequences
+33. Size of smallest subset with max bitwise OR
+34. Min steps to reach boundary edges
+35. Check if word exists in grid or not
+36. Variation of rat in a maze - jumps allowed
+37. Double Knapsack
+38. Longest subsequence such that adjacent have 1 common digit
+39. Max subarray sum after inverting at most 2 elements
+40. Sum of diagonal elements of NxN Spiral matrix
+
+1. Num Chicks in Zoo on Nth Day
+2. Count all possible texts that can be formed from Number using given mapping
+3. Partition array of non-negative integers such that average is equal
+4. Maze With N Doors and 1 Key
+5. Minimum halls required for class scheduling
+6. Minimum increment or decrement operations required to make the array sorted
+7. Max sum subarray of even length
+8. N Consecutive Ropes Problem
+9. Minimum cost to partition given binary string
+10. Maximum sum subarray after altering the given array
+11. Median of sliding window in an array
+12. Find mountains in given matrix
+13. Maximize sum of topmost elements of S stacks by popping at most N elements
+14. Minimum salary hike for each employee such that no employee feels unfair
+15. Count Possible Decodings - 2
+16. Minimum cost of reducing Array by merging any adjacent elements repetitively
+17. Maximum number of envelopes that can be put inside other bigger envelopes
+18. Maximize sum of an Array by flipping sign of all elements of a single subarray
+19. Count of vessels completely filled after a given time
+20. Paths requiring minimum number of jumps to reach end of array
+21. Minimize elements to be added to a given array such that it contains another given array as its subsequence
+22. Maximum K-digit number possible from subsequences of two given arrays
+23. Minimize cost of painting N houses such that adjacent houses have different colors
+24. Count ways to reach the Nth station
+25. Number of ways such that only K bars are visible from the left
+26. Count possible decoding of a given digit sequence with hidden characters
+27. Maximum Tip Calculator
+28. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
+29. Minimum change in lanes required to cross all barriers
+30. Camel and Banana Puzzle
+31. Minimum number of days to debug all programs
+32. Maximum sum of at most two non-overlapping intervals in a list of Intervals
+33. Minimum number of days in which no task is performed
+34. Count of subsets with sum equal to X 
+35. Count of possible seating arrangements in Cinema hall to maintain Social Distancing
+36. Minimize supply of Corona Vaccines for N houses if a vaccine is sufficient for immediate neighbours
+
+1. Maximum Perimeter of a square
+2. Count set bits in 1 to N
+3. No of subsets with given OR
+4. No of subsets with given AND
+4. Count of subsets with sum x
+5. Longest subsequence with given AND
+6. Longest subsequence with given OR
+7. Subsequences divisible by array 2
+8. Subsequences divisible by array 3
+9. Longest sub-sequence of a binary string divisible by 3
+10. Find maximum possible value of advertising
+11. Check if a matrix contains a square submatrix with 0 as boundary element
+12. Maximum subsequence sum such that no K elements are consecutive
+13. Count minimum number of moves to front or end to sort an array
+14. Minimum removals required to convert given array to a Mountain Array
+15. Minimum removals required to make a given array Bitonic
+16. Largest square sub-matrix with equal row, column, and diagonal sum
+17. Minimum cost of purchasing at least X chocolates
+18. Minimum number of cameras required to monitor all nodes of a Binary Tree
+19. Count ways to place ‘+’ and ‘-‘ in front of array elements to obtain sum K
+20. Divide chocolate bar into pieces, minimizing the area of invalid pieces
+
+Trash
+
+1. Sum of Bitwise AND of all sub matrices
