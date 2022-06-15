@@ -1,41 +1,26 @@
 1. Longest AP
 2. Travelling Salesman
-3. Count Possible Paths
-4. Remove Min Elements
+3. Number of Times Subsequence
+4. Count Increasing Subsequences
 5. Max Dot Product
-6. Count Possible Decodings - x
-7. Mobile Numeric Keypad - x
-8. Print Max A’s - x
-9. Sum of All Digits from 1 to N
-10. Count Numbers 1 to n with 4 as digit
+6. Probability of Knight to Remain on Chessboard
+7. Count Number of Ways to reach destination in a maze
+8. Number of palindromic paths in a matrix
+9. Min Cost to Fill Weight in Bag
+10. Min Sum One of every three consecutive is taken
 11. Min Steps to Reach Destination
 12. Collect Max Points In Grid
-13. Min Squares whose sum equals N
+13. Longest GP
 14. Min Initial Points to Reach Destination
-15. Count n digit numbers whose sum equals given sum
+15. Recursively Break Number in 3 Parts
 16. Bitmasking and DP - 1
 17. Longest Repeating Subsequence
 18. Count Even Length Binary Sequences
-19. Longest Path in Matrix With Constraints
+19. Longest Common Increasing Subsequence - x
 20. Num Paths with Exactly K Coins
 21. Num Paths with At Most k Turns
 22. Partition Set with min diff
 23. Ways to arrange balls adjacent balls different color
-24. Wildcard Pattern Matching - x
-25. Longest Common Increasing Subsequence - x
-26. Number of Non Negative Integral Solutions of a + b + c = n - x
-27. Longest GP
-28. Number of Times Subsequence
-29. Min Cost to Fill Weight in Bag
-30. Count Distinct Subsequences
-31. Min Sum One of every three consecutive is taken
-32. Count Increasing Subsequences
-33. Count All Palindromic Subsequence
-34. Recursively Break Number in 3 Parts
-35. Min Cost Path with Left Right Bottom
-36. Number of palindromic paths in a matrix
-37. Count Number of Ways to reach destination in a maze
-38. Probability of Knight to Remain on Chessboard
 
 1. Check row or column swaps produce max with all 1s
 2. Max Points Collected by two persons
@@ -44,7 +29,7 @@
 5. Max square sub matrix with all equal elements
 6. Count of strings formed with a b and c under given constraints
 7. Perfect Sum Problem
-8. Largest Sum Zigzag Sequence in a matrix
+8. Longest subsequence such that adjacent have 1 common digit
 9. Digit DP
 10. Count number of ways to reach end
 11. Shortest Uncommon Subsequence
@@ -54,7 +39,7 @@
 15. Paper Cut Squares
 16. Ways Transforming 1 string to other removing 0 or more chars
 17. Max Games Played by Winner
-18. Coin Game Winner 3 Choices
+18. Max subarray sum after inverting at most 2 elements
 19. Unique path in grid with obstacles
 20. Count ways build street
 21. Maximize binary matrix flipping sub matrix once
@@ -64,7 +49,7 @@
 25. Max Size Subset with given sum
 26. Max diff of 0 and 1
 27. Number of ways to form heap
-28. Longest Odd Even Subsequence
+28. Sum of diagonal elements of NxN Spiral matrix
 29. Max profit sale of wines
 30. Burst Balloon to maximise coins
 31. N Kg Sweets for M persons Min Cost
@@ -74,9 +59,6 @@
 35. Check if word exists in grid or not
 36. Variation of rat in a maze - jumps allowed
 37. Double Knapsack
-38. Longest subsequence such that adjacent have 1 common digit
-39. Max subarray sum after inverting at most 2 elements
-40. Sum of diagonal elements of NxN Spiral matrix
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping
@@ -92,7 +74,7 @@
 12. Find mountains in given matrix
 13. Maximize sum of topmost elements of S stacks by popping at most N elements
 14. Minimum salary hike for each employee such that no employee feels unfair
-15. Count Possible Decodings - 2
+15. Minimize supply of Corona Vaccines for N houses if a vaccine is sufficient for immediate neighbours
 16. Minimum cost of reducing Array by merging any adjacent elements repetitively
 17. Maximum number of envelopes that can be put inside other bigger envelopes
 18. Maximize sum of an Array by flipping sign of all elements of a single subarray
@@ -103,7 +85,7 @@
 23. Minimize cost of painting N houses such that adjacent houses have different colors
 24. Count ways to reach the Nth station
 25. Number of ways such that only K bars are visible from the left
-26. Count possible decoding of a given digit sequence with hidden characters
+26. Count of possible seating arrangements in Cinema hall to maintain Social Distancing
 27. Maximum Tip Calculator
 28. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
 29. Minimum change in lanes required to cross all barriers
@@ -112,14 +94,11 @@
 32. Maximum sum of at most two non-overlapping intervals in a list of Intervals
 33. Minimum number of days in which no task is performed
 34. Count of subsets with sum equal to X 
-35. Count of possible seating arrangements in Cinema hall to maintain Social Distancing
-36. Minimize supply of Corona Vaccines for N houses if a vaccine is sufficient for immediate neighbours
 
 1. Maximum Perimeter of a square
 2. Count set bits in 1 to N
 3. No of subsets with given OR
 4. No of subsets with given AND
-4. Count of subsets with sum x
 5. Longest subsequence with given AND
 6. Longest subsequence with given OR
 7. Subsequences divisible by array 2
@@ -140,3 +119,8 @@
 Trash
 
 1. Sum of Bitwise AND of all sub matrices
+2. Count All Palindromic Subsequence
+3. Count Distinct Subsequences
+4. Sum of All Digits from 1 to N
+5. Count Numbers 1 to n with 4 as digit
+
