@@ -30,6 +30,7 @@ def lis(a):
             if a[i] > a[j] and dp[j] + 1 > dp[i]:
                 dp[i] = dp[j] + 1
                 maxi = max(maxi, dp[i])
+    print(dp)
     return maxi
 
 a = [10, 22, 9, 33, 21, 50, 41, 60, 80]

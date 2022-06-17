@@ -16,15 +16,17 @@ Input : s = "()(((((()"
 Output : 4
 '''
 def lvs(s):
-    openCount = closedCount = 0
-    result = 0
+    n = len(s)
+    invalidOpen = invalidClosed = 0
     for c in s:
         if c == '(':
-            openCount += 1
+            invalidOpen += 1
         else:
-            closedCount += 1
-            result = 2 * min(openCount, closedCount)
-    return result
+            if invalidOpen == 0:
+                invalidClosed += 1
+            else:
+                invalidOpen -= 1
+    return n - invalidClosed - invalidOpen
 
-s = "()(((((()"
+s = "))(()"
 print(lvs(s))

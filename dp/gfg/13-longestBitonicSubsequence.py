@@ -12,6 +12,8 @@ Output: 5 (A Longest Bitonic Subsequence of length 5 is 12, 11, 5, 3, 1)
 Input arr[] = {80, 60, 30, 40, 20, 10}
 Output: 5 (A Longest Bitonic Subsequence of length 5 is 80, 60, 30, 20, 10)
 '''
+# Also see, https://www.geeksforgeeks.org/minimum-removals-required-to-make-a-given-array-bitonic/
+# Also see, https://www.geeksforgeeks.org/minimum-removals-required-to-convert-given-array-to-a-mountain-array/
 def lbs(a):
     n = len(a)
     lis = [1] * n

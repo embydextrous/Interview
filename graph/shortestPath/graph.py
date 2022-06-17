@@ -6,26 +6,17 @@ from collections import defaultdict
 # 6, 7, 10
 # 12, 13, 17, 18, 19, 20
 
-# Misc (18)
+# Misc (15)
 # 3, 4, 5, 6, 9, 10
-# 12, 13, 14, 17, 20
+# 13, 17
 # 21, 22, 23, 28, 29
 # 31, 32
 
-# Hard Problems (4)
-# 1, 2, 10, 11
-
-# Max Flow (6)
-# 1, 2, 5, 8, 9, 11
-
-# Connectivity (29)
+# Connectivity (28)
 # 1, 2, 3, 4, 5, 6, 7, 8, 9
 # 13, 14, 15, 16, 17, 18, 19, 20
-# 21, 22, 25, 26, 28, 30
+# 21, 25, 26, 28, 30
 # 31, 32, 36, 37, 39, 40
-
-# MST (5)
-# 1, 2, 3, 4, 6
 
 # Backtracking (9)
 # 1, 2, 3, 4, 5, 6, 7, 8, Sudoku
@@ -33,6 +24,15 @@ from collections import defaultdict
 # Cycle (13)
 # 1, 2, 3, 4, 6, 8, 9, 10
 # 11, 12, 13, 14, 15
+
+# MST (5)
+# 1, 2, 3, 4, 6
+
+# Hard Problems (4)
+# 1, 2, 10, 11
+
+# Max Flow (6)
+# 1, 2, 5, 8, 9, 11
 class Graph:
     def __init__(self, V):
         self.V = V

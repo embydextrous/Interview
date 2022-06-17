@@ -35,27 +35,20 @@ from matrix import printS
 
 def minPositivePoints(M):
     R, C = len(M), len(M[0])
-    dp = [[0 for x in range(C)] for y in range(R)]
-    # Fill dp for bottom right point
-    if M[R-1][C-1] > 0:
-        dp[R-1][C-1] = 1
-    else:
-        dp[R-1][C-1] = 1 - M[R-1][C-1]
-    # Fill dp for last row
-    for j in range(C-2, -1, -1):
-        dp[R-1][j] = max(dp[R-1][j+1] - M[R-1][j], 1)
-    # Fill dp for last column
-    for i in range(R-2, -1, -1):
-        dp[i][C-1] = max(dp[i+1][C-1] - M[i][C-1], 1)
-    # Fill rest of cells
-    for i in range(R-2, -1, -1):
-        for j in range(C-2, -1, -1):
-            minPointsOnExit = min(dp[i+1][j], dp[i][j+1])
-            dp[i][j] = max(minPointsOnExit - M[i][j], 1)
-    printS(dp)
+    for i in range(R-1, -1, -1):
+        for j in range(C-1, -1, -1):
+            if i == R - 1 and j == C - 1:
+                M[i][j] = max(1, 1 - M[i][j])
+            elif i == R - 1:
+                M[i][j] = max(1, M[i][j+1] - M[i][j])
+            elif j == C - 1:
+                M[i][j] = max(1, M[i+1][j] - M[i][j])
+            else:
+                M[i][j] = max(1, min(M[i+1][j], M[i][j+1]) - M[i][j])
+    return M[0][0]
 
 M = [[-2, -3, 3],
      [-5, -10, 1],
      [10, 30, -5]]
 
-minPositivePoints(M)
+print(minPositivePoints(M))

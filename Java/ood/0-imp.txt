@@ -4,16 +4,15 @@ High Priority
 ---> Snake and Ladder
 ---> Cache
 Splitwise
-Distributed Id Generation
+Movie Ticket Booking
+Event Calendar
 Json Parser
 Logger
 Parking Lot
 Chess
 Distributed Message Queue
-Movie Ticket Booking
 Elevator
 ATM
-Event Calendar
 Stock Exchange
 Battleship Game
 
@@ -26,6 +25,7 @@ Maps Navigator Client
 Configuration Management System
 Logistics System
 Hotel Booking
+Distributed ID Generation
 
 Low Priority
 Amazon Locker Service
