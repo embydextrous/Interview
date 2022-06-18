@@ -1,17 +1,10 @@
-1. Longest AP
+1. Count Even Length Binary Sequences
 2. Travelling Salesman
 3. Number of Times Subsequence
-4. Count Increasing Subsequences
-5. Max Dot Product
-6. Probability of Knight to Remain on Chessboard
-7. Recursively Break Number in 3 Parts
-8. Number of palindromic paths in a matrix - x
-9. Min Cost to Fill Weight in Bag - x
-10. Min Sum One of every three consecutive is taken
-11. Ways to arrange balls adjacent balls different color
-12. Partition Set with min diff - x
-13. Longest GP
-14. Count Even Length Binary Sequences
+4. Max Dot Product
+5. Probability of Knight to Remain on Chessboard
+6. Min Cost to Fill Weight in Bag - x
+7. Min Sum One of every three consecutive is taken
 
 1. Check row or column swaps produce max with all 1s
 2. Max Points Collected by two persons
