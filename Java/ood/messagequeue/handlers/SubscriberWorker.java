@@ -37,7 +37,7 @@ public class SubscriberWorker implements Runnable {
         }
     }
 
-    synchronized public void wakeUpIfNeeded() {
+    public void wakeUpIfNeeded() {
         synchronized (topicSubscriber) {
             topicSubscriber.notify();
         }

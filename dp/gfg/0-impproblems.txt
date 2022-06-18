@@ -9,7 +9,7 @@
 9. Min Cost to Fill Weight in Bag - x
 10. Min Sum One of every three consecutive is taken
 11. Ways to arrange balls adjacent balls different color
-12. Partition Set with min diff
+12. Partition Set with min diff - x
 13. Longest GP
 14. Count Even Length Binary Sequences
 
@@ -24,27 +24,20 @@
 9. Variation of rat in a maze - jumps allowed - x
 10. Count number of ways to reach end
 11. Shortest Uncommon Subsequence
-12. Largest Sum Subarrray with at least K numbers - x
-13. LIS in Circular Manner - x
-14. Check if word exists in grid or not - x
+12. Burst Balloon to maximise coins - x 
+13. Max profit sale of wines
+14. N Kg Sweets for M persons Min Cost - x 
 15. Paper Cut Squares - x
 16. Ways Transforming 1 string to other removing 0 or more chars
 17. Max Games Played by Winner
 18. Max subarray sum after inverting at most 2 elements - x
-19. Unique path in grid with obstacles - x
-20. Count ways build street
+19. Max diff of 0 and 1
+20. Number of ways to form heap - x
 21. Maximize binary matrix flipping sub matrix once
 22. Number of NGE to right - x
 23. Painter’s Partition
 24. Bridge and Torch
 25. Max Size Subset with given sum - x
-26. Max diff of 0 and 1
-27. Number of ways to form heap - x
-28. Sum of diagonal elements of NxN Spiral matrix
-29. Max profit sale of wines
-30. Burst Balloon to maximise coins - x 
-31. N Kg Sweets for M persons Min Cost - x 
-
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping
