@@ -1,10 +1,9 @@
 1. Count Even Length Binary Sequences
 2. Travelling Salesman
-3. Max Dot Product
-4. Min Sum One of every three consecutive is taken
+3. Min Sum One of every three consecutive is taken
 
 1. Check row or column swaps produce max with all 1s
-2. Bridge and Torch
+2. Maximize binary matrix flipping sub matrix once
 3. Check if all people can vote on two machines - x
 4. Size of smallest subset with max bitwise OR
 5. Max square sub matrix with all equal elements
@@ -13,17 +12,14 @@
 8. Longest subsequence such that adjacent have 1 common digit - x
 9. Variation of rat in a maze - jumps allowed - x
 10. Max Size Subset with given sum - x
-11. Shortest Uncommon Subsequence
+11. Max diff of 0 and 1
 12. Number of NGE to right - x
-13. Max profit sale of wines
+13. Number of ways to form heap - x
 14. N Kg Sweets for M persons Min Cost - x 
 15. Paper Cut Squares - x
 16. Painter’s Partition
 17. Max Games Played by Winner
 18. Max subarray sum after inverting at most 2 elements - x
-19. Max diff of 0 and 1
-20. Number of ways to form heap - x
-21. Maximize binary matrix flipping sub matrix once
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping
@@ -89,4 +85,6 @@ Trash
 7. Bitmasking and DP - 1
 8. Bitmasking and DP - 2
 9. Size after repeated deletion of lis
+10. Bridge and Torch
+11. Shortest Uncommon Subsequence
 
