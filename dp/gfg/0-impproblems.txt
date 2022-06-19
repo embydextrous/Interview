@@ -4,10 +4,10 @@
 
 1. Check row or column swaps produce max with all 1s
 2. Maximize binary matrix flipping sub matrix once
-3. Check if all people can vote on two machines - x
+3. Max Games Played by Winner
 4. Size of smallest subset with max bitwise OR
 5. Max square sub matrix with all equal elements
-6. Double Knapsack - x
+6. Max subarray sum after inverting at most 2 elements - x
 7. Number of ways to partition a string into two balanced subsequences
 8. Longest subsequence such that adjacent have 1 common digit - x
 9. Variation of rat in a maze - jumps allowed - x
@@ -18,8 +18,6 @@
 14. N Kg Sweets for M persons Min Cost - x 
 15. Paper Cut Squares - x
 16. Painter’s Partition
-17. Max Games Played by Winner
-18. Max subarray sum after inverting at most 2 elements - x
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping
