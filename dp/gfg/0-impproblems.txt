@@ -14,7 +14,7 @@
 9. Variation of rat in a maze - jumps allowed - x
 10. Max Size Subset with given sum - x
 11. Shortest Uncommon Subsequence
-12. Burst Balloon to maximise coins - x 
+12. Number of NGE to right - x
 13. Max profit sale of wines
 14. N Kg Sweets for M persons Min Cost - x 
 15. Paper Cut Squares - x
@@ -24,7 +24,6 @@
 19. Max diff of 0 and 1
 20. Number of ways to form heap - x
 21. Maximize binary matrix flipping sub matrix once
-22. Number of NGE to right - x
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping
