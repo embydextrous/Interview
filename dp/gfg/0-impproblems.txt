@@ -3,11 +3,10 @@
 3. Number of Times Subsequence
 4. Max Dot Product
 5. Probability of Knight to Remain on Chessboard
-6. Min Cost to Fill Weight in Bag - x
-7. Min Sum One of every three consecutive is taken
+6. Min Sum One of every three consecutive is taken
 
 1. Check row or column swaps produce max with all 1s
-2. Max Points Collected by two persons
+2. Bridge and Torch
 3. Check if all people can vote on two machines - x
 4. Size of smallest subset with max bitwise OR
 5. Max square sub matrix with all equal elements
@@ -15,22 +14,19 @@
 7. Number of ways to partition a string into two balanced subsequences
 8. Longest subsequence such that adjacent have 1 common digit - x
 9. Variation of rat in a maze - jumps allowed - x
-10. Count number of ways to reach end
+10. Max Size Subset with given sum - x
 11. Shortest Uncommon Subsequence
 12. Burst Balloon to maximise coins - x 
 13. Max profit sale of wines
 14. N Kg Sweets for M persons Min Cost - x 
 15. Paper Cut Squares - x
-16. Ways Transforming 1 string to other removing 0 or more chars
+16. Painter’s Partition
 17. Max Games Played by Winner
 18. Max subarray sum after inverting at most 2 elements - x
 19. Max diff of 0 and 1
 20. Number of ways to form heap - x
 21. Maximize binary matrix flipping sub matrix once
 22. Number of NGE to right - x
-23. Painter’s Partition
-24. Bridge and Torch
-25. Max Size Subset with given sum - x
 
 1. Num Chicks in Zoo on Nth Day
 2. Count all possible texts that can be formed from Number using given mapping

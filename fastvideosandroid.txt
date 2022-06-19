@@ -1,0 +1,49 @@
+1. PreLoad Videos on Disk Cache
+2. Download Smallest Bitrate Video for showing in thumbnails.
+3. Use Async Player UI - This way you can keep streaming separate from View
+4. Adaptive Streaming so that video quality adjusts to network
+
+https://instagram-engineering.com/improving-video-playback-on-android-2f6c6a0058d
+
+Server --- download and save video ------> Disk Cache ----- play video ----> MediaPlayer
+1. Good for only very short videos (may be upto 15-30 second reels)
+2. Needs disk space. If disk is running low video will never play.
+
+Create a cache that can stream to media player simultaneously
+1. Removes bottleneck for waiting to download to finish for playing.
+2. Create a proxy layer that stream video from URL to MediaPlayer and also caches it.
+    - Playback can start as soon as enough content is available.
+    - Works even if disk cache fails.
+    - You can prefetch now.
+
+Use SinglePlayback inside RecyclerView as releasing player is asynchronous. So, second video might
+not start.
+When to start playback?
+
+When attached to window
+Stop when detached from window
+
+or when scroll stops calculate first visible item and load player in async manner.
+
+1. Use single player instance and inflate this player in async manner.
+2. Yes, it's a bit more complicated though. You can limit to a given quality and download that quality with StreamKeys. 
+Then when doing playback you need to do the restriction to the same single track again. If you know the duration of the
+ segments in your Dash stream you probably want to download a given number of segments for a given stream and make
+sure the player picks that quality when starting. After the first second, the player can then adapt and choose freely.
+3. Player is not same as View.
+4. Use Single Player, caching and prefetching, you can save timestamp to so that you can render
+videos to same timestamp.
+5. Prefetch on scroll. 
+
+
+Live Streaming App
+
+1. Video is not downloaded entirely. In fact data is moved to viewers when it is available in
+streaming format.
+
+Streaming Technologies
+
+RTMP -> Real Time Messaging Protocol (using two way connections)
+HLS -> Can be combined with QUIC for better switching.
+Progressive Videos
+https://www.cloudflare.com/en-in/learning/video/what-is-http-live-streaming/#:~:text=With%20streaming%20over%20HTTP%2C%20the,every%20segment%20of%20video%20data.

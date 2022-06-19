@@ -13,7 +13,6 @@ def djikstra(G, s):
     V = len(G)
     sptSet = set()
     dist = [INF if i != s else 0 for i in range(V)]
-    print(dist)
     for i in range(V):
         u = findClosestVertex(V, dist, sptSet)
         sptSet.add(u)
