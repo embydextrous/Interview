@@ -1,9 +1,7 @@
 1. Count Even Length Binary Sequences
 2. Travelling Salesman
-3. Number of Times Subsequence
-4. Max Dot Product
-5. Probability of Knight to Remain on Chessboard
-6. Min Sum One of every three consecutive is taken
+3. Max Dot Product
+4. Min Sum One of every three consecutive is taken
 
 1. Check row or column swaps produce max with all 1s
 2. Bridge and Torch
