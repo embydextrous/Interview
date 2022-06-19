@@ -3,6 +3,8 @@ package splitwise.service;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import splitwise.exceptions.NoSuchExpenseException;
+import splitwise.exceptions.NoSuchUserException;
 import splitwise.model.Expense;
 import splitwise.model.ExpenseMetaData;
 import splitwise.model.ExpenseType;
@@ -27,17 +29,22 @@ public class SplitwiseApp {
     }
 
     public Double getBalance(String userId) {
-        User user = userService.getUser(userId);
-        if (user != null) {
+        try {
             return userService.getUser(userId).getBalance();
+        } catch(NoSuchUserException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
     public void settleExpense(String expenseId) {
-        Expense expense = expenseService.settleExpense(expenseId);
-        expense.getPaidBy().updateAndGetBalance(-1 * expense.getAmount());
-        expense.getSplits().forEach(split -> split.getUser().updateAndGetBalance(split.getAmount()));
+        try {
+            Expense expense = expenseService.settleExpense(expenseId);
+            expense.getPaidBy().updateAndGetBalance(-1 * expense.getAmount());
+            expense.getSplits().forEach(split -> split.getUser().updateAndGetBalance(split.getAmount()));
+        } catch (NoSuchExpenseException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void addExpense(double amount, User paidBy, ExpenseType expenseType, ExpenseMetaData expenseMetaData, Map<User, Double> breakup) {

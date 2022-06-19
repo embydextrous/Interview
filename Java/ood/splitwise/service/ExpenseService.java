@@ -2,6 +2,7 @@ package splitwise.service;
 
 import java.util.Map;
 
+import splitwise.exceptions.NoSuchExpenseException;
 import splitwise.model.Expense;
 import splitwise.model.ExpenseMetaData;
 import splitwise.model.ExpenseType;
@@ -36,11 +37,18 @@ public class ExpenseService {
     }
 
     public Expense getExpense(String id) {
+        Expense expense = expenseRepository.getExpense(id);
+        if (expense == null) {
+            throw new NoSuchExpenseException("Expense with id " + id + " does not exist.");
+        }
         return expenseRepository.getExpense(id);
     }
 
     public Expense settleExpense(String id) {
         Expense expense = expenseRepository.getExpense(id);
+        if (expense == null) {
+            throw new NoSuchExpenseException("Expense with id " + id + " does not exist.");
+        }
         expense.setSettled(true);
         return expense;
     }
