@@ -19,7 +19,7 @@
 15. Paper Cut Squares - x
 16. Painter’s Partition
 
-1. Num Chicks in Zoo on Nth Day
+1. Minimum number of days in which no task is performed
 2. Count all possible texts that can be formed from Number using given mapping
 3. Partition array of non-negative integers such that average is equal
 4. Maze With N Doors and 1 Key
@@ -51,7 +51,6 @@
 30. Camel and Banana Puzzle
 31. Minimum number of days to debug all programs
 32. Maximum sum of at most two non-overlapping intervals in a list of Intervals
-33. Minimum number of days in which no task is performed
 
 1. Maximum Perimeter of a square
 2. Count set bits in 1 to N
@@ -85,4 +84,4 @@ Trash
 9. Size after repeated deletion of lis
 10. Bridge and Torch
 11. Shortest Uncommon Subsequence
-
+12. Num Chicks in Zoo on Nth Day
