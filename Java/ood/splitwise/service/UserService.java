@@ -2,7 +2,6 @@ package splitwise.service;
 
 import java.util.List;
 
-import splitwise.exceptions.NoSuchUserException;
 import splitwise.model.User;
 import splitwise.repository.UserRepository;
 
@@ -20,11 +19,7 @@ public class UserService {
     }
 
     public User getUser(String id) {
-        User user = userRepository.getUser(id);
-        if (user == null) {
-            throw new NoSuchUserException("User with id " + id + " does not exist.");
-        }
-        return user;
+        return userRepository.getUser(id);
     }
 
     public List<User> getAllUsers() {

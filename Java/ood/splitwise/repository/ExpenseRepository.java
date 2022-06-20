@@ -1,7 +1,5 @@
 package splitwise.repository;
 
-import java.util.List;
-
 import splitwise.model.Expense;
 
 public interface ExpenseRepository {
