@@ -47,21 +47,14 @@
 26. Count of possible seating arrangements in Cinema hall to maintain Social Distancing - T
 
 1. Maximum Perimeter of a square
-2. Count set bits in 1 to N
-3. No of subsets with given OR
-4. No of subsets with given AND
-5. Longest subsequence with given AND
-6. Longest subsequence with given OR
-7. Subsequences divisible by array 2
-8. Subsequences divisible by array 3
-9. Longest sub-sequence of a binary string divisible by 3
-10. Find maximum possible value of advertising
-11. Check if a matrix contains a square submatrix with 0 as boundary element
-12. Maximum subsequence sum such that no K elements are consecutive
-13. Count minimum number of moves to front or end to sort an array
-14. Largest square sub-matrix with equal row, column, and diagonal sum
-15. Minimum cost of purchasing at least X chocolates
-16. Divide chocolate bar into pieces, minimizing the area of invalid pieces
+2. Longest sub-sequence of a binary string divisible by 3
+3. Find maximum possible value of advertising
+4. Check if a matrix contains a square submatrix with 0 as boundary element
+5. Maximum subsequence sum such that no K elements are consecutive
+6. Count minimum number of moves to front or end to sort an array
+7. Largest square sub-matrix with equal row, column, and diagonal sum
+8. Minimum cost of purchasing at least X chocolates
+9. Divide chocolate bar into pieces, minimizing the area of invalid pieces
 
 Trash
 
@@ -78,3 +71,10 @@ Trash
 11. Shortest Uncommon Subsequence
 12. Num Chicks in Zoo on Nth Day
 13. Camel and Banana Puzzle
+14. Count set bits in 1 to N
+15. No of subsets with given OR
+16. No of subsets with given AND
+17. Longest subsequence with given AND
+18. Longest subsequence with given OR
+19. Subsequences divisible by array 2
+20. Subsequences divisible by array 3
