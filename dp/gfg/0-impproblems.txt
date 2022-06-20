@@ -33,9 +33,9 @@
 12. Median of sliding window in an array
 13. Minimum number of days to debug all programs
 14. Maximize sum of topmost elements of S stacks by popping at most N elements
-15. Camel and Banana Puzzle
-16. Minimize supply of Corona Vaccines for N houses if a vaccine is sufficient for immediate neighbours - T
-17. Minimum number of cameras required to monitor all nodes of a Binary Tree - T
+15. Maximum Tip Calculator
+16. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
+17. Minimum change in lanes required to cross all barriers - T
 18. Maximize sum of an Array by flipping sign of all elements of a single subarray - xxx
 19. Count of vessels completely filled after a given time
 20. Paths requiring minimum number of jumps to reach end of array
@@ -45,9 +45,6 @@
 24. Count ways to reach the Nth station
 25. Number of ways such that only K bars are visible from the left - T
 26. Count of possible seating arrangements in Cinema hall to maintain Social Distancing - T
-27. Maximum Tip Calculator
-28. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
-29. Minimum change in lanes required to cross all barriers - T
 
 1. Maximum Perimeter of a square
 2. Count set bits in 1 to N
@@ -80,3 +77,4 @@ Trash
 10. Bridge and Torch
 11. Shortest Uncommon Subsequence
 12. Num Chicks in Zoo on Nth Day
+13. Camel and Banana Puzzle
