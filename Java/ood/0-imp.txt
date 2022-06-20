@@ -1,22 +1,23 @@
 High Priority
+
 ---> Tic-tac-toe
 ---> Filesystem
 ---> Snake and Ladder
 ---> Cache
-Splitwise
+---> Splitwise
+---> MessageQueue
+
 Movie Ticket Booking
 Event Calendar
 Json Parser
 Logger
 Parking Lot
 Chess
-Distributed Message Queue
 Elevator
 ATM
 Stock Exchange
 Battleship Game
 
-Medium Priority
 Truecaller
 Uber
 Vending Machine
