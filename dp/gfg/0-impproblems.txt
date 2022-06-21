@@ -34,12 +34,11 @@
 13. Minimum number of days to debug all programs
 14. Maximize sum of topmost elements of S stacks by popping at most N elements
 15. Maximum Tip Calculator
-16. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
+16. Minimize elements to be added to a given array such that it contains another given array as its subsequence
 17. Maximum K-digit number possible from subsequences of two given arrays
 18. Maximize sum of an Array by flipping sign of all elements of a single subarray - xxx
 19. Count of vessels completely filled after a given time
 20. Paths requiring minimum number of jumps to reach end of array
-21. Minimize elements to be added to a given array such that it contains another given array as its subsequence
 
 1. Maximum Perimeter of a square
 2. Longest sub-sequence of a binary string divisible by 3
