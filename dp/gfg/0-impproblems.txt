@@ -26,8 +26,8 @@
 5. Minimum halls required for class scheduling
 6. Minimum increment or decrement operations required to make the array sorted
 7. Max sum subarray of even length
-8. N Consecutive Ropes Problem - T
-9. Minimum cost of reducing Array by merging any adjacent elements repetitively - T
+8. Count of possible seating arrangements in Cinema hall to maintain Social Distancing - T
+9. Count ways to reach the Nth station
 10. Minimum cost to partition given binary string
 11. Maximum sum subarray after altering the given array
 12. Median of sliding window in an array
@@ -35,16 +35,11 @@
 14. Maximize sum of topmost elements of S stacks by popping at most N elements
 15. Maximum Tip Calculator
 16. Maximize the diamonds by choosing different colour diamonds from adjacent boxes
-17. Minimum change in lanes required to cross all barriers - T
+17. Maximum K-digit number possible from subsequences of two given arrays
 18. Maximize sum of an Array by flipping sign of all elements of a single subarray - xxx
 19. Count of vessels completely filled after a given time
 20. Paths requiring minimum number of jumps to reach end of array
 21. Minimize elements to be added to a given array such that it contains another given array as its subsequence
-22. Maximum K-digit number possible from subsequences of two given arrays
-23. Minimize cost of painting N houses such that adjacent houses have different colors
-24. Count ways to reach the Nth station
-25. Number of ways such that only K bars are visible from the left - T
-26. Count of possible seating arrangements in Cinema hall to maintain Social Distancing - T
 
 1. Maximum Perimeter of a square
 2. Longest sub-sequence of a binary string divisible by 3
