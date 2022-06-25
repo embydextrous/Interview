@@ -4,7 +4,7 @@
 
 1. Check row or column swaps produce max with all 1s
 2. Maximize binary matrix flipping sub matrix once
-3. Max Games Played by Winner
+3. Painter’s Partition
 4. Size of smallest subset with max bitwise OR
 5. Max square sub matrix with all equal elements
 6. Max subarray sum after inverting at most 2 elements - x
@@ -17,7 +17,6 @@
 13. Number of ways to form heap - x
 14. N Kg Sweets for M persons Min Cost - T
 15. Paper Cut Squares - T
-16. Painter’s Partition
 
 1. Minimum number of days in which no task is performed
 2. Count all possible texts that can be formed from Number using given mapping - xxx
@@ -31,14 +30,13 @@
 10. Minimum cost to partition given binary string
 11. Maximum sum subarray after altering the given array
 12. Median of sliding window in an array
-13. Minimum number of days to debug all programs
+13. Paths requiring minimum number of jumps to reach end of array
 14. Maximize sum of topmost elements of S stacks by popping at most N elements
 15. Maximum Tip Calculator
 16. Minimize elements to be added to a given array such that it contains another given array as its subsequence
 17. Maximum K-digit number possible from subsequences of two given arrays
 18. Maximize sum of an Array by flipping sign of all elements of a single subarray - xxx
 19. Count of vessels completely filled after a given time
-20. Paths requiring minimum number of jumps to reach end of array
 
 1. Maximum Perimeter of a square
 2. Longest sub-sequence of a binary string divisible by 3
@@ -72,3 +70,4 @@ Trash
 18. Longest subsequence with given OR
 19. Subsequences divisible by array 2
 20. Subsequences divisible by array 3
+21. Minimum number of days to debug all programs
