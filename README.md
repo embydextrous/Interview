@@ -69,6 +69,7 @@
 
 [Collections Framework](https://www.programiz.com/java-programming/collections)
 [How Hashmap Works](https://howtodoinjava.com/java/collections/hashmap/how-hashmap-works-in-java/)
+[Iterator Pattern Questions](https://github.com/embydextrous/Interview/tree/main/Java/iterators)
 
 [Concurrent Hashmap](https://dzone.com/articles/how-concurrenthashmap-works-internally-in-java)
 [CopyOnWriteArrayList](https://howtodoinjava.com/java/collections/java-copyonwritearraylist/)
