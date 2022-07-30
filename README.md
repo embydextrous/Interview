@@ -34,3 +34,4 @@ https://proandroiddev.com/recycler-view-internals-i-birth-of-viewholder-ae536760
 https://medium.com/mindorks/android-launch-mode-787d28952959
 https://www.youtube.com/watch?v=1uLzSXWWfDg
 https://stackoverflow.com/questions/4576909/understanding-canvas-and-surface-concepts
+https://github.com/weeeBox/mobile-system-design
