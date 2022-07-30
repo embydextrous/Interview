@@ -50,16 +50,27 @@
 
 
 **Mobile System Design**
+
 [Mobile System Design](https://github.com/weeeBox/mobile-system-design)
+
 [Mobile Apps at Scale - Challenges and Practices](https://www.amazon.in/Building-Mobile-Apps-Scale-Engineering/dp/1638778868)
 
 **Kotlin**
+
 Scope Functions
+
 Extension Functions
+
 In/Out
+
 Coroutines
 
 **Java**
+
 Collections
+
 Multithreading
+
+Object Oriented Design
+
 Problems on Multithreading
