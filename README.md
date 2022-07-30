@@ -57,20 +57,29 @@
 
 **Kotlin**
 
-Scope Functions
+[Scope Functions](https://github.com/embydextrous/Interview/blob/main/kotlin/ScopedFunctions.kt)
 
-Extension Functions
+[Extension Functions 1](https://github.com/embydextrous/Interview/blob/main/kotlin/ExtensionFunctions.kt)
+[Extension Functions 2](https://github.com/embydextrous/Interview/blob/main/kotlin/ExtensionFunctions2.kt)
 
-In/Out
-
-Coroutines
+[Coroutines 1](https://www.udemy.com/course/kotlin-coroutines-in-android)
+[Coroutines 2](https://www.udemy.com/course/coroutines-on-android)
 
 **Java**
 
-Collections
+[Collections Framework](https://www.programiz.com/java-programming/collections)
+[How Hashmap Works](https://howtodoinjava.com/java/collections/hashmap/how-hashmap-works-in-java/)
 
-Multithreading
+[Concurrent Hashmap](https://dzone.com/articles/how-concurrenthashmap-works-internally-in-java)
+[CopyOnWriteArrayList](https://howtodoinjava.com/java/collections/java-copyonwritearraylist/)
 
-Object Oriented Design
+[Generics 1](https://howtodoinjava.com/java/generics/complete-java-generics-tutorial/)
+[PECS](https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/)
+[In/Out Kotlin](https://kotlinlang.org/docs/generics.html#generic-constraints)
 
-Problems on Multithreading
+[Multithreading 1](https://www.udemy.com/course/java-multithreading/)
+[Multithreading 2](https://www.udemy.com/course/java-multithreading-concurrency-performance-optimization)
+
+[Object Oriented Design](https://github.com/embydextrous/Interview/tree/main/Java/ood)
+
+[Problems on Multithreading](https://www.educative.io/courses/java-multithreading-for-senior-engineering-interviews)
